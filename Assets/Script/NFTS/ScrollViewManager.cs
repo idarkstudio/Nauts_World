@@ -63,7 +63,7 @@ public class ScrollViewManager : MonoBehaviour
         pruebaFunciones();
         foreach (string imageUrl in this.imageUrls)
         {
-            Debug.Log("estoy asignando las imagenes a mi lista imageUrl");
+            //Debug.Log("estoy asignando las imagenes a mi lista imageUrl");
             await LoadAndCreateRawImage(imageUrl);
         }
     }

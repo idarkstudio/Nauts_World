@@ -41,7 +41,7 @@ public class nftManager : MonoBehaviour
 
                 collection = nftList;
                 Debug.Log(collection);
-                managerScrollView.AsignarImagenes(this.collection);
+                //managerScrollView.AsignarImagenes(this.collection);
                 TieneNFTS = true;
             }
         }
