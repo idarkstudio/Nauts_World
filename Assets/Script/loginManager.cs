@@ -1,5 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+using Newtonsoft.Json;
+using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,8 +8,10 @@ public class loginManager : MonoBehaviour
 {
     private static loginManager Instance;
     public string principal;
-    public Button Boton;
-    nftManager nftManager;
+    [SerializeField] Button Boton;
+    [SerializeField] nftManager nftManager;
+    [SerializeField] TextMeshPro inputUserName;
+    public User usuario;
 
     void Awake()
     {
@@ -31,6 +34,24 @@ public class loginManager : MonoBehaviour
         {
             Debug.Log("Error en getPrincipal");
         }
+    }
+
+    public void SetNameUser() 
+    {
+        if (!string.IsNullOrEmpty(this.inputUserName.text)) 
+        {
+            string name = this.inputUserName.text;
+            this.usuario = new User(name, this.principal);
+
+            string JsonUser = JsonConvert.SerializeObject(this.usuario);
+
+            ReacFunctions.SetUserName(JsonUser);
+        }   
+    }
+
+    private User User()
+    {
+        throw new NotImplementedException();
     }
 
     void ProbarLogin()
