@@ -8,16 +8,24 @@ using System.Threading.Tasks;
 public class ScrollViewManager : MonoBehaviour
 {
     [SerializeField]
-    GameObject rawImagePrefab; // Asigna el prefab de RawImage aquí.
+    GameObject buttonImagePrefab; // Asigna el prefab de RawImage aquí.
     public Transform contentTransform; // Asigna el Transform del Content del ScrollView aquí.
 
-    [SerializeField]
-    //nftManager managerNft;
+    
+    
 
 
     public List<string> imageUrls; // Tu lista de URL de imágenes.
 
-    public ImageLoader loaderImage= new ImageLoader();
+    [SerializeField ]
+    public ImageLoader loaderImage;
+
+
+    public void Start()
+    {
+        AsignarImagenes();
+        
+    }
 
     public void getCollection(List<NftDelails> collection)
     {
@@ -41,10 +49,19 @@ public class ScrollViewManager : MonoBehaviour
     }   
     
 
-    public async void AsignarImagenes(List<NftDelails> collection)
+    //public async void AsignarImagenes(List<NftDelails> collection)
+    //{
+    //    getCollection(collection);
+    //    foreach (string imageUrl in imageUrls)
+    //    {
+    //        Debug.Log("estoy asignando las imagenes a mi lista imageUrl");
+    //        await LoadAndCreateRawImage(imageUrl);
+    //    }
+    //}    
+    public async void AsignarImagenes()
     {
-        getCollection(collection);
-        foreach (string imageUrl in imageUrls)
+        pruebaFunciones();
+        foreach (string imageUrl in this.imageUrls)
         {
             Debug.Log("estoy asignando las imagenes a mi lista imageUrl");
             await LoadAndCreateRawImage(imageUrl);
@@ -53,8 +70,8 @@ public class ScrollViewManager : MonoBehaviour
 
     private Task LoadAndCreateRawImage(string imageUrl)
     {
-        GameObject imageGO = Instantiate(rawImagePrefab, contentTransform);
-        Image image = imageGO.GetComponent<Image>();
+        GameObject imageGO = Instantiate(buttonImagePrefab, contentTransform);
+        Button image = imageGO.GetComponent<Button>();
         //imageGO.SetActive(false);
 
         loaderImage.AssignImage(imageUrl, image, (texture) =>

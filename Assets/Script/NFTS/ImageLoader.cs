@@ -6,12 +6,12 @@ using System;
 
 public class ImageLoader : MonoBehaviour
 {
-    public void AssignImage(string url, Image component, Action<Sprite> callback)
+    public void AssignImage(string url, Button component, Action<Sprite> callback)
     {
         StartCoroutine(DownloadImage(url, component, callback));
     }
 
-    private IEnumerator DownloadImage(string url, Image component, Action<Sprite> callback)
+    private IEnumerator DownloadImage(string url, Button component, Action<Sprite> callback)
     {
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
         yield return www.SendWebRequest();
@@ -26,7 +26,8 @@ public class ImageLoader : MonoBehaviour
         {
             Texture2D texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
             Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-            component.sprite = sprite;
+            
+            component.image.sprite = sprite;
             callback(sprite); // Llama al callback con el sprite creado a partir de la textura cargada.
         }
     }
