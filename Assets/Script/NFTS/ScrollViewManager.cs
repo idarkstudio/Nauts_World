@@ -12,7 +12,7 @@ public class ScrollViewManager : MonoBehaviour
     public Transform contentTransform; // Asigna el Transform del Content del ScrollView aquí.
 
     [SerializeField]
-    nftManager managerNft;
+    //nftManager managerNft;
 
 
     public List<string> imageUrls; // Tu lista de URL de imágenes.
