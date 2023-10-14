@@ -22,11 +22,18 @@ public class loginManager : MonoBehaviour
         Boton.onClick.AddListener(ProbarLogin);
     }
 
-    public void GetPrincipal(string principal)
+    public void GetPrincipal(string json)
     {
-        if (principal != null)
+        ResultUser result = JsonConvert.DeserializeObject<ResultUser>(json);
+        if (result != null) 
         {
-            this.principal = principal;
+            if(!result.setearName) 
+            {
+                //pedir nombre
+                SetNameUser();
+            }
+
+            result.principal = principal;
             Debug.Log($"Principal: { principal}");
             nftManager.PedirNFTS();
         }
@@ -47,11 +54,6 @@ public class loginManager : MonoBehaviour
 
             ReacFunctions.SetUserName(JsonUser);
         }   
-    }
-
-    private User User()
-    {
-        throw new NotImplementedException();
     }
 
     void ProbarLogin()

@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UserDataBase 
+public class ResultUser 
 {
-    public List<User> userDB;
+    public string principal;
+    public bool setearName;
 
-    UserDataBase() 
+    ResultUser(string principal, bool setearName) 
     {
-        this.userDB = new List<User>();
+        this.principal = principal;
+        this.setearName = setearName;
     }
   
 }

@@ -8,7 +8,7 @@ var WebGLFunctions = {
   },
   Login: function () {
     try {
-      window.dispatchReactUnityEvent("Login", UTF8ToString() );
+      window.dispatchReactUnityEvent("Login");
     } catch (e) {
       console.warn("Failed to dispatch event");
     }
@@ -21,5 +21,5 @@ var WebGLFunctions = {
     }
   }
 };
-
+  
 mergeInto(LibraryManager.library, WebGLFunctions);
