@@ -1,18 +1,19 @@
 using Newtonsoft.Json;
 using System;
 using TMPro;
+using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class loginManager : MonoBehaviour
+public class LoginManager : MonoBehaviour
 {
-    private static loginManager Instance;
+    private static LoginManager Instance;
     public string principal;
     [SerializeField] Button Boton;
     [SerializeField] nftManager nftManager;
-    [SerializeField] public TextMeshPro inputUserName;
+    [SerializeField] public TMP_InputField inputUserName;
     [SerializeField] Button BotonName;
-    [SerializeField] TextMeshPro labelError;
+    [SerializeField] Text labelError;
     public User usuario;
 
     void Awake()
