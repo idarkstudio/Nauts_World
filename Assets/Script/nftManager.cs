@@ -29,20 +29,23 @@ public class nftManager : MonoBehaviour
             }
             else
             {
-                foreach (var nft in nftList)
+                if (nftList.Count > 0)
                 {
-                    StringBuilder sb = new StringBuilder();
-                    sb.AppendLine($"nombre: {nft.name}");
-                    sb.AppendLine($"descripcion: {nft.description}");
-                    sb.AppendLine($"imagen: {nft.image}");
-                    sb.AppendLine($"collection :{nft.collection}");
-                    Debug.Log(sb.ToString());
-                }
+                    foreach (var nft in nftList)
+                    {
+                        StringBuilder sb = new StringBuilder();
+                        sb.AppendLine($"nombre: {nft.name}");
+                        sb.AppendLine($"descripcion: {nft.description}");
+                        sb.AppendLine($"imagen: {nft.image}");
+                        sb.AppendLine($"collection :{nft.collection}");
+                        Debug.Log(sb.ToString());
+                    }
 
-                collection = nftList;
-                Debug.Log(collection);
-                //managerScrollView.AsignarImagenes(this.collection);
-                TieneNFTS = true;
+                    collection = nftList;
+                    Debug.Log(collection);
+                    //managerScrollView.AsignarImagenes(this.collection);
+                    TieneNFTS = true;
+                }
             }
         }
         else

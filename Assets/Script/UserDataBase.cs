@@ -5,12 +5,12 @@ using UnityEngine;
 public class ResultUser 
 {
     public string principal;
-    public bool setearName;
+    public bool setName;
 
-    ResultUser(string principal, bool setearName) 
+    ResultUser(string principal, bool setName) 
     {
         this.principal = principal;
-        this.setearName = setearName;
+        this.setName = setName;
     }
   
 }

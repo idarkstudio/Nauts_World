@@ -10,7 +10,9 @@ public class loginManager : MonoBehaviour
     public string principal;
     [SerializeField] Button Boton;
     [SerializeField] nftManager nftManager;
-    [SerializeField] TextMeshPro inputUserName;
+    [SerializeField] public TextMeshPro inputUserName;
+    [SerializeField] Button BotonName;
+    [SerializeField] TextMeshPro labelError;
     public User usuario;
 
     void Awake()
@@ -27,7 +29,7 @@ public class loginManager : MonoBehaviour
         ResultUser result = JsonConvert.DeserializeObject<ResultUser>(json);
         if (result != null) 
         {
-            if(!result.setearName) 
+            if(!result.setName) 
             {
                 //pedir nombre
                 SetNameUser();
@@ -45,7 +47,12 @@ public class loginManager : MonoBehaviour
 
     public void SetNameUser() 
     {
-        if (!string.IsNullOrEmpty(this.inputUserName.text)) 
+        this.EnterName();
+    }
+
+    public void EnterName() 
+    {
+        if (!string.IsNullOrEmpty(this.inputUserName.text))
         {
             string name = this.inputUserName.text;
             this.usuario = new User(name, this.principal);
@@ -53,7 +60,12 @@ public class loginManager : MonoBehaviour
             string JsonUser = JsonConvert.SerializeObject(this.usuario);
 
             ReacFunctions.SetUserName(JsonUser);
-        }   
+        }
+        else 
+        {
+            this.labelError.color = Color.red;
+            this.labelError.text = "Error, name invalid";
+        }
     }
 
     void ProbarLogin()
