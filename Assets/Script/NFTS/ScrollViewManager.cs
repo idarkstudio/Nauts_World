@@ -11,60 +11,23 @@ public class ScrollViewManager : MonoBehaviour
     GameObject buttonImagePrefab; // Asigna el prefab de RawImage aquí.
     public Transform contentTransform; // Asigna el Transform del Content del ScrollView aquí.
 
-    
-    
-
-
-    public List<string> imageUrls; // Tu lista de URL de imágenes.
-
     [SerializeField ]
     public ImageLoader loaderImage;
 
-
-    public void Start()
-    {
-        AsignarImagenes();
-        
-    }
-
-    public void getCollection(List<NftDelails> collection)
-    {
-        
-            if (collection!= null)
-        {
-            foreach (var nft in collection)
-            {
-                imageUrls.Add(nft.image);
-            }
-        }else
-            Debug.Log("sos un desgraciado, te llego un array nulo gil");
-    }
-
-    public void pruebaFunciones()
-    {
-        for (int i = 0; i <= 10; i++)
-        {
-            imageUrls.Add("https://media.istockphoto.com/id/1433347468/es/foto/el-inspector-y-el-capataz-est%C3%A1n-revisando-las-obras-de-la-casa.jpg?s=1024x1024&w=is&k=20&c=1MYIdo7olYcSU9ZkjbNwelPQy5vISDYqoF6bFrFGi5I=");
-        }
-    }   
-    
-
-    //public async void AsignarImagenes(List<NftDelails> collection)
+    //public void pruebaFunciones()
     //{
-    //    getCollection(collection);
-    //    foreach (string imageUrl in imageUrls)
+    //    for (int i = 0; i <= 10; i++)
     //    {
-    //        Debug.Log("estoy asignando las imagenes a mi lista imageUrl");
-    //        await LoadAndCreateRawImage(imageUrl);
+    //        imageUrls.Add("https://media.istockphoto.com/id/1433347468/es/foto/el-inspector-y-el-capataz-est%C3%A1n-revisando-las-obras-de-la-casa.jpg?s=1024x1024&w=is&k=20&c=1MYIdo7olYcSU9ZkjbNwelPQy5vISDYqoF6bFrFGi5I=");
     //    }
-    //}    
-    public async void AsignarImagenes()
+    //}   
+    
+    public async void AsignarImagenes(List<NftDelails> listImages)
     {
-        pruebaFunciones();
-        foreach (string imageUrl in this.imageUrls)
+        foreach (NftDelails imageUrl in listImages)
         {
             //Debug.Log("estoy asignando las imagenes a mi lista imageUrl");
-            await LoadAndCreateRawImage(imageUrl);
+            await LoadAndCreateRawImage(imageUrl.image);
         }
     }
 

@@ -53,16 +53,12 @@ public class LoginManager : MonoBehaviour
 
             }
 
-
         }
         else
         {
             Debug.Log("Error en getPrincipal");
         }
     }
-
-  
-
     public void EnterName() 
     {
         if (!string.IsNullOrEmpty(this.inputUserName.text))

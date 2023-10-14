@@ -8,10 +8,10 @@ using UnityEngine.UI;
 public class nftManager : MonoBehaviour
 {
     public static nftManager Instance;
-    public Button Boton;
     public List<NftDelails> collection;
     [SerializeField] public ScrollViewManager managerScrollView;
-    private bool TieneNFTS = false;
+    //[SerializeField] Text labelError;
+
 
     private void Awake()
     {
@@ -43,8 +43,12 @@ public class nftManager : MonoBehaviour
 
                     collection = nftList;
                     Debug.Log(collection);
-                    //managerScrollView.AsignarImagenes(this.collection);
-                    TieneNFTS = true;
+                    managerScrollView.AsignarImagenes(this.collection);
+                }
+                else 
+                {
+                    Debug.Log("No hay nfts");
+                   //this.labelError.text = "No hay NFTS";
                 }
             }
         }
@@ -59,5 +63,6 @@ public class nftManager : MonoBehaviour
         ReacFunctions.GetNFT();
     }
 
+    
 }
 
