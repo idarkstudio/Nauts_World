@@ -31,25 +31,39 @@ public class LoginManager : MonoBehaviour
 
     public void GetPrincipal(string json)
     {
-        ResultUser result = JsonConvert.DeserializeObject<ResultUser>(json);
-        if (result != null) 
+        if (json != null)
         {
-            result.principal = principal;
-            Debug.Log($"Principal: { principal}");
-            if(!result.setName) 
+            ResultUser result = JsonConvert.DeserializeObject<ResultUser>(json);
+            if (result != null)
             {
+                if (result.setName)
+                {
+                    if (result.setName)
+                    {
+                        this.panel.SetActive(true);
+                        this.BackGround.interactable = false;
+                        //pedir nombre  
+                    }
+                    else
+                    {
+                        //cambio de escena
+                        this.logeoExitoso = true;
+                        sceneManager.LoadScene("MainMenu", "Loading1");
+                    }
 
-                this.panel.SetActive(true);
-                this.BackGround.interactable = false;
-                //pedir nombre
-               
+                }
+                else
+                {
+                    Debug.Log("Usuario longaniza");
+                }
+
+                result.principal = principal;
+                Debug.Log($"Principal: {principal}");
+                Debug.Log($"Principal2 : {result.principal}");
             }
-            else
+            else 
             {
-                //cambio de escena
-                this.logeoExitoso = true;
-                sceneManager.LoadScene("MainMenu", "Loading1");
-
+                Debug.Log("Error en getPrincipal2");
             }
 
         }
@@ -57,6 +71,7 @@ public class LoginManager : MonoBehaviour
         {
             Debug.Log("Error en getPrincipal");
         }
+
     }
     public void EnterName() 
     {
@@ -81,10 +96,8 @@ public class LoginManager : MonoBehaviour
 
     void ProbarLogin()
     {
-
         Debug.Log("Logueandose...");
         ReacFunctions.Login();
         //text = "Loading...";
-
     }
 }
