@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -588,7 +588,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 439876248}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1082594202}
+        m_TargetAssemblyTypeName: DontDestroyOnLoad, Assembly-CSharp
+        m_MethodName: NextLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &439876248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -963,6 +975,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 712b468f9ae9b3f4cbe732251be86e1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontDestroy: {fileID: 2534074920464694765}
 --- !u!4 &1082594203
 Transform:
   m_ObjectHideFlags: 0
@@ -1162,6 +1175,7 @@ GameObject:
   - component: {fileID: 1335454226}
   - component: {fileID: 1335454228}
   - component: {fileID: 1335454227}
+  - component: {fileID: 1335454229}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -1229,6 +1243,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1335454225}
   m_CullTransparentMesh: 1
+--- !u!225 &1335454229
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335454225}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1473595218
 GameObject:
   m_ObjectHideFlags: 0
@@ -2299,6 +2325,8 @@ MonoBehaviour:
   principal: 
   logeoExitoso: 0
   panel: {fileID: 1836136446}
+  sceneManager: {fileID: 0}
+  BackGround: {fileID: 1335454229}
   Boton: {fileID: 1481018311}
   inputUserName: {fileID: 1565792631}
   BotonName: {fileID: 1226361581}
