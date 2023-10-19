@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -9,11 +10,12 @@ using UnityEngine.UI;
 public class DontDestroyOnLoad : MonoBehaviour
 {
     public GameObject dontDestroy;
-
+    private static DontDestroyOnLoad Instance;
     public void Awake()
     {
         DontDestroyOnLoad(dontDestroy);
         DontDestroyOnLoad(this);
+        Instance = this;
     }
 
     public void NextLevel()

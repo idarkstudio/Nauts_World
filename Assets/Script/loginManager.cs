@@ -35,11 +35,15 @@ public class LoginManager : MonoBehaviour
         {
             Debug.Log($"JSON RECIBIDO EN GET PRINCIAPL{json}");
             ResultUser result = JsonConvert.DeserializeObject<ResultUser>(json);
+            Debug.Log($"Antes del if \n{result.SetName}");
+            Debug.Log($"{result.Principal}");
             if (result != null)
             {
-                if (result.setName)
+                Debug.Log($"Despues del if null \n{result.SetName}");
+                Debug.Log($"{result.Principal}");
+                if (result.SetName)
                 {
-                    if (result.setName)
+                    if (result.SetName)
                     {
                         this.panel.SetActive(true);
                         this.BackGround.interactable = false;
@@ -58,9 +62,9 @@ public class LoginManager : MonoBehaviour
                     Debug.Log("Usuario longaniza");
                 }
 
-                result.principal = principal;
+                this.principal = result.Principal;
                 Debug.Log($"Principal: {principal}");
-                Debug.Log($"Principal2 : {result.principal}");
+                Debug.Log($"Principal2 : {result.Principal}");
             }
             else 
             {
@@ -76,7 +80,7 @@ public class LoginManager : MonoBehaviour
     }
     public void EnterName() 
     {
-        if (!string.IsNullOrEmpty(this.inputUserName.text))
+        if (!string.IsNullOrEmpty(this.inputUserName.text)|| !string.IsNullOrEmpty(this.principal))
         {
             string name = this.inputUserName.text;
             this.usuario = new User(name, this.principal);
@@ -84,6 +88,7 @@ public class LoginManager : MonoBehaviour
             string JsonUser = JsonConvert.SerializeObject(this.usuario);
 
             ReacFunctions.SetUserName(JsonUser);
+            Debug.Log(JsonUser);
             //aca cambiamos de escena 
             this.logeoExitoso = true;
             sceneManager.LoadScene("MainMenu", "Loading1");
@@ -102,3 +107,4 @@ public class LoginManager : MonoBehaviour
         //text = "Loading...";
     }
 }
+
