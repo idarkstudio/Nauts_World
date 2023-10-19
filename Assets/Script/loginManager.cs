@@ -33,6 +33,7 @@ public class LoginManager : MonoBehaviour
     {
         if (json != null)
         {
+            Debug.Log($"JSON RECIBIDO EN GET PRINCIAPL{json}");
             ResultUser result = JsonConvert.DeserializeObject<ResultUser>(json);
             if (result != null)
             {
