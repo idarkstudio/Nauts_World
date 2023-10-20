@@ -17,10 +17,18 @@ public class nftManager : MonoBehaviour
     {
         Instance = this;
     }
+
+    private void Start()
+    {
+        this.PedirNFTS();
+    }
+
     public void RequestNFT(string json)
     {
+        Debug.LogError("REQUEST NFT");
         if (json != null)
         {
+            Debug.LogError("Paso null");
             List<NftDelails> nftList = JsonConvert.DeserializeObject<List<NftDelails>>(json);
 
             if (nftList == null)
@@ -41,7 +49,7 @@ public class nftManager : MonoBehaviour
                         Debug.Log(sb.ToString());
                     }
 
-                    collection = nftList;
+                    this.collection = nftList;
                     Debug.Log(collection);
                     managerScrollView.AsignarImagenes(this.collection);
                 }
