@@ -25,7 +25,8 @@ public class nftManager : MonoBehaviour
 
     public void RequestNFT(string json)
     {
-        Debug.LogError("REQUEST NFT");
+        Debug.Log("REQUEST NFT");
+        Debug.Log(json);
         if (json != null)
         {
             Debug.LogError("Paso null");

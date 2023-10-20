@@ -17,6 +17,7 @@ public class DontDestroyOnLoad : MonoBehaviour
         DontDestroyOnLoad(loginManager);
         DontDestroyOnLoad(this);
         Instance = this;
+        Debug.Log("Awake dont destroy2");
     }
 
     public void NextLevel()
