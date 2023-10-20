@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -8,12 +9,14 @@ using UnityEngine.UI;
 
 public class DontDestroyOnLoad : MonoBehaviour
 {
-    public GameObject dontDestroy;
-
+    public GameObject loginManager;
+    private static DontDestroyOnLoad Instance;
     public void Awake()
     {
-        DontDestroyOnLoad(dontDestroy);
+        Debug.Log("Awake dont destroy");
+        DontDestroyOnLoad(loginManager);
         DontDestroyOnLoad(this);
+        Instance = this;
     }
 
     public void NextLevel()
@@ -22,6 +25,7 @@ public class DontDestroyOnLoad : MonoBehaviour
     }
     public void LoadScene(string sceneName, string loadingName )
     {
+        Debug.Log("Cargando escena");
         // start asynchronous scene loading
         StartCoroutine(LoadAsync(sceneName,loadingName));
     }
