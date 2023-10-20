@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,17 +41,15 @@ public class nftManager : MonoBehaviour
             {
                 if (nftList.Count > 0)
                 {
+                    Debug.Log($"cantidad nfts devueltos {nftList.Count}" );
                     foreach (var nft in nftList)
-                    {
-                        StringBuilder sb = new StringBuilder();
-                        sb.AppendLine($"nombre: {nft.name}");
-                        sb.AppendLine($"descripcion: {nft.description}");
-                        sb.AppendLine($"imagen: {nft.image}");
-                        sb.AppendLine($"collection :{nft.collection}");
-                        Debug.Log(sb.ToString());
+                    {                      
+                        if(nft.isOwner)
+                            nft.ToString();
                     }
-
+                    
                     this.collection = nftList;
+                    this.collection.OrderByDescending(item => item.isOwner).ToList();
                     Debug.Log(collection);
                     managerScrollView.AsignarImagenes(this.collection);
                 }

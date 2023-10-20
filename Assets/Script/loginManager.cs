@@ -41,27 +41,21 @@ public class LoginManager : MonoBehaviour
             {
                 Debug.Log($"Despues del if null \n{result.SetName}");
                 Debug.Log($"{result.Principal}");
+
                 if (result.SetName)
                 {
-                    if (result.SetName)
-                    {
-                        this.panel.SetActive(true);
-                        this.BackGround.interactable = false;
-                        //pedir nombre  
-                    }
-                    else
-                    {
-                        //cambio de escena
-                        this.logeoExitoso = true;
-                        sceneManager.LoadScene("MainMenu", "Loading1");
-                    }
-
+                    this.panel.SetActive(true);
+                    this.BackGround.interactable = false;
+                    //pedir nombre  
                 }
                 else
                 {
+                    //cambio de escena
+                    this.logeoExitoso = true;
+                    sceneManager.LoadScene("MainMenu", "Loading1");
                     Debug.Log("Usuario longaniza");
                 }
-
+                
                 this.principal = result.Principal;
                 Debug.Log($"Principal: {principal}");
                 Debug.Log($"Principal2 : {result.Principal}");

@@ -14,20 +14,20 @@ public class ScrollViewManager : MonoBehaviour
     [SerializeField ]
     public ImageLoader loaderImage;
 
-    //public void pruebaFunciones()
-    //{
-    //    for (int i = 0; i <= 10; i++)
-    //    {
-    //        imageUrls.Add("https://media.istockphoto.com/id/1433347468/es/foto/el-inspector-y-el-capataz-est%C3%A1n-revisando-las-obras-de-la-casa.jpg?s=1024x1024&w=is&k=20&c=1MYIdo7olYcSU9ZkjbNwelPQy5vISDYqoF6bFrFGi5I=");
-    //    }
-    //}   
-    
     public async void AsignarImagenes(List<NftDelails> listImages)
     {
         foreach (NftDelails imageUrl in listImages)
         {
-            //Debug.Log("estoy asignando las imagenes a mi lista imageUrl");
+            if (imageUrl.isOwner)
+            {
+                //los muestro como vienen
+            }
+            else 
+            {
+               //los hago grises
+            }
             await LoadAndCreateRawImage(imageUrl.image);
+            //Debug.Log("estoy asignando las imagenes a mi lista imageUrl");
         }
     }
 
