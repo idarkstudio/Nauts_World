@@ -418,6 +418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonImagePrefab: {fileID: 2060732109264548653, guid: 7541da7512ae56e43a130f0495598aeb, type: 3}
+  buttonBlocked: {fileID: 2767725174640940389, guid: 08616f81b3694bf41ade8749e297d45a, type: 3}
   contentTransform: {fileID: 8430380776280739733}
   loaderImage: {fileID: 295129292}
 --- !u!1 &628842992

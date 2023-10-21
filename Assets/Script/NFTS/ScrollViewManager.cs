@@ -9,6 +9,8 @@ public class ScrollViewManager : MonoBehaviour
 {
     [SerializeField]
     GameObject buttonImagePrefab; // Asigna el prefab de RawImage aquí.
+    [SerializeField]
+    GameObject buttonBlocked; 
     public Transform contentTransform; // Asigna el Transform del Content del ScrollView aquí.
 
     [SerializeField ]
@@ -20,20 +22,22 @@ public class ScrollViewManager : MonoBehaviour
         {
             if (imageUrl.isOwner)
             {
+                await LoadAndCreateRawImage(imageUrl.image,buttonImagePrefab);
                 //los muestro como vienen
             }
             else 
             {
+
+                await LoadAndCreateRawImage(imageUrl.image,buttonBlocked);
                //los hago grises
             }
-            await LoadAndCreateRawImage(imageUrl.image);
             //Debug.Log("estoy asignando las imagenes a mi lista imageUrl");
         }
     }
 
-    private Task LoadAndCreateRawImage(string imageUrl)
+    private Task LoadAndCreateRawImage(string imageUrl,GameObject prefab)
     {
-        GameObject imageGO = Instantiate(buttonImagePrefab, contentTransform);
+        GameObject imageGO = Instantiate(prefab, contentTransform);
         Button image = imageGO.GetComponent<Button>();
         //imageGO.SetActive(false);
 
