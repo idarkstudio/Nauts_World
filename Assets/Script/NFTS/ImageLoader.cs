@@ -14,9 +14,9 @@ public class ImageLoader : MonoBehaviour
     }
     public void CloseImage() 
     {
-
         Color colorImagene = this.imagen.color;
         colorImagene.a = 0f;
+        this.imagen.color = colorImagene;
     }
     private IEnumerator DownloadImage(string url, Button component, Action<Sprite> callback)
     {
