@@ -6,11 +6,18 @@ using System;
 
 public class ImageLoader : MonoBehaviour
 {
+    [SerializeField]
+    public Image imagen;
     public void AssignImage(string url, Button component, Action<Sprite> callback)
     {
         StartCoroutine(DownloadImage(url, component, callback));
     }
+    public void CloseImage() 
+    {
 
+        Color colorImagene = this.imagen.color;
+        colorImagene.a = 0f;
+    }
     private IEnumerator DownloadImage(string url, Button component, Action<Sprite> callback)
     {
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
