@@ -11,6 +11,7 @@ public class DontDestroyOnLoad : MonoBehaviour
 {
     public GameObject loginManager;
     private static DontDestroyOnLoad Instance;
+    public float delayBeforeSceneChange = 4.0f;
     public void Awake()
     {
         Debug.Log("Awake dont destroy");
@@ -24,11 +25,25 @@ public class DontDestroyOnLoad : MonoBehaviour
     {
         this.LoadScene("MainMenu","Loading1");
     }
+
+
+    IEnumerator LoadSceneWithDelay(string sceneName, string loadingName)
+    {
+        // Espera el tiempo especificado antes de cargar la escena
+        yield return new WaitForSeconds(delayBeforeSceneChange);
+
+        Debug.Log("Cargando escena");
+        // Inicia la carga asincrónica de la escena
+        StartCoroutine(LoadAsync(sceneName, loadingName));
+    }
+
+
+
     public void LoadScene(string sceneName, string loadingName )
     {
         Debug.Log("Cargando escena");
         // start asynchronous scene loading
-        StartCoroutine(LoadAsync(sceneName,loadingName));
+        StartCoroutine(LoadSceneWithDelay(sceneName,loadingName));
     }
     IEnumerator LoadAsync(string sceneName, string loadingName)
     {

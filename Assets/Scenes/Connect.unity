@@ -2325,7 +2325,7 @@ MonoBehaviour:
   principal: 
   logeoExitoso: 0
   panel: {fileID: 1836136446}
-  sceneManager: {fileID: 0}
+  sceneManager: {fileID: 1082594202}
   BackGround: {fileID: 1335454229}
   Boton: {fileID: 1481018311}
   inputUserName: {fileID: 1565792631}
