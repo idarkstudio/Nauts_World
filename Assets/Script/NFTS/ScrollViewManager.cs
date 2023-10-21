@@ -34,7 +34,30 @@ public class ScrollViewManager : MonoBehaviour
             //Debug.Log("estoy asignando las imagenes a mi lista imageUrl");
         }
     }
-
+    //public List<NftDelails> cargarNft()
+    //{
+    //    List<NftDelails> listaxd = new List<NftDelails> (); 
+    //    NftDelails nft1 = new NftDelails();
+    //    nft1.collection = "collection";
+    //    nft1.image = "https://34xdl-mqaaa-aaaan-qcweq-cai.raw.ic0.app/file/3_thumb.jpeg";
+    //    nft1.name = "nombre";
+    //    nft1.description = "description";
+    //    nft1.isOwner = true;
+    //    NftDelails nft2 = new NftDelails();
+    //    nft1.collection = "collection";
+    //    nft1.image = "https://34xdl-mqaaa-aaaan-qcweq-cai.raw.ic0.app/file/1_thumb.jpeg";
+    //    nft1.name = "nombre";
+    //    nft1.description = "description";
+    //    nft1.isOwner = true;
+    //    listaxd.Add(nft1);
+    //    listaxd.Add(nft2);
+    //    return listaxd;
+    //}
+    private void Start()
+    {
+        //List<NftDelails> lista = cargarNft();
+        //AsignarImagenes(lista);
+    }
     private Task LoadAndCreateRawImage(string imageUrl,GameObject prefab)
     {
         GameObject imageGO = Instantiate(prefab, contentTransform);
