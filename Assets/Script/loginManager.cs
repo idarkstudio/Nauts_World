@@ -94,6 +94,11 @@ public class LoginManager : MonoBehaviour
         }
     }
 
+    public void CreateAcount()
+    {
+        Debug.Log("Creando cuenta...");
+        ReacFunctions.CreateAcount();
+    }
     void ProbarLogin()
     {
         Debug.Log("Logueandose...");

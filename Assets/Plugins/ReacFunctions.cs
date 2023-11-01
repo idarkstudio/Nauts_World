@@ -4,14 +4,29 @@ public static class ReacFunctionsInternal
 {
     [DllImport("__Internal")]
     public static extern void GetNFT();
+    
+    
     [DllImport("__Internal")]
     public static extern void Login();
+    
     [DllImport("__Internal")]
     public static extern void SetUserName(string json);
+
+    [DllImport("__Internal")]
+    public static extern void CreteAcount();
 }
 
 public static class ReacFunctions
 {
+
+    public static void CreateAcount()
+    {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        ReacFunctionsInternal.CreateAcount();
+#endif
+    }
+
+
     public static void GetNFT()
     {
 #if UNITY_WEBGL && !UNITY_EDITOR

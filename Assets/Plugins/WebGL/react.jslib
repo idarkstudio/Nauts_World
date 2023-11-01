@@ -19,6 +19,13 @@ var WebGLFunctions = {
     } catch (e) {
       console.warn("Failed to dispatch event");
     }
+  },
+  CreateAcount: function (){
+    try {
+      window.dispatchReactUnityEvent("CreateAcount")
+    }catch (e){
+      console.warn("Failed to dispatch CreateAcountEvent");
+    }
   }
 };
   

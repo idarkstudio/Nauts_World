@@ -519,7 +519,7 @@ GameObject:
   - component: {fileID: 439876248}
   - component: {fileID: 439876247}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: CreateWallet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -588,7 +588,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 439876248}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2534074920464694766}
+        m_TargetAssemblyTypeName: LoginManager, Assembly-CSharp
+        m_MethodName: CreateAcount
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &439876248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -602,7 +614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7075472, g: 0.15018693, b: 0.69530606, a: 0.46666667}
+  m_Color: {r: 0.7075472, g: 0.15018693, b: 0.69530606, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -964,6 +976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loginManager: {fileID: 2534074920464694765}
+  delayBeforeSceneChange: 4
 --- !u!4 &1082594203
 Transform:
   m_ObjectHideFlags: 0
@@ -1014,7 +1027,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.50000095}
+  m_AnchoredPosition: {x: 0, y: -0.5}
   m_SizeDelta: {x: -20, y: -13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1135990525

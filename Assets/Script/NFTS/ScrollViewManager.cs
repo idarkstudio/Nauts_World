@@ -53,11 +53,11 @@ public class ScrollViewManager : MonoBehaviour
     //    listaxd.Add(nft2);
     //    return listaxd;
     //}
-    private void Start()
-    {
-        //List<NftDelails> lista = cargarNft();
-        //AsignarImagenes(lista);
-    }
+    //private void Start()
+    //{
+    //    List<NftDelails> lista = cargarNft();
+    //    AsignarImagenes(lista);
+    //}
     private Task LoadAndCreateRawImage(string imageUrl,GameObject prefab)
     {
         GameObject imageGO = Instantiate(prefab, contentTransform);
