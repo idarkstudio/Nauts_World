@@ -13,7 +13,7 @@ public static class ReacFunctionsInternal
     public static extern void SetUserName(string json);
 
     [DllImport("__Internal")]
-    public static extern void CreteAcount();
+    public static extern void CreateAcount();
 }
 
 public static class ReacFunctions

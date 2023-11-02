@@ -18,6 +18,7 @@ public class ScrollViewManager : MonoBehaviour
 
     public async void AsignarImagenes(List<NftDelails> listImages)
     {
+        int contador = 0;
         foreach (NftDelails imageUrl in listImages)
         {
             if (imageUrl.isOwner)
@@ -29,7 +30,8 @@ public class ScrollViewManager : MonoBehaviour
             {
 
                 await LoadAndCreateRawImage(imageUrl.image,buttonBlocked);
-               //los hago grises
+                contador++;
+                if(contador > 20) { break; }
             }
             //Debug.Log("estoy asignando las imagenes a mi lista imageUrl");
         }
