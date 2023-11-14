@@ -2,63 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
-
-    [SerializeField]
-    private float _speed = 5 ;
-    [SerializeField]
-    private float _maxSpeed;
-    [SerializeField]
-    private float _acceleration;
-
-    Rigidbody _characterRb;
-
-    private float x, z;
-
-
-    private void Start()
-    {
-        _characterRb = GetComponent<Rigidbody>();
-    }
-
+    public CharacterController controller;
+    public Transform camera;
+    public float speed = 6f;
+    public float turnsmoothTime = 0.1f;
+    float turnSmoothVelocity;
 
     private void Update()
     {
-        MovementLogic();
-    }
 
 
-    private void PlayerMove( float x, float z)
-    {
-        Vector3 pos = transform.forward * x;
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        Vector3 direction = new Vector3(horizontal, 0, vertical).normalized;
 
-        pos += transform.right * z;
-        pos *= _speed = Time.deltaTime;
-        pos += transform.up * _characterRb.velocity.y;
+        if (direction.magnitude >= 0.1f)
+        {
 
-        _characterRb.velocity = pos;
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + camera.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnsmoothTime);
+            transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
+            Vector3 moveDir =  Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            controller.Move(moveDir.normalized * speed * Time.deltaTime);
 
-    }
-
-    void MovementLogic()
-    {
-        x = Input.GetAxis("Horizontal");
-        z = Input.GetAxis("Vertical");
-
-        PlayerMove(x, z);
-              
-
+        }
 
 
     }
-
-
-
-
-
-
 
 
 }
