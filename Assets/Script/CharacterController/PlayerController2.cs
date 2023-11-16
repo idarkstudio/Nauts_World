@@ -12,6 +12,9 @@ public class PlayerController2 : MonoBehaviour
     [SerializeField] private float _forwardSpeed;
     [SerializeField] private float _turnAmount;
     [SerializeField] private float _turnSpeed;
+    [SerializeField] private float _jumpForce;
+    [SerializeField] private float _deceleratiionSpeed = 20;
+
     [SerializeField] private LayerMask _groundLayerMask;
 
 
@@ -36,11 +39,17 @@ public class PlayerController2 : MonoBehaviour
 
         if (_forwardAmount != 0 && _isGrounded)
         {
-            Drive();            
-           
+            Drive();
+            if (Input.GetKey(KeyCode.S) || Input.GetKeyUp(KeyCode.W))
+            {
+                DriveDeceleration();
+            }           
         }
-       
 
+        if (_isGrounded && Input.GetKeyDown(KeyCode.Space))
+        {
+            Jump();
+        }
         TurnHandler();
         GroundCheckAndNormalHandler();
     }
@@ -50,14 +59,12 @@ public class PlayerController2 : MonoBehaviour
        
        _sphereRigidbody.AddForce(transform.forward * _curentSpeed, ForceMode.Acceleration);
 
-      
     }
 
 
     private void Drive()
     {
         _curentSpeed = _forwardAmount *= _forwardSpeed;
-
     }
  
 
@@ -68,17 +75,16 @@ public class PlayerController2 : MonoBehaviour
         
     }
     
-    private void DriveDesaceleration()
+    private void DriveDeceleration()
     {
-
-        _curentSpeed = _forwardAmount *= (_forwardSpeed *-1);
+        _curentSpeed = Mathf.MoveTowards(_curentSpeed, 0f, _deceleratiionSpeed * Time.deltaTime);
     }
 
 
     private void GroundCheckAndNormalHandler()
     {
         RaycastHit hit;
-        _isGrounded =  Physics.Raycast(transform.position, transform.up * -1, out hit, 1, _groundLayerMask);
+        _isGrounded =  Physics.Raycast(transform.position, -transform.up, out hit, 2, _groundLayerMask);
         Debug.Log( _isGrounded+ " booleano ");
 
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation, 0.1f);
@@ -89,8 +95,13 @@ public class PlayerController2 : MonoBehaviour
     {
         
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + transform.up * -1);
+        Gizmos.DrawLine(transform.position, transform.position + (-transform.up));
        
+    }
+
+    private void Jump() 
+    {
+        _sphereRigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse); 
     }
 
 
