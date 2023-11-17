@@ -14,14 +14,21 @@ public class PlayerController2 : MonoBehaviour
     [SerializeField] private float _turnSpeed;
     [SerializeField] private float _jumpForce;
     [SerializeField] private float _deceleratiionSpeed = 20;
+    
+
 
     [SerializeField] private LayerMask _groundLayerMask;
 
 
 
-    private bool _isGrounded = true;
+    private bool _isGrounded;
+    private bool _isDescending;
     private float _forwardAmount;
-                     
+    public float _descentSpeed = 5f;
+    public float _airborneTime;
+    private float _maxAirborneTime = 2f;
+    private float _initialJumpForce = 10f;
+
 
     void Start()
     {
@@ -50,6 +57,13 @@ public class PlayerController2 : MonoBehaviour
         {
             Jump();
         }
+
+        if (_isGrounded ==  false)
+        {
+
+
+        }
+
         TurnHandler();
         GroundCheckAndNormalHandler();
     }
@@ -84,10 +98,29 @@ public class PlayerController2 : MonoBehaviour
     private void GroundCheckAndNormalHandler()
     {
         RaycastHit hit;
-        _isGrounded =  Physics.Raycast(transform.position, -transform.up, out hit, 2, _groundLayerMask);
-        Debug.Log( _isGrounded+ " booleano ");
+        if (Physics.Raycast(transform.position, -transform.up, out hit, 2, _groundLayerMask))
+        {
+            _isGrounded = true;
+            _airborneTime = 0f; // Reinicia el tiempo en el aire
+        }
+        else
+        {
+            _isGrounded = false;
+            _airborneTime += Time.deltaTime;
 
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation, 0.1f);
+            if (_airborneTime > _maxAirborneTime)
+            {
+                // Empieza a descender el personaje si ha estado en el aire más de 5 segundos
+                Descend();
+            }
+        }
+
+        Debug.Log(_isGrounded + " booleano ");
+
+        if (_isGrounded)
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation, 0.1f);
+        }
     }
 
 
@@ -104,6 +137,18 @@ public class PlayerController2 : MonoBehaviour
         _sphereRigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse); 
     }
 
+    private void Descend()
+    {
+        if (!_isDescending)
+        {
+            // Aplica una fuerza inicial hacia arriba para simular el impulso inicial
+            _sphereRigidbody.AddForce(Vector3.up * _initialJumpForce, ForceMode.Impulse);
+            _isDescending = true;
+        }
 
+        // Aplica la fuerza de la gravedad para que el personaje comience a descender
+        _sphereRigidbody.AddForce(Vector3.down * _sphereRigidbody.mass * Physics.gravity.magnitude);
+
+    }
 
 }
