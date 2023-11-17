@@ -14,7 +14,7 @@ public class PlayerController2 : MonoBehaviour
     [SerializeField] private float _turnSpeed;
     [SerializeField] private float _jumpForce;
     [SerializeField] private float _deceleratiionSpeed = 20;
-    
+    [SerializeField] private float _maxAirborneTime;
 
 
     [SerializeField] private LayerMask _groundLayerMask;
@@ -25,8 +25,7 @@ public class PlayerController2 : MonoBehaviour
     private bool _isDescending;
     private float _forwardAmount;
     public float _descentSpeed = 5f;
-    public float _airborneTime;
-    private float _maxAirborneTime = 2f;
+    public float _airborneTime;    
     private float _initialJumpForce = 10f;
 
 
