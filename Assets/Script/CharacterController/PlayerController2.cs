@@ -97,7 +97,7 @@ public class PlayerController2 : MonoBehaviour
     private void GroundCheckAndNormalHandler()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, -transform.up, out hit, 2, _groundLayerMask))
+        if (Physics.Raycast(transform.position, -transform.up, out hit, 3 , _groundLayerMask))
         {
             _isGrounded = true;
             _airborneTime = 0f; // Reinicia el tiempo en el aire
