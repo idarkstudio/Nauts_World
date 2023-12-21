@@ -10,25 +10,18 @@ public class RespawnManager : MonoBehaviour
     private float _timer = 0f;
     [SerializeField]
     private LayerMask _groundLayer;
-
+    [SerializeField]
+    private LayerMask _deathZoneLayer;
 
 
     void Update()
     {
-        _timer += Time.deltaTime;
-       
-        if (_timer >= _saveInterval)
-        {
-            _lastSavedPos = this.transform.position;
-            _timer = 0f;
-            Debug.Log(" Guarde pos ");
-        }
+        Timer();
     }
 
     private void Timer()
     {
-        _timer += Time.deltaTime;
-        Debug.Log(_timer);
+        _timer += Time.deltaTime;       
      
           if (_timer >= _saveInterval)
           {
@@ -43,6 +36,7 @@ public class RespawnManager : MonoBehaviour
     {
         if (other.CompareTag("Deathzone"))
         {
+            Debug.Log("deberia hacer el respawnplayer");
             RespawnPlayer();
         }
     }

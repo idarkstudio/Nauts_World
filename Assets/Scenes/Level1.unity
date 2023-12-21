@@ -1630,7 +1630,7 @@ GameObject:
   - component: {fileID: 1081493930}
   - component: {fileID: 1081493929}
   - component: {fileID: 1081493928}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Cube (2)
   m_TagString: Deathzone
   m_Icon: {fileID: 0}
@@ -2067,6 +2067,59 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2048657937}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1361192465
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1361192467}
+  - component: {fileID: 1361192466}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1361192466
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361192465}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1361192467
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361192465}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.28, y: 0.44, z: -0.12}
+  m_LocalScale: {x: 28.62566, y: 1, z: 16.17773}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1373516837
 GameObject:
@@ -2563,7 +2616,7 @@ GameObject:
   - component: {fileID: 1496697772}
   - component: {fileID: 1496697771}
   - component: {fileID: 1496697770}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Deathzone
   m_Icon: {fileID: 0}
@@ -3406,7 +3459,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2048657933}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7479f9dc27b2dc468a8c55ceb53d22a, type: 3}
   m_Name: 
@@ -3414,6 +3467,9 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 128
+  _deathZoneLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &2070085685
 GameObject:
   m_ObjectHideFlags: 0
@@ -10658,3 +10714,4 @@ SceneRoots:
   - {fileID: 1521625111}
   - {fileID: 1412777124}
   - {fileID: 573493033}
+  - {fileID: 1361192467}
