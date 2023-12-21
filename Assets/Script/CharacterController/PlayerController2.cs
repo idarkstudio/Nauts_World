@@ -29,6 +29,10 @@ public class PlayerController2 : MonoBehaviour
     public float _airborneTime;    
     private float _initialJumpForce = 10f;
 
+    private void Awake()
+    {
+        _curentSpeed = 0f;
+    }
 
     void Start()
     {
