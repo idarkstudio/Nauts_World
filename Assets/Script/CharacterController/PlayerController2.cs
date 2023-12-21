@@ -19,10 +19,11 @@ public class PlayerController2 : MonoBehaviour
 
     [SerializeField] private LayerMask _groundLayerMask;
 
-
+    [SerializeField] private Animator _animator;
 
     private bool _isGrounded;
     private bool _isDescending;
+    private bool _isFlying =  false; 
     private float _forwardAmount;
     public float _descentSpeed = 5f;
     public float _airborneTime;    
@@ -43,14 +44,32 @@ public class PlayerController2 : MonoBehaviour
         _forwardAmount = Input.GetAxis("Vertical");
         _turnAmount = Input.GetAxis("Horizontal");
 
-        if (_forwardAmount != 0 && _isGrounded)
+
+        if (Input.GetKeyDown(KeyCode.W) && _isGrounded)
         {
+            _isFlying = true;
+            _animator.SetBool("Flying", _isFlying);
+        }
+        else if (Input.GetKeyUp(KeyCode.W) && _isGrounded)
+        {
+            _isFlying = false;
+            _animator.SetBool("Flying", _isFlying);
+        }
+
+        if (_forwardAmount != 0 && _isGrounded )
+        {
+
             Drive();
+           
             if (Input.GetKey(KeyCode.S) || Input.GetKeyUp(KeyCode.W))
             {
-                DriveDeceleration();
-            }           
+                DriveDeceleration();               
+            }
+
+          
         }
+       
+       
 
         if (_isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
@@ -71,6 +90,7 @@ public class PlayerController2 : MonoBehaviour
     {
        
        _sphereRigidbody.AddForce(transform.forward * _curentSpeed, ForceMode.Acceleration);
+        //_animator.SetTrigger("IsFlying");
 
     }
 
@@ -78,6 +98,7 @@ public class PlayerController2 : MonoBehaviour
     private void Drive()
     {
         _curentSpeed = _forwardAmount *= _forwardSpeed;
+      
     }
  
 
