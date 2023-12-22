@@ -21,7 +21,7 @@ public class PlayerController2 : MonoBehaviour
 
     [SerializeField] private Animator _animator;
 
-    private bool _isGrounded;
+    public bool _isGrounded;
     private bool _isDescending;
     private bool _isFlying =  false; 
     private float _forwardAmount;
