@@ -2419,7 +2419,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1412777124}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3397,9 +3397,8 @@ GameObject:
   - component: {fileID: 2048657934}
   - component: {fileID: 2048657939}
   - component: {fileID: 2048657938}
-  - component: {fileID: 2048657940}
   m_Layer: 6
-  m_Name: SpherePlayer
+  m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3540,7 +3539,7 @@ MonoBehaviour:
   _turnAmount: 0
   _turnSpeed: 100
   _jumpForce: 200
-  _deceleratiionSpeed: 200
+  _deceleratiionSpeed: 20
   _maxAirborneTime: 1
   _groundLayerMask:
     serializedVersion: 2
@@ -3549,25 +3548,6 @@ MonoBehaviour:
   _isGrounded: 0
   _descentSpeed: 10
   _airborneTime: 0
---- !u!114 &2048657940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2048657933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7479f9dc27b2dc468a8c55ceb53d22a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _groundLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  _deathZoneLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  _playerController: {fileID: 2048657939}
 --- !u!1 &2070085685
 GameObject:
   m_ObjectHideFlags: 0
@@ -9286,7 +9266,7 @@ GameObject:
   - component: {fileID: 166665707750715431}
   - component: {fileID: 732041063787620177}
   m_Layer: 0
-  m_Name: Mesh
+  m_Name: Electro_Clone_097_geo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10508,7 +10488,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1065112553057403947}
   m_Layer: 0
-  m_Name: ROOT
+  m_Name: root_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
