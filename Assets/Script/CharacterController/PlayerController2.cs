@@ -134,7 +134,7 @@ public class PlayerController2 : MonoBehaviour
 
             if (_airborneTime > _maxAirborneTime)
             {
-                // Empieza a descender el personaje si ha estado en el aire más de 5 segundos
+                // Empieza a descender el personaje si ha estado en el aire más de x segundos
                 Descend();
             }
         }

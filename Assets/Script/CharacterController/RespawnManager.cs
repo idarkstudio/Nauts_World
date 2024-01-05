@@ -13,9 +13,9 @@ public class RespawnManager : MonoBehaviour
     [SerializeField]
     private LayerMask _deathZoneLayer;
 
+    // [SerializeField]
+    // private Collider map;
     [SerializeField]
-    private Collider map;
-
     public PlayerController2 _playerController;
   
     void Update()
@@ -43,14 +43,15 @@ public class RespawnManager : MonoBehaviour
         if (other.CompareTag("Deathzone"))
         {
             Debug.Log("deberia hacer el respawnplayer");
+            _playerController.enabled = false;
             RespawnPlayer();
         }
     }
 
     private void RespawnPlayer()
     {
-        this.gameObject.SetActive(false);
-        this.transform.position = _lastSavedPos;
+        
+        this.gameObject.transform.position = _lastSavedPos;
         StartCoroutine(RespawnCoroutine());
         Debug.Log("deberia ir a la posicion");
 
@@ -59,7 +60,7 @@ public class RespawnManager : MonoBehaviour
     private IEnumerator RespawnCoroutine()
     {
         yield return new WaitForSeconds(1f);
-        this.gameObject.SetActive(true);
+        _playerController.enabled = true;
 
     }
 }
