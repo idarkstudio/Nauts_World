@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class RaceManager : MonoBehaviour
@@ -25,9 +26,17 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private int numberOfCheckpoints = 4;
     public int numberOfPlayers = 1;
 
+
+    private void Awake()
+    {
+        
+    }
+
+
     void Start()
     {
         SpawnPlayers();
+
     }
 
     // Update is called once per frame

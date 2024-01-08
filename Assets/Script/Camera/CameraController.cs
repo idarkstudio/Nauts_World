@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+
     [SerializeField]
     private Vector2 StartAngle = new Vector2(90 * Mathf.Deg2Rad, 0);
 
@@ -17,9 +18,12 @@ public class CameraController : MonoBehaviour
 
     private float sensitivity;
 
-    
+    public bool estaPausado = false;
 
     public Transform player;
+
+
+
 
     private void Awake()
     {
@@ -31,11 +35,24 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
+        PausedMenu.OnPauseChanged += ChangeStateOfCamera;
+
+
         ChangeSensitivity();
 
         camera = GetComponent<Camera>();
 
         CalculateNearPlaneSize();
+    }
+
+    void ChangeStateOfCamera(bool isPaused)
+    {
+        CameraController cameraControllerComponent = GetComponent<CameraController>();
+
+        if (cameraControllerComponent != null)
+        {
+            cameraControllerComponent.enabled = !isPaused;
+        }
     }
 
     private void ChangeSensitivity()
@@ -52,23 +69,34 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        float horizontalCam = Input.GetAxis("Mouse X");
-
-        if (horizontalCam != 0)
+        if (!estaPausado)
         {
-            StartAngle.x += horizontalCam * Mathf.Deg2Rad * sensitivity;
+            float horizontalCam = Input.GetAxis("Mouse X");
 
-            player.forward = transform.forward;
-            player.localRotation = Quaternion.Euler(0, player.localEulerAngles.y, 0);
+            if (horizontalCam != 0)
+            {
+                StartAngle.x += horizontalCam * Mathf.Deg2Rad * sensitivity;
+
+                player.forward = transform.forward;
+                player.localRotation = Quaternion.Euler(0, player.localEulerAngles.y, 0);
+            }
+
+            float verticalCam = Input.GetAxis("Mouse Y");
+
+            if (verticalCam != 0)
+            {
+                StartAngle.y += verticalCam * Mathf.Deg2Rad * sensitivity;
+                StartAngle.y = Mathf.Clamp(StartAngle.y, -80 * Mathf.Deg2Rad, 80 * Mathf.Deg2Rad);
+            }
+
+        }
+        else
+        {
+            return;
         }
 
-        float verticalCam = Input.GetAxis("Mouse Y");
 
-        if (verticalCam != 0)
-        {
-            StartAngle.y += verticalCam * Mathf.Deg2Rad * sensitivity;
-            StartAngle.y = Mathf.Clamp(StartAngle.y, -80 * Mathf.Deg2Rad, 80 * Mathf.Deg2Rad);
-        }
+
     }
 
     void LateUpdate()
@@ -124,6 +152,10 @@ public class CameraController : MonoBehaviour
         };
     }
 
-
+    void OnDestroy()
+    {
+        
+        PausedMenu.OnPauseChanged -= ChangeStateOfCamera;
+    }
 
 }
