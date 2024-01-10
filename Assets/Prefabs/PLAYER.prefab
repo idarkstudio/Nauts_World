@@ -5469,6 +5469,7 @@ MonoBehaviour:
     m_Bits: 256
   map: {fileID: 0}
   _playerController: {fileID: 5103401405085646380}
+  _sphereRigidbody: {fileID: 5964013992041144591}
 --- !u!1 &6713417575271064730
 GameObject:
   m_ObjectHideFlags: 0
