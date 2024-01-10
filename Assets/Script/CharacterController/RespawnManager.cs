@@ -17,6 +17,7 @@ public class RespawnManager : MonoBehaviour
     private Collider map;
 
     public PlayerController2 _playerController;
+    [SerializeField] private Rigidbody _sphereRigidbody;
   
     void Update()
     {
@@ -49,8 +50,10 @@ public class RespawnManager : MonoBehaviour
 
     private void RespawnPlayer()
     {
-        this.gameObject.SetActive(false);
+        _playerController.enabled=false;
         this.transform.position = _lastSavedPos;
+        _sphereRigidbody.velocity = Vector3.zero;
+        _sphereRigidbody.constraints = RigidbodyConstraints.FreezeAll;
         StartCoroutine(RespawnCoroutine());
         Debug.Log("deberia ir a la posicion");
 
@@ -59,7 +62,8 @@ public class RespawnManager : MonoBehaviour
     private IEnumerator RespawnCoroutine()
     {
         yield return new WaitForSeconds(1f);
-        this.gameObject.SetActive(true);
-
+        _playerController.enabled=true;
+        _sphereRigidbody.constraints = RigidbodyConstraints.None;
+        _sphereRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
     }
 }
