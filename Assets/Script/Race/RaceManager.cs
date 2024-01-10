@@ -72,11 +72,15 @@ public class RaceManager : MonoBehaviour
 
         for (int i = 0; i < numberOfPlayers; i++)
         {
-            Vector3 spawnPosition = startingLine.position + Vector3.forward * i;
+            Vector3 spawnPosition = startingLine.position + Vector3.right * i;
             GameObject player = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
+            player.transform.rotation = Quaternion.LookRotation(startingLine.right, Vector3.up);
+
         }
 
     }
+
+
 
 
     IEnumerator CountdownAndStartRace()
@@ -101,7 +105,7 @@ public class RaceManager : MonoBehaviour
         Debug.Log("Inputs habilitados. ¡Comienza la carrera!");
     }
 
-    bool IsRaceInProgress()
+    bool IsRaceInProgress()//bool raceInprogress)
     {
         return true;
     }
@@ -118,6 +122,7 @@ public class RaceManager : MonoBehaviour
             }
         }
     }
+
 
     bool HasCompletedLap()
     {

@@ -18,7 +18,7 @@ public class CameraController : MonoBehaviour
 
     private float sensitivity;
 
-    public bool estaPausado = false;
+    public bool isPaused = false;
 
     public Transform player;
 
@@ -69,7 +69,7 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        if (!estaPausado)
+        if (!isPaused)
         {
             float horizontalCam = Input.GetAxis("Mouse X");
 

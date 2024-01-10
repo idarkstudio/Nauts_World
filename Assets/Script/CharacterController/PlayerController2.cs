@@ -59,17 +59,21 @@ public class PlayerController2 : MonoBehaviour
             _isFlying = false;
             _animator.SetBool("Flying", _isFlying);
         }
+        else if (Input.GetKey(KeyCode.S) || Input.GetKeyUp(KeyCode.W))
+        {
+            DriveDeceleration();
+        }
 
         if (_forwardAmount != 0 && _isGrounded )
         {
 
             Drive();
            
-            if (Input.GetKey(KeyCode.S) || Input.GetKeyUp(KeyCode.W))
+           /* if (Input.GetKey(KeyCode.S) || Input.GetKeyUp(KeyCode.W))
             {
                 DriveDeceleration();               
             }
-
+           */
           
         }
        
