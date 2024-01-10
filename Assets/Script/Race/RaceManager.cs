@@ -26,6 +26,7 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private int numberOfCheckpoints = 4;
     public int numberOfPlayers = 1;
 
+    private List<GameObject> _playersInGame;
 
     private void Awake()
     {
@@ -35,7 +36,9 @@ public class RaceManager : MonoBehaviour
 
     void Start()
     {
-        SpawnPlayers();
+
+        SpawnPlayers();     
+
 
     }
 
@@ -69,18 +72,19 @@ public class RaceManager : MonoBehaviour
 
     void SpawnPlayers()
     {
-
+        
         for (int i = 0; i < numberOfPlayers; i++)
         {
-            Vector3 spawnPosition = startingLine.position + Vector3.right * i;
-            GameObject player = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
-            player.transform.rotation = Quaternion.LookRotation(startingLine.right, Vector3.up);
-
+            Vector3 spawnPosition = startingLine.position; //+ Vector3.right * i;
+            GameObject player = Instantiate(playerPrefab, spawnPosition, startingLine.transform.rotation);
+           // _playersInGame.Add(player);
         }
 
+        CountdownAndStartRace();
+
+
     }
-
-
+    
 
 
     IEnumerator CountdownAndStartRace()
@@ -101,8 +105,16 @@ public class RaceManager : MonoBehaviour
 
     void EnablePlayerInputs()
     {
+
+        foreach (var player in _playersInGame) 
+        {
+            PlayerController2 py2 = player.GetComponent<PlayerController2>();
+            py2.enabled = false;       
         
-        Debug.Log("Inputs habilitados. ¡Comienza la carrera!");
+        }
+
+
+       Debug.Log("Inputs habilitados. ¡Comienza la carrera!");
     }
 
     bool IsRaceInProgress()//bool raceInprogress)
