@@ -13,7 +13,8 @@ public class PausedMenu : MonoBehaviour
 
     void Start()
     {
-        
+        if (OnPauseChanged != null)
+            OnPauseChanged(false);
 
     }
 
