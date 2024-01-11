@@ -42,7 +42,6 @@ public class RaceManager : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (IsRaceInProgress())
@@ -58,7 +57,7 @@ public class RaceManager : MonoBehaviour
 
                 lapTime = 0f;
 
-                // Aquí puedes agregar lógica adicional al completar una vuelta
+                //agregar mas logica pa completar la vuelta
             }
 
             if (currentLap >= numberOfLaps)
