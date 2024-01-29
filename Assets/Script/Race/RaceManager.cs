@@ -12,6 +12,8 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private GameObject playerPrefab;
 
 
+    private bool raceCurrentlyInProgress;
+
     [SerializeField] private TextMeshProUGUI countdownText;
     [SerializeField] private float countdownTime = 5f;
 
@@ -26,7 +28,7 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private int numberOfCheckpoints = 4;
     public int numberOfPlayers = 1;
 
-    private List<GameObject> _playersInGame;
+    private List<GameObject> _playersInGame = new List<GameObject>();
 
     private void Awake()
     {
@@ -36,7 +38,7 @@ public class RaceManager : MonoBehaviour
 
     void Start()
     {
-
+        SetterRaceInProgess(false);
         SpawnPlayers();     
 
 
@@ -47,7 +49,7 @@ public class RaceManager : MonoBehaviour
         if (IsRaceInProgress())
         {
             lapTime += Time.deltaTime;
-            lapTimeText.text = lapTime.ToString("0.000");
+            lapTimeText.text = lapTime.ToString("0.00");
 
           
             if (HasCompletedLap())
@@ -76,11 +78,11 @@ public class RaceManager : MonoBehaviour
         {
             Vector3 spawnPosition = startingLine.position; //+ Vector3.right * i;
             GameObject player = Instantiate(playerPrefab, spawnPosition, startingLine.transform.rotation);
-           // _playersInGame.Add(player);
+            player.GetComponent<PlayerController2>().enabled = false;
+           _playersInGame.Add(player);
         }
 
-        CountdownAndStartRace();
-
+        StartCoroutine(CountdownAndStartRace());
 
     }
     
@@ -98,6 +100,7 @@ public class RaceManager : MonoBehaviour
         }
 
         
+        SetterRaceInProgess(true);
         EnablePlayerInputs();
     }
 
@@ -108,7 +111,7 @@ public class RaceManager : MonoBehaviour
         foreach (var player in _playersInGame) 
         {
             PlayerController2 py2 = player.GetComponent<PlayerController2>();
-            py2.enabled = false;       
+            py2.enabled = true;       
         
         }
 
@@ -118,7 +121,12 @@ public class RaceManager : MonoBehaviour
 
     bool IsRaceInProgress()//bool raceInprogress)
     {
-        return true;
+        return raceCurrentlyInProgress;
+    }
+
+    private void SetterRaceInProgess (bool value)
+    {
+        raceCurrentlyInProgress = value;
     }
 
     private void OnTriggerEnter(Collider other)

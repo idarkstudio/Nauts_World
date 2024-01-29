@@ -1,0 +1,72 @@
+{
+    "format": {
+        "version": "1.0"
+    },
+    "shaders": {
+        "Main shader": {
+            "parameters": {
+                "Common Parameters": {
+                    "ao_intensity": 0.75,
+                    "emissive_intensity": 1,
+                    "horizonFade": 1.2999999523162842,
+                    "nbSamples": 16
+                },
+                "Parallax Occlusion Mapping": {
+                    "maxPOMSamples": 16,
+                    "minPOMSamples": 4,
+                    "pomStrength": 1,
+                    "usePOM": false
+                }
+            },
+            "shader": "pbr-metal-rough-with-alpha-blending",
+            "shaderInstance": "Main shader"
+        }
+    },
+    "texturesets": {
+        "Accretion_Disk_extra": {
+            "shader": "Main shader"
+        },
+        "Accretion_Disk_extra_02": {
+            "shader": "Main shader"
+        },
+        "Accretion_Disk_inner": {
+            "shader": "Main shader"
+        },
+        "Accretion_Disk_outer": {
+            "shader": "Main shader"
+        },
+        "Black_Hole": {
+            "shader": "Main shader"
+        },
+        "Lightface": {
+            "shader": "Main shader"
+        },
+        "Material.002": {
+            "shader": "Main shader"
+        },
+        "Material.003": {
+            "shader": "Main shader"
+        },
+        "Material.005": {
+            "shader": "Main shader"
+        },
+        "Material.006": {
+            "shader": "Main shader"
+        },
+        "Material.053": {
+            "shader": "Main shader"
+        },
+        "Material.054": {
+            "shader": "Main shader"
+        },
+        "ScreenCover": {
+            "shader": "Main shader"
+        },
+        "blank": {
+            "shader": "Main shader"
+        },
+        "screen": {
+            "shader": "Main shader"
+        }
+    }
+}
