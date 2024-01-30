@@ -17,9 +17,12 @@ public class PlayerController2 : MonoBehaviour
     [SerializeField] private float _maxAirborneTime;
 
 
+    [Header("Model")]
     [SerializeField] private LayerMask _groundLayerMask;
 
     [SerializeField] private Animator _animator;
+    [SerializeField] private List<Material> mats = new List<Material>();
+    [SerializeField] private GameObject modelChar;
 
     public bool _isGrounded;
     private bool _isDescending;
@@ -31,12 +34,15 @@ public class PlayerController2 : MonoBehaviour
 
     private void Awake()
     {
+        modelChar.GetComponent<Renderer>().material = mats[0];
         _curentSpeed = 0f;
     }
 
     void Start()
     {
+
         _sphereRigidbody.transform.parent = null;
+
     }
 
      
