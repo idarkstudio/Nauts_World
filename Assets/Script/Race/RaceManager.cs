@@ -132,6 +132,7 @@ public class RaceManager : MonoBehaviour
     public void PlayerDoneLap()
     {
 
+        lapTimersRecord.Add((lapTimeMinutes * 60) + lapTime);
         currentLap++;
         if (currentLap > numberOfLaps)
         {
@@ -144,9 +145,7 @@ public class RaceManager : MonoBehaviour
         }
         else
         {
-            lapNumberText.text = "Lap " + currentLap + "/" + numberOfLaps;
-
-            lapTimersRecord.Add((lapTimeMinutes * 60) + lapTime);
+            lapNumberText.text = "Lap " + currentLap + "/" + numberOfLaps;         
 
             lapTime = 0f;
             lapTimeMinutes = 0f;
