@@ -19,6 +19,8 @@ public class RaceManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI lapTimeText;
     [SerializeField] private float lapTime = 0f;
+    [SerializeField] private float lapTimeMinutes = 0f;
+    [SerializeField] private List<float> lapTimersRecord = new List<float>();
 
     [SerializeField] private TextMeshProUGUI lapNumberText;
     [SerializeField] private int numberOfLaps = 3;
@@ -39,7 +41,8 @@ public class RaceManager : MonoBehaviour
     void Start()
     {
         SetterRaceInProgess(false);
-        SpawnPlayers();     
+        SpawnPlayers();
+        lapNumberText.text = "Lap " + currentLap + "/" + numberOfLaps;
 
 
     }
@@ -49,24 +52,14 @@ public class RaceManager : MonoBehaviour
         if (IsRaceInProgress())
         {
             lapTime += Time.deltaTime;
-            lapTimeText.text = lapTime.ToString("0.00");
+            lapTimeText.text = lapTimeMinutes.ToString()+ ":" + lapTime.ToString("0.00");
 
+            if (lapTime >= 60)
+            {
+                lapTimeMinutes++;
+                lapTime = 0;
+            }
           
-            if (HasCompletedLap())
-            {
-                currentLap++;
-                lapNumberText.text = "Lap " + currentLap + "/" + numberOfLaps;
-
-                lapTime = 0f;
-
-                //agregar mas logica pa completar la vuelta
-            }
-
-            if (currentLap >= numberOfLaps)
-            {
-                //poner algun mensaje o no se..
-                Debug.Log("Carrera completada");
-            }
         }
     }
 
@@ -142,6 +135,23 @@ public class RaceManager : MonoBehaviour
         }
     }
 
+    public void PlayerDoneLap()
+    {
+
+            currentLap++;
+            lapNumberText.text = "Lap " + currentLap + "/" + numberOfLaps;
+
+        lapTimersRecord.Add((lapTimeMinutes * 60) + lapTime);
+
+            lapTime = 0f;
+        lapTimeMinutes = 0f;
+
+
+        if (currentLap >= numberOfLaps)
+        {
+            Debug.Log("Carrera completada");
+        }
+    }
 
     bool HasCompletedLap()
     {

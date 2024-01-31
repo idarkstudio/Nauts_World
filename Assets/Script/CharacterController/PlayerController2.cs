@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerController2 : MonoBehaviour
 {
+    [SerializeField] private CharacterSO so;
+
     [SerializeField] private Rigidbody _sphereRigidbody;
 
     [SerializeField] private float _curentSpeed;
@@ -34,7 +36,7 @@ public class PlayerController2 : MonoBehaviour
 
     private void Awake()
     {
-        modelChar.GetComponent<Renderer>().material = mats[0];
+        modelChar.GetComponent<Renderer>().material = mats[so.numberMat];
         _curentSpeed = 0f;
     }
 

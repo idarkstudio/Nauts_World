@@ -1647,6 +1647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33f4c8f48ca59b04e91f5e7a3e352128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  so: {fileID: 11400000, guid: e137bf8a06515c247a8071e0362bae74, type: 2}
   _sphereRigidbody: {fileID: 1154063438868945032}
   _curentSpeed: 2
   _maxFloatHeight: 10
