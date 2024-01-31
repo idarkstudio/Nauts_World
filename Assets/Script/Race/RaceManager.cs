@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class RaceManager : MonoBehaviour
 {
-   
+
     [SerializeField] private Transform startingLine;
     [SerializeField] private GameObject playerPrefab;
 
@@ -24,7 +24,7 @@ public class RaceManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI lapNumberText;
     [SerializeField] private int numberOfLaps = 3;
-    [SerializeField] private int currentLap = 0;
+    [SerializeField] private int currentLap = 1;
     [SerializeField] private int checkpointsPassed = 0;
 
     [SerializeField] private int numberOfCheckpoints = 4;
@@ -34,7 +34,7 @@ public class RaceManager : MonoBehaviour
 
     private void Awake()
     {
-        
+
     }
 
 
@@ -52,33 +52,33 @@ public class RaceManager : MonoBehaviour
         if (IsRaceInProgress())
         {
             lapTime += Time.deltaTime;
-            lapTimeText.text = lapTimeMinutes.ToString()+ ":" + lapTime.ToString("0.00");
+            lapTimeText.text = lapTimeMinutes.ToString() + ":" + lapTime.ToString("0.00");
 
             if (lapTime >= 60)
             {
                 lapTimeMinutes++;
                 lapTime = 0;
             }
-          
+
         }
     }
 
 
     void SpawnPlayers()
     {
-        
+
         for (int i = 0; i < numberOfPlayers; i++)
         {
             Vector3 spawnPosition = startingLine.position; //+ Vector3.right * i;
             GameObject player = Instantiate(playerPrefab, spawnPosition, startingLine.transform.rotation);
             player.GetComponent<PlayerController2>().enabled = false;
-           _playersInGame.Add(player);
+            _playersInGame.Add(player);
         }
 
         StartCoroutine(CountdownAndStartRace());
 
     }
-    
+
 
 
     IEnumerator CountdownAndStartRace()
@@ -92,7 +92,6 @@ public class RaceManager : MonoBehaviour
             timer--;
         }
 
-        
         SetterRaceInProgess(true);
         EnablePlayerInputs();
     }
@@ -100,24 +99,19 @@ public class RaceManager : MonoBehaviour
 
     void EnablePlayerInputs()
     {
-
-        foreach (var player in _playersInGame) 
+        foreach (var player in _playersInGame)
         {
             PlayerController2 py2 = player.GetComponent<PlayerController2>();
-            py2.enabled = true;       
-        
+            py2.enabled = true;
         }
-
-
-       Debug.Log("Inputs habilitados. ¡Comienza la carrera!");
     }
 
-    bool IsRaceInProgress()//bool raceInprogress)
+    bool IsRaceInProgress()
     {
         return raceCurrentlyInProgress;
     }
 
-    private void SetterRaceInProgess (bool value)
+    private void SetterRaceInProgess(bool value)
     {
         raceCurrentlyInProgress = value;
     }
@@ -138,30 +132,26 @@ public class RaceManager : MonoBehaviour
     public void PlayerDoneLap()
     {
 
-            currentLap++;
+        currentLap++;
+        if (currentLap > numberOfLaps)
+        {
+            foreach (var player in _playersInGame)
+            {
+                PlayerController2 py2 = player.GetComponent<PlayerController2>();
+                py2.enabled = false;
+            }
+            SetterRaceInProgess(false);
+        }
+        else
+        {
             lapNumberText.text = "Lap " + currentLap + "/" + numberOfLaps;
 
-        lapTimersRecord.Add((lapTimeMinutes * 60) + lapTime);
+            lapTimersRecord.Add((lapTimeMinutes * 60) + lapTime);
 
             lapTime = 0f;
-        lapTimeMinutes = 0f;
-
-
-        if (currentLap >= numberOfLaps)
-        {
-            Debug.Log("Carrera completada");
+            lapTimeMinutes = 0f;
         }
+
+
     }
-
-    bool HasCompletedLap()
-    {
-       //aca verificaria si se completo una vuelta.. como? poniendo 4 o 5 puntos de checkpoints en la carrera y si los recorre en orden y todos, ahi verifica que se completo una vuelta entera.
-
-        return false;
-    }
-
-
-
-
-
 }
