@@ -4866,6 +4866,9 @@ MonoBehaviour:
   maxDistance: 20
   isPaused: 0
   player: {fileID: 4186684120795777049}
+  lm:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!45 &1151051305069904440
 Skybox:
   m_ObjectHideFlags: 0

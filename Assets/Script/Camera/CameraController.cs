@@ -22,6 +22,8 @@ public class CameraController : MonoBehaviour
 
     public Transform player;
 
+    [SerializeField] private LayerMask lm;
+
 
 
 
@@ -112,7 +114,7 @@ public class CameraController : MonoBehaviour
 
         foreach (Vector3 point in points)
         {
-            if (Physics.Raycast(point, direction, out hit, maxDistance))
+            if (Physics.Raycast(point, direction, out hit, maxDistance, ~lm))
             {
                 distance = Mathf.Min((hit.point - follow.position).magnitude, distance);
             }
