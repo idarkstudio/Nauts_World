@@ -32,6 +32,12 @@ public class RaceManager : MonoBehaviour
 
     private List<GameObject> _playersInGame = new List<GameObject>();
 
+
+    [Header("Ending Timers")]
+    [SerializeField] private GameObject endPanel;
+    [SerializeField] private List<TextMeshProUGUI> timersText = new List<TextMeshProUGUI>();
+    [SerializeField] private List<GameObject> bestTimerText = new List<GameObject>();
+
     private void Awake()
     {
 
@@ -142,6 +148,7 @@ public class RaceManager : MonoBehaviour
                 py2.enabled = false;
             }
             SetterRaceInProgess(false);
+            EndTheRace();
         }
         else
         {
@@ -152,5 +159,23 @@ public class RaceManager : MonoBehaviour
         }
 
 
+    }
+
+    private void EndTheRace()
+    {
+        endPanel.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        float value = float.PositiveInfinity;
+        int index = -1;
+        for (int i = 0; i < lapTimersRecord.Count; i++)
+        {
+            if (lapTimersRecord[i] < value)
+            {
+                index = i;
+                value = lapTimersRecord[i];
+            }
+            timersText[i].text = lapTimersRecord[i].ToString("0.00");
+        }
+        bestTimerText[index].SetActive(true);
     }
 }
