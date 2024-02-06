@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -20,7 +21,7 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI lapTimeText;
     [SerializeField] private float lapTime = 0f;
     [SerializeField] private float lapTimeMinutes = 0f;
-    [SerializeField] private List<float> lapTimersRecord = new List<float>();
+    [SerializeField] private List<TimeSpan> lapTimersRecord = new List<TimeSpan>();
 
     [SerializeField] private TextMeshProUGUI lapNumberText;
     [SerializeField] private int numberOfLaps = 3;
@@ -55,10 +56,11 @@ public class RaceManager : MonoBehaviour
 
     void Update()
     {
+
         if (IsRaceInProgress())
         {
             lapTime += Time.deltaTime;
-            lapTimeText.text = lapTimeMinutes.ToString() + ":" + lapTime.ToString("0.00");
+            lapTimeText.text = lapTimeMinutes.ToString() + ":" + lapTime.ToString("00.00");
 
             if (lapTime >= 60)
             {
@@ -138,7 +140,8 @@ public class RaceManager : MonoBehaviour
     public void PlayerDoneLap()
     {
 
-        lapTimersRecord.Add((lapTimeMinutes * 60) + lapTime);
+        //lapTimersRecord.Add((lapTimeMinutes * 60) + lapTime);
+        lapTimersRecord.Add((TimeSpan.FromSeconds(lapTime + (lapTimeMinutes * 60))));
         currentLap++;
         if (currentLap > numberOfLaps)
         {
@@ -169,12 +172,12 @@ public class RaceManager : MonoBehaviour
         int index = -1;
         for (int i = 0; i < lapTimersRecord.Count; i++)
         {
-            if (lapTimersRecord[i] < value)
+            if ((lapTimersRecord[i].Seconds + (lapTimersRecord[i].Minutes*60)) < value)
             {
                 index = i;
-                value = lapTimersRecord[i];
+                value = (lapTimersRecord[i].Seconds + (lapTimersRecord[i].Minutes * 60));
             }
-            timersText[i].text = lapTimersRecord[i].ToString("0.00");
+            timersText[i].text = lapTimersRecord[i].ToString(@"mm\:ss\:fff");
         }
         bestTimerText[index].SetActive(true);
     }
