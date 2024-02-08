@@ -12,6 +12,7 @@ public class PlayerController2 : MonoBehaviour
     [SerializeField] private float _curentSpeed;
     [SerializeField] private float _maxFloatHeight = 10;
     [SerializeField] private float _forwardSpeed;
+    private float _baseForwardSpeed;
     [SerializeField] private float _turnAmount;
     [SerializeField] private float _turnSpeed;
     [SerializeField] private float _jumpForce;
@@ -34,10 +35,15 @@ public class PlayerController2 : MonoBehaviour
     public float _airborneTime;    
     private float _initialJumpForce = 10f;
 
+    [Header("Speed Pads")]
+    [SerializeField] private float extraSpeedUpPad;
+    [SerializeField] private float extraSpeedDownPad;
+
     private void Awake()
     {
         modelChar.GetComponent<Renderer>().material = mats[so.numberMat];
         _curentSpeed = 0f;
+        _baseForwardSpeed = _forwardSpeed;
     }
 
     void Start()
@@ -185,6 +191,31 @@ public class PlayerController2 : MonoBehaviour
         // Aplica la fuerza de la gravedad para que el personaje comience a descender
         _sphereRigidbody.AddForce(Vector3.down * _sphereRigidbody.mass * Physics.gravity.magnitude);
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == 11)
+        {
+            _forwardSpeed += extraSpeedUpPad;
+        }
+        else if (other.gameObject.layer == 12)
+        {
+            _forwardSpeed += extraSpeedDownPad;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+
+        if (other.gameObject.layer == 11)
+        {
+            _forwardSpeed = _baseForwardSpeed;
+        }
+        else if (other.gameObject.layer == 12)
+        {
+            _forwardSpeed = _baseForwardSpeed;
+        }
     }
 
 }
