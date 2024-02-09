@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro.EditorUtilities;
@@ -10,13 +11,17 @@ public class PlayerController2 : MonoBehaviour
     [SerializeField] private Rigidbody _sphereRigidbody;
 
     [SerializeField] private float _curentSpeed;
+    [SerializeField] private float _topSpeed;
+    [SerializeField] private float _accelerationSpeed;
     [SerializeField] private float _maxFloatHeight = 10;
     [SerializeField] private float _forwardSpeed;
     private float _baseForwardSpeed;
+    [SerializeField] private float _forwardAcceleration;
     [SerializeField] private float _turnAmount;
     [SerializeField] private float _turnSpeed;
     [SerializeField] private float _jumpForce;
     [SerializeField] private float _deceleratiionSpeed = 20;
+    [Range(0,1)] [SerializeField] private float _crashSpeedPercentage;
     [SerializeField] private float _maxAirborneTime;
 
 
@@ -67,6 +72,7 @@ public class PlayerController2 : MonoBehaviour
         {
             _isFlying = true;
             _animator.SetBool("Flying", _isFlying);
+            
         }
         else if (Input.GetKeyUp(KeyCode.W) && _isGrounded)
         {
@@ -90,6 +96,7 @@ public class PlayerController2 : MonoBehaviour
            */
           
         }
+        else _forwardSpeed = _baseForwardSpeed;
        
        
 
@@ -113,14 +120,16 @@ public class PlayerController2 : MonoBehaviour
        
        _sphereRigidbody.AddForce(transform.forward * _curentSpeed, ForceMode.Acceleration);
         //_animator.SetTrigger("IsFlying");
+        
 
     }
 
-
+    
     private void Drive()
     {
         _curentSpeed = _forwardAmount *= _forwardSpeed;
-      
+        
+        if(_forwardAmount != 0) AccelerationBuildup();
     }
  
 
@@ -136,6 +145,10 @@ public class PlayerController2 : MonoBehaviour
         _curentSpeed = Mathf.MoveTowards(_curentSpeed, 0f, _deceleratiionSpeed * Time.deltaTime);
     }
 
+    private void AccelerationBuildup()
+    {
+        _forwardSpeed = Mathf.MoveTowards(_forwardSpeed, _topSpeed, _accelerationSpeed * Time.deltaTime);
+    }
 
     private void GroundCheckAndNormalHandler()
     {
@@ -152,7 +165,7 @@ public class PlayerController2 : MonoBehaviour
 
             if (_airborneTime > _maxAirborneTime)
             {
-                // Empieza a descender el personaje si ha estado en el aire más de 5 segundos
+                // Empieza a descender el personaje si ha estado en el aire m s de 5 segundos
                 Descend();
             }
         }
@@ -197,24 +210,40 @@ public class PlayerController2 : MonoBehaviour
     {
         if (other.gameObject.layer == 11)
         {
-            _forwardSpeed += extraSpeedUpPad;
+            _topSpeed += extraSpeedUpPad;
         }
         else if (other.gameObject.layer == 12)
         {
-            _forwardSpeed += extraSpeedDownPad;
+            _topSpeed += extraSpeedDownPad;
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.layer == 13)
+        {
+            _curentSpeed *= _crashSpeedPercentage;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-
         if (other.gameObject.layer == 11)
         {
-            _forwardSpeed = _baseForwardSpeed;
+            _topSpeed = _baseForwardSpeed;
+            return;
         }
-        else if (other.gameObject.layer == 12)
+        
+        if (other.gameObject.layer == 12)
         {
-            _forwardSpeed = _baseForwardSpeed;
+            _topSpeed = _baseForwardSpeed;
+            return;
+        }
+        
+        if (other.gameObject.layer == 13)
+        {
+            _curentSpeed *= _crashSpeedPercentage;
+            return;
         }
     }
 
