@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro.EditorUtilities;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController2 : MonoBehaviour
 {

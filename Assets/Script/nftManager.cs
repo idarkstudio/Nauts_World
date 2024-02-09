@@ -19,10 +19,6 @@ public class nftManager : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
-    {
-        this.PedirNFTS();
-    }
 
     public void RequestNFT(string json)
     {
@@ -65,7 +61,7 @@ public class nftManager : MonoBehaviour
             Debug.LogError("Error en la deserealizacion de la collecion");
         }
     }
-    public void PedirNFTS()
+    public static void PedirNFTS()
     {
         Debug.Log("Pidiendo NFTS...");
         ReacFunctions.GetNFT();
