@@ -12,16 +12,16 @@ public class PlayerController2 : MonoBehaviour
 
     [SerializeField] private float _curentSpeed;
     [SerializeField] private float _topSpeed;
+    private float _baseTopSpeed;
     [SerializeField] private float _accelerationSpeed;
     [SerializeField] private float _maxFloatHeight = 10;
     [SerializeField] private float _forwardSpeed;
-    private float _baseForwardSpeed;
     [SerializeField] private float _forwardAcceleration;
     [SerializeField] private float _turnAmount;
     [SerializeField] private float _turnSpeed;
     [SerializeField] private float _jumpForce;
     [SerializeField] private float _deceleratiionSpeed = 20;
-    [Range(0,1)] [SerializeField] private float _crashSpeedPercentage;
+    [Range(0, 1)] [SerializeField] private float _crashSpeedPercentage;
     [SerializeField] private float _maxAirborneTime;
 
 
@@ -34,10 +34,10 @@ public class PlayerController2 : MonoBehaviour
 
     public bool _isGrounded;
     private bool _isDescending;
-    private bool _isFlying =  false; 
+    private bool _isFlying = false;
     private float _forwardAmount;
     public float _descentSpeed = 5f;
-    public float _airborneTime;    
+    public float _airborneTime;
     private float _initialJumpForce = 10f;
 
     [Header("Speed Pads")]
@@ -48,7 +48,7 @@ public class PlayerController2 : MonoBehaviour
     {
         modelChar.GetComponent<Renderer>().material = mats[so.numberMat];
         _curentSpeed = 0f;
-        _baseForwardSpeed = _forwardSpeed;
+        _baseTopSpeed = _topSpeed;
     }
 
     void Start()
@@ -58,7 +58,7 @@ public class PlayerController2 : MonoBehaviour
 
     }
 
-     
+
     void Update()
     {
 
@@ -72,7 +72,7 @@ public class PlayerController2 : MonoBehaviour
         {
             _isFlying = true;
             _animator.SetBool("Flying", _isFlying);
-            
+
         }
         else if (Input.GetKeyUp(KeyCode.W) && _isGrounded)
         {
@@ -84,28 +84,30 @@ public class PlayerController2 : MonoBehaviour
             DriveDeceleration();
         }
 
-        if (_forwardAmount != 0 && _isGrounded )
+        if (_forwardAmount != 0 && _isGrounded)
         {
 
             Drive();
-           
-           /* if (Input.GetKey(KeyCode.S) || Input.GetKeyUp(KeyCode.W))
-            {
-                DriveDeceleration();               
-            }
-           */
-          
+
+            /* if (Input.GetKey(KeyCode.S) || Input.GetKeyUp(KeyCode.W))
+             {
+                 DriveDeceleration();               
+             }
+            */
+
         }
-        else _forwardSpeed = _baseForwardSpeed;
-       
-       
+        else
+        {
+            _forwardSpeed = _baseTopSpeed;
+        }
+
 
         if (_isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
         }
 
-        if (_isGrounded ==  false)
+        if (_isGrounded == false)
         {
 
 
@@ -117,29 +119,29 @@ public class PlayerController2 : MonoBehaviour
 
     private void FixedUpdate()
     {
-       
-       _sphereRigidbody.AddForce(transform.forward * _curentSpeed, ForceMode.Acceleration);
+
+        _sphereRigidbody.AddForce(transform.forward * _curentSpeed, ForceMode.Acceleration);
         //_animator.SetTrigger("IsFlying");
-        
+
 
     }
 
-    
+
     private void Drive()
     {
         _curentSpeed = _forwardAmount *= _forwardSpeed;
-        
-        if(_forwardAmount != 0) AccelerationBuildup();
+
+        if (_forwardAmount != 0) AccelerationBuildup();
     }
- 
+
 
     private void TurnHandler()
     {
         float newRotation = _turnAmount * _turnSpeed * Time.deltaTime;
         if (_curentSpeed > 0.1f) transform.Rotate(0, newRotation, 0, Space.World);
-        
+
     }
-    
+
     private void DriveDeceleration()
     {
         _curentSpeed = Mathf.MoveTowards(_curentSpeed, 0f, _deceleratiionSpeed * Time.deltaTime);
@@ -153,7 +155,7 @@ public class PlayerController2 : MonoBehaviour
     private void GroundCheckAndNormalHandler()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, -transform.up, out hit, 3 , _groundLayerMask))
+        if (Physics.Raycast(transform.position, -transform.up, out hit, 3, _groundLayerMask))
         {
             _isGrounded = true;
             _airborneTime = 0f; // Reinicia el tiempo en el aire
@@ -181,15 +183,15 @@ public class PlayerController2 : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        
+
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, transform.position + (-transform.up));
-       
+
     }
 
-    private void Jump() 
+    private void Jump()
     {
-        _sphereRigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse); 
+        _sphereRigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
     }
 
     private void Descend()
@@ -211,10 +213,12 @@ public class PlayerController2 : MonoBehaviour
         if (other.gameObject.layer == 11)
         {
             _topSpeed += extraSpeedUpPad;
+            _forwardSpeed += extraSpeedUpPad;
         }
         else if (other.gameObject.layer == 12)
         {
-            _topSpeed += extraSpeedDownPad;
+            _topSpeed -= extraSpeedDownPad;
+            _forwardSpeed -= extraSpeedDownPad;
         }
     }
 
@@ -228,18 +232,12 @@ public class PlayerController2 : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == 11)
+        if (other.gameObject.layer == 11 || other.gameObject.layer == 12)
         {
-            _topSpeed = _baseForwardSpeed;
+            _topSpeed = _baseTopSpeed;
             return;
         }
-        
-        if (other.gameObject.layer == 12)
-        {
-            _topSpeed = _baseForwardSpeed;
-            return;
-        }
-        
+
         if (other.gameObject.layer == 13)
         {
             _curentSpeed *= _crashSpeedPercentage;

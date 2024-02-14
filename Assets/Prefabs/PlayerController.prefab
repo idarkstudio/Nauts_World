@@ -1672,8 +1672,8 @@ MonoBehaviour:
   _isGrounded: 0
   _descentSpeed: 10
   _airborneTime: 0
-  extraSpeedUpPad: 0
-  extraSpeedDownPad: 0
+  extraSpeedUpPad: 40
+  extraSpeedDownPad: 20
 --- !u!54 &1154063438868945032
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4874,7 +4874,7 @@ MonoBehaviour:
   player: {fileID: 4186684120795777049}
   lm:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 7168
 --- !u!45 &1151051305069904440
 Skybox:
   m_ObjectHideFlags: 0
