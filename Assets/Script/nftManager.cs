@@ -16,6 +16,7 @@ public class nftManager : MonoBehaviour
 
     private void Awake()
     {
+        DontDestroyOnLoad(this);
         Instance = this;
     }
 

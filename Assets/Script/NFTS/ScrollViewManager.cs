@@ -8,13 +8,18 @@ using System.Threading.Tasks;
 public class ScrollViewManager : MonoBehaviour
 {
     [SerializeField]
-    GameObject buttonImagePrefab; // Asigna el prefab de RawImage aquí.
+    GameObject buttonImagePrefab; // Asigna el prefab de RawImage aquï¿½.
     [SerializeField]
     GameObject buttonBlocked; 
-    public Transform contentTransform; // Asigna el Transform del Content del ScrollView aquí.
+    public Transform contentTransform; // Asigna el Transform del Content del ScrollView aquï¿½.
 
     [SerializeField ]
     public ImageLoader loaderImage;
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
 
     public async void AsignarImagenes(List<NftDelails> listImages)
     {

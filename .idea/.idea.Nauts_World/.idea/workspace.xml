@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="518db3e5-365b-49f3-a0e6-762e1727d508" name="Changes" comment="" />
+    <list default="true" id="518db3e5-365b-49f3-a0e6-762e1727d508" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Connect.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Connect.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,9 +39,9 @@
   },
   "keyToStringList": {
     "rider.external.source.directories": [
-      "C:\\Users\\JP\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\JP\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\JP\\AppData\\Local\\Symbols\\src"
+      "C:\\Users\\Maiine\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache",
+      "C:\\Users\\Maiine\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache",
+      "C:\\Users\\Maiine\\AppData\\Local\\Symbols\\src"
     ]
   }
 }]]></component>
@@ -90,6 +93,7 @@
       <updated>1704917695116</updated>
       <workItem from="1704917702533" duration="1036000" />
       <workItem from="1707481651601" duration="4037000" />
+      <workItem from="1708015791867" duration="316000" />
     </task>
     <servers />
   </component>
