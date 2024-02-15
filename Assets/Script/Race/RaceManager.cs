@@ -49,7 +49,7 @@ public class RaceManager : MonoBehaviour
     {
         SetterRaceInProgess(false);
         SpawnPlayers();
-        lapNumberText.text = "Lap " + currentLap + "/" + numberOfLaps;
+        lapNumberText.text = currentLap + "/" + numberOfLaps;
 
 
     }
@@ -155,7 +155,7 @@ public class RaceManager : MonoBehaviour
         }
         else
         {
-            lapNumberText.text = "Lap " + currentLap + "/" + numberOfLaps;         
+            lapNumberText.text = currentLap + "/" + numberOfLaps;         
 
             lapTime = 0f;
             lapTimeMinutes = 0f;

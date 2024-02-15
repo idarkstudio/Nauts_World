@@ -15,7 +15,7 @@ public class PlayerController2 : MonoBehaviour
     private float _baseTopSpeed;
     [SerializeField] private float _accelerationSpeed;
     [SerializeField] private float _maxFloatHeight = 10;
-    [SerializeField] private float _forwardSpeed;
+    public float _forwardSpeed;
     [SerializeField] private float _forwardAcceleration;
     [SerializeField] private float _turnAmount;
     [SerializeField] private float _turnSpeed;
