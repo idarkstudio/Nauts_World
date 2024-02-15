@@ -18,12 +18,9 @@ public class MainMenuController : MonoBehaviour
     }
 
 
-    public void ChangePlayerSkin()
+    public void ChangePlayerSkin(int skin)
     {
-        if (so.numberMat == 0)
-            so.numberMat = 1;
-        else if (so.numberMat == 1)
-            so.numberMat = 0;
+        so.numberMat = skin;
     }
 
 
