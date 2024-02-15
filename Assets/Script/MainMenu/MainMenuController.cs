@@ -13,8 +13,7 @@ public class MainMenuController : MonoBehaviour
 
     public void ChangeLevel(string levelName)
     {
-        SceneManager.LoadScene(levelName);
-
+        SceneLoadingManager.instance.ChangeScene(levelName);
     }
 
 
