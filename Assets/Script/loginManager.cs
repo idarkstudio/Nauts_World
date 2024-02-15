@@ -6,11 +6,12 @@ using UnityEngine.UI;
 
 public class LoginManager : MonoBehaviour
 {
-    
     public string principal;
     public bool logeoExitoso = false;
     [SerializeField] Button Boton;
+
     [SerializeField] private GameObject _loadingCanvas;
+
     //[SerializeField] public TMP_InputField inputUserName;
     public User usuario;
 
@@ -34,13 +35,12 @@ public class LoginManager : MonoBehaviour
                 nftManager.PedirNFTS();
                 SceneLoadingManager.instance.ChangeScene("MainMenu");
             }
-            else 
+            else
             {
                 Boton.interactable = true;
                 _loadingCanvas.SetActive(false);
                 Debug.Log("Error en getPrincipal2");
             }
-
         }
         else
         {
@@ -48,7 +48,6 @@ public class LoginManager : MonoBehaviour
             _loadingCanvas.SetActive(false);
             Debug.Log("Error en getPrincipal");
         }
-
     }
 
 
@@ -57,13 +56,17 @@ public class LoginManager : MonoBehaviour
         Debug.Log("Creando cuenta...");
         ReacFunctions.CreateAcount();
     }
+
     void ProbarLogin()
     {
+#if UNITY_EDITOR
+        SceneLoadingManager.instance.ChangeScene("MainMenu");
+#else
         Boton.interactable = false;
         _loadingCanvas.SetActive(true);
         Debug.Log("Logueandose...");
         ReacFunctions.Login();
         //text = "Loading...";
+#endif
     }
 }
-
