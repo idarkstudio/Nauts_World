@@ -18,25 +18,20 @@ public class RespawnManager : MonoBehaviour
 
     public PlayerController2 _playerController;
     [SerializeField] private Rigidbody _sphereRigidbody;
-  
-    void Update()
+
+    [SerializeField] private LapManager lp;
+    [SerializeField] private Transform lastPosSaved;
+    [SerializeField] private Transform lastLookAtSaved;
+
+    private void Awake()
     {
-        Timer();
+        lastPosSaved.parent = null;
     }
 
-    private void Timer()
+    private void Start()
     {
-        _timer += Time.deltaTime;       
-     
-          if (_timer >= _saveInterval && _playerController._isGrounded == true)
-          {
-              _lastSavedPos = this.transform.position;
-              _timer = 0f;
-              Debug.Log(" Guarde pos ");
-          }
-
+        lp = FindObjectOfType<LapManager>();
     }
-  
 
     private void OnTriggerEnter(Collider other)
     {
@@ -51,7 +46,8 @@ public class RespawnManager : MonoBehaviour
     private void RespawnPlayer()
     {
         _playerController.enabled=false;
-        this.transform.position = _lastSavedPos;
+        this.transform.position = lastPosSaved.position;
+        transform.LookAt(lastLookAtSaved);
         _sphereRigidbody.velocity = Vector3.zero;
         _sphereRigidbody.constraints = RigidbodyConstraints.FreezeAll;
         StartCoroutine(RespawnCoroutine());
@@ -65,5 +61,11 @@ public class RespawnManager : MonoBehaviour
         _playerController.enabled=true;
         _sphereRigidbody.constraints = RigidbodyConstraints.None;
         _sphereRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+    }
+
+    public void SaveLastPost(Transform lastPos, Transform lookRot)
+    {
+        lastPosSaved.position = lastPos.position;
+        lastLookAtSaved = lookRot;
     }
 }

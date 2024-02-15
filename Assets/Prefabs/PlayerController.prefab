@@ -1583,6 +1583,7 @@ Transform:
   - {fileID: 7633901501593933693}
   - {fileID: 2301468882424536652}
   - {fileID: 1964439503974525936}
+  - {fileID: 5465370484505201827}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4006439237631531454
@@ -1722,6 +1723,8 @@ MonoBehaviour:
   map: {fileID: 0}
   _playerController: {fileID: 293452215463774123}
   _sphereRigidbody: {fileID: 1154063438868945032}
+  lp: {fileID: 0}
+  lastPosSaved: {fileID: 5465370484505201827}
 --- !u!65 &4240485246459454860
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4178,6 +4181,37 @@ Transform:
   - {fileID: 2394890029700532679}
   m_Father: {fileID: 2223052967032118965}
   m_LocalEulerAnglesHint: {x: 28.643608, y: 0, z: 0}
+--- !u!1 &5252970492168576539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5465370484505201827}
+  m_Layer: 0
+  m_Name: RespawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5465370484505201827
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5252970492168576539}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.034525745, y: 1.3464229, z: 0}
+  m_LocalScale: {x: 1.3943889, y: 1.3943889, z: 1.3943889}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4440545413468198698}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5292939779278362376
 GameObject:
   m_ObjectHideFlags: 0

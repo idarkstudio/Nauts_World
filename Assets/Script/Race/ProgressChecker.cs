@@ -8,6 +8,9 @@ public class ProgressChecker : MonoBehaviour
     [SerializeField] private bool hasPlayerPassed = false;
     [SerializeField] private LapManager lp;
 
+    [SerializeField] private Transform posToSpawn;
+    [SerializeField] private Transform posToLook;
+
     void Start()
     {
         GetComponent<Renderer>().enabled = false;
@@ -18,6 +21,7 @@ public class ProgressChecker : MonoBehaviour
     {
         if (other.gameObject.layer == 6)
         {
+            lp.SaveNewRespawnPoint(posToSpawn, posToLook);
             hasPlayerPassed = true;
             if (isFinishLine)
                 lp.CheckForLap();

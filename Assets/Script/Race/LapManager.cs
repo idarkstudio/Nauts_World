@@ -7,6 +7,12 @@ public class LapManager : MonoBehaviour
 {
     [SerializeField] private List<ProgressChecker> checkpoints = new List<ProgressChecker>();
     [SerializeField] private RaceManager rm;
+    [SerializeField] private RespawnManager respawn => FindObjectOfType<RespawnManager>();
+
+    private void Start()
+    {
+        
+    }
 
     public void CheckForLap()
     {
@@ -19,5 +25,10 @@ public class LapManager : MonoBehaviour
 
             rm.PlayerDoneLap();
         }
+    }
+
+    public void SaveNewRespawnPoint(Transform positionToSpawn, Transform RotationToLook)
+    {
+        respawn.SaveLastPost(positionToSpawn, RotationToLook);
     }
 }
