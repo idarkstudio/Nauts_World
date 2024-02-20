@@ -35,6 +35,7 @@ public class PlayerController2 : MonoBehaviour
     public bool _isGrounded;
     private bool _isDescending;
     private bool _isFlying = false;
+    private bool _justLanded = false;
     private float _forwardAmount;
     public float _descentSpeed = 5f;
     public float _airborneTime;
@@ -43,6 +44,10 @@ public class PlayerController2 : MonoBehaviour
     [Header("Speed Pads")]
     [SerializeField] private float extraSpeedUpPad;
     [SerializeField] private float extraSpeedDownPad;
+
+    [Header("View")] 
+    [SerializeField] private ParticleSystem landingParticles;
+    [SerializeField] private ParticleSystem dustParticles;
 
     private void Awake()
     {
@@ -67,6 +72,8 @@ public class PlayerController2 : MonoBehaviour
         _forwardAmount = Input.GetAxis("Vertical");
         _turnAmount = Input.GetAxis("Horizontal");
 
+        if (Input.GetKeyDown(KeyCode.P))
+            landingParticles.Play();
 
         if (Input.GetKeyDown(KeyCode.W) && _isGrounded)
         {
@@ -88,7 +95,10 @@ public class PlayerController2 : MonoBehaviour
         {
 
             Drive();
-
+            
+            if(_isGrounded)
+                dustParticles.Play();
+            
             /* if (Input.GetKey(KeyCode.S) || Input.GetKeyUp(KeyCode.W))
              {
                  DriveDeceleration();               
@@ -98,6 +108,7 @@ public class PlayerController2 : MonoBehaviour
         }
         else
         {
+            dustParticles.Stop();
             _forwardSpeed = _baseTopSpeed;
         }
 
@@ -157,7 +168,11 @@ public class PlayerController2 : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, -transform.up, out hit, 3, _groundLayerMask))
         {
+            if (!_isGrounded)
+                _justLanded = true;
+            
             _isGrounded = true;
+            
             _airborneTime = 0f; // Reinicia el tiempo en el aire
         }
         else
@@ -176,6 +191,12 @@ public class PlayerController2 : MonoBehaviour
 
         if (_isGrounded)
         {
+            if (_justLanded)
+            {
+                landingParticles.Play();
+                _justLanded = false;
+            }
+            
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation, 0.1f);
         }
     }
@@ -205,7 +226,6 @@ public class PlayerController2 : MonoBehaviour
 
         // Aplica la fuerza de la gravedad para que el personaje comience a descender
         _sphereRigidbody.AddForce(Vector3.down * _sphereRigidbody.mass * Physics.gravity.magnitude);
-
     }
 
     private void OnTriggerEnter(Collider other)

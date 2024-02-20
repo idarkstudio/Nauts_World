@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -81,6 +82,9 @@ public class RaceManager : MonoBehaviour
             GameObject player = Instantiate(playerPrefab, spawnPosition, startingLine.transform.rotation);
             player.GetComponent<PlayerController2>().enabled = false;
             _playersInGame.Add(player);
+            CinemachineVirtualCamera vCam = FindObjectOfType<CinemachineVirtualCamera>();
+            vCam.m_LookAt = player.transform;
+            vCam.Follow = player.transform;
         }
 
         StartCoroutine(CountdownAndStartRace());
