@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="518db3e5-365b-49f3-a0e6-762e1727d508" name="Changes" comment="" />
+    <list default="true" id="518db3e5-365b-49f3-a0e6-762e1727d508" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Race/RaceManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Race/RaceManager.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -97,7 +99,7 @@
       <workItem from="1707481651601" duration="4037000" />
       <workItem from="1708015791867" duration="316000" />
       <workItem from="1708430422771" duration="8015000" />
-      <workItem from="1708522777624" duration="903000" />
+      <workItem from="1708522777624" duration="1225000" />
     </task>
     <servers />
   </component>

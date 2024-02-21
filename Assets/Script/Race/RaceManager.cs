@@ -9,7 +9,6 @@ using UnityEngine.UI;
 
 public class RaceManager : MonoBehaviour
 {
-
     [SerializeField] private Transform startingLine;
     [SerializeField] private GameObject playerPrefab;
 
@@ -35,15 +34,17 @@ public class RaceManager : MonoBehaviour
 
     private List<GameObject> _playersInGame = new List<GameObject>();
 
+    [SerializeField] private GameObject _finishLine;
 
-    [Header("Ending Timers")]
-    [SerializeField] private GameObject endPanel;
+
+    [Header("Ending Timers")] [SerializeField]
+    private GameObject endPanel;
+
     [SerializeField] private List<TextMeshProUGUI> timersText = new List<TextMeshProUGUI>();
     [SerializeField] private List<GameObject> bestTimerText = new List<GameObject>();
 
     private void Awake()
     {
-
     }
 
 
@@ -52,13 +53,10 @@ public class RaceManager : MonoBehaviour
         SetterRaceInProgess(false);
         SpawnPlayers();
         lapNumberText.text = currentLap + "/" + numberOfLaps;
-
-
     }
 
     void Update()
     {
-
         if (IsRaceInProgress())
         {
             lapTime += Time.deltaTime;
@@ -69,14 +67,12 @@ public class RaceManager : MonoBehaviour
                 lapTimeMinutes++;
                 lapTime = 0;
             }
-
         }
     }
 
 
     void SpawnPlayers()
     {
-
         for (int i = 0; i < numberOfPlayers; i++)
         {
             Vector3 spawnPosition = startingLine.position; //+ Vector3.right * i;
@@ -92,9 +88,7 @@ public class RaceManager : MonoBehaviour
         }
 
         StartCoroutine(CountdownAndStartRace());
-
     }
-
 
 
     IEnumerator CountdownAndStartRace()
@@ -147,7 +141,6 @@ public class RaceManager : MonoBehaviour
 
     public void PlayerDoneLap()
     {
-
         //lapTimersRecord.Add((lapTimeMinutes * 60) + lapTime);
         lapTimersRecord.Add((TimeSpan.FromSeconds(lapTime + (lapTimeMinutes * 60))));
         currentLap++;
@@ -158,18 +151,21 @@ public class RaceManager : MonoBehaviour
                 PlayerController2 py2 = player.GetComponent<PlayerController2>();
                 py2.enabled = false;
             }
+
             SetterRaceInProgess(false);
             EndTheRace();
+            return;
         }
-        else
+
+        lapNumberText.text = currentLap + "/" + numberOfLaps;
+
+        lapTime = 0f;
+        lapTimeMinutes = 0f;
+
+        if (currentLap==numberOfLaps)
         {
-            lapNumberText.text = currentLap + "/" + numberOfLaps;         
-
-            lapTime = 0f;
-            lapTimeMinutes = 0f;
+            StartCoroutine(Coroutine_TurnOnFinishLine());
         }
-
-
     }
 
     private void EndTheRace()
@@ -180,13 +176,21 @@ public class RaceManager : MonoBehaviour
         int index = -1;
         for (int i = 0; i < lapTimersRecord.Count; i++)
         {
-            if ((lapTimersRecord[i].Seconds + (lapTimersRecord[i].Minutes*60)) < value)
+            if ((lapTimersRecord[i].Seconds + (lapTimersRecord[i].Minutes * 60)) < value)
             {
                 index = i;
                 value = (lapTimersRecord[i].Seconds + (lapTimersRecord[i].Minutes * 60));
             }
+
             timersText[i].text = lapTimersRecord[i].ToString(@"mm\:ss\:fff");
         }
+
         bestTimerText[index].SetActive(true);
+    }
+
+    private IEnumerator Coroutine_TurnOnFinishLine()
+    {
+        yield return new WaitForSeconds(.5f);
+        _finishLine.SetActive(true);
     }
 }
