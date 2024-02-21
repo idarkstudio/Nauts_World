@@ -37,7 +37,7 @@ public class PlayerController2 : MonoBehaviour
     private bool _isFlying = false;
     private bool _justLanded = false;
     private float _forwardAmount;
-    public float _descentSpeed = 5f;
+    public float _descentSpeed = 2f;
     public float _airborneTime;
     private float _initialJumpForce = 10f;
 
@@ -225,7 +225,7 @@ public class PlayerController2 : MonoBehaviour
         }
 
         // Aplica la fuerza de la gravedad para que el personaje comience a descender
-        _sphereRigidbody.AddForce(Vector3.down * _sphereRigidbody.mass * Physics.gravity.magnitude);
+        _sphereRigidbody.AddForce(Vector3.down * 3f * _sphereRigidbody.mass * Physics.gravity.magnitude);
     }
 
     private void OnTriggerEnter(Collider other)

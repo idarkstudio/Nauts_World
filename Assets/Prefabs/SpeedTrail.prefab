@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5925692001527699898}
   - component: {fileID: 4114997863497981225}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: SpeedTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 3897869314906120371}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 348.60748, y: 281.1, z: 410.24}
+  m_LocalPosition: {x: 346.44, y: 281.1, z: 405.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -74,11 +74,11 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.1
-  m_PreviewTimeScale: 0
+  m_Time: 0.3
+  m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.25
+    widthMultiplier: 0.3
     widthCurve:
       serializedVersion: 2
       m_Curve:
