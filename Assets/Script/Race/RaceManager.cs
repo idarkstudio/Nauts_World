@@ -13,6 +13,7 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private Transform startingLine;
     [SerializeField] private GameObject playerPrefab;
 
+    [SerializeField] private List<CinemachineVirtualCamera> allVcams;
 
     private bool raceCurrentlyInProgress;
 
@@ -82,9 +83,12 @@ public class RaceManager : MonoBehaviour
             GameObject player = Instantiate(playerPrefab, spawnPosition, startingLine.transform.rotation);
             player.GetComponent<PlayerController2>().enabled = false;
             _playersInGame.Add(player);
-            CinemachineVirtualCamera vCam = FindObjectOfType<CinemachineVirtualCamera>();
-            vCam.m_LookAt = player.transform;
-            vCam.Follow = player.transform;
+
+            foreach (var vCam in allVcams)
+            {
+                vCam.m_LookAt = player.transform;
+                vCam.Follow = player.transform;
+            }
         }
 
         StartCoroutine(CountdownAndStartRace());

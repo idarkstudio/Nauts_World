@@ -8,6 +8,7 @@ TagManager:
   - Deathzone
   - Ground
   - SkyboxCamera
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - SpeedUpPad
   - SpeedDownPad
   - Wall
-  - 
+  - PostProcessingTrack
   - 
   - 
   - 
