@@ -192,6 +192,13 @@
       },
       "url": "https://packages.unity.com"
     },
+    "org.nuget.websocketsharp.core": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
+    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,
