@@ -78,13 +78,13 @@ public class PlayerController2 : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
             landingParticles.Play();
 
-        if (_forwardAmount != 0 || Input.GetKeyDown(KeyCode.W) && _isGrounded)
+        if (_forwardAmount > 0 || Input.GetKeyDown(KeyCode.W) && _isGrounded)
         {
             _isFlying = true;
             _animator.SetBool("IsFlying", _isFlying);
 
         }
-        else if (Input.GetKeyUp(KeyCode.W) && _isGrounded)
+        else if (_forwardAmount == 0 || Input.GetKeyUp(KeyCode.W) && _isGrounded)
         {
             _isFlying = false;
             _animator.SetBool("IsFlying", _isFlying);
