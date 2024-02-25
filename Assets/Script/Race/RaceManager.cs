@@ -43,6 +43,9 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private List<TextMeshProUGUI> timersText = new List<TextMeshProUGUI>();
     [SerializeField] private List<GameObject> bestTimerText = new List<GameObject>();
 
+    [Header("Bg Black")]
+    [SerializeField] private InitialBackground ibg;
+
     private void Awake()
     {
     }
@@ -93,6 +96,8 @@ public class RaceManager : MonoBehaviour
 
     IEnumerator CountdownAndStartRace()
     {
+        ibg.FadeOutBG();
+
         float timer = countdownTime;
 
         while (timer > 0f)
@@ -113,6 +118,7 @@ public class RaceManager : MonoBehaviour
         {
             PlayerController2 py2 = player.GetComponent<PlayerController2>();
             py2.enabled = true;
+            py2.CanMoveSetter(true);
         }
     }
 
@@ -149,6 +155,7 @@ public class RaceManager : MonoBehaviour
             foreach (var player in _playersInGame)
             {
                 PlayerController2 py2 = player.GetComponent<PlayerController2>();
+                py2.CanMoveSetter(false);
                 py2.enabled = false;
             }
 

@@ -23,6 +23,7 @@ public class PlayerController2 : MonoBehaviour
     [SerializeField] private float _deceleratiionSpeed = 20;
     [Range(0, 1)] [SerializeField] private float _crashSpeedPercentage;
     [SerializeField] private float _maxAirborneTime;
+    private bool canMove = false;
 
 
     [Header("Model")]
@@ -66,6 +67,8 @@ public class PlayerController2 : MonoBehaviour
 
     void Update()
     {
+        if (!canMove)
+            return;
 
         transform.position = _sphereRigidbody.transform.position;
 
@@ -75,7 +78,7 @@ public class PlayerController2 : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
             landingParticles.Play();
 
-        if (Input.GetKeyDown(KeyCode.W) && _isGrounded)
+        if (_forwardAmount != 0 || Input.GetKeyDown(KeyCode.W) && _isGrounded)
         {
             _isFlying = true;
             _animator.SetBool("IsFlying", _isFlying);
@@ -128,13 +131,23 @@ public class PlayerController2 : MonoBehaviour
         GroundCheckAndNormalHandler();
     }
 
+    public void CanMoveSetter(bool value)
+    {
+        canMove = value;
+        if (value == true)
+        {
+            _animator.ResetTrigger("PlayerDied");
+
+        }
+    }
+
     private void FixedUpdate()
     {
+        if (!canMove)
+            return;
 
         _sphereRigidbody.AddForce(transform.forward * _curentSpeed, ForceMode.Acceleration);
         //_animator.SetTrigger("IsFlying");
-
-
     }
 
 
@@ -143,6 +156,14 @@ public class PlayerController2 : MonoBehaviour
         _curentSpeed = _forwardAmount *= _forwardSpeed;
 
         if (_forwardAmount != 0) AccelerationBuildup();
+    }
+
+    public void StopVelocity()
+    {
+        _animator.SetTrigger("PlayerDied");
+        _animator.SetBool("IsFlying", false);
+        _curentSpeed = 0;
+        _forwardSpeed = 0;
     }
 
 
@@ -234,6 +255,7 @@ public class PlayerController2 : MonoBehaviour
         {
             _topSpeed += extraSpeedUpPad;
             _forwardSpeed += extraSpeedUpPad;
+            _animator.SetBool("IsSuperFlying", true);
         }
         else if (other.gameObject.layer == 12)
         {
@@ -255,6 +277,7 @@ public class PlayerController2 : MonoBehaviour
         if (other.gameObject.layer == 11 || other.gameObject.layer == 12)
         {
             _topSpeed = _baseTopSpeed;
+            _animator.SetBool("IsSuperFlying", false);
             return;
         }
 

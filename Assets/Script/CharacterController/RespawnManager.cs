@@ -16,12 +16,13 @@ public class RespawnManager : MonoBehaviour
     [SerializeField]
     private Collider map;
 
-    public PlayerController2 _playerController;
+    private PlayerController2 _playerController;
     [SerializeField] private Rigidbody _sphereRigidbody;
 
     [SerializeField] private LapManager lp;
     [SerializeField] private Transform lastPosSaved;
     [SerializeField] private Transform lastLookAtSaved;
+    private InitialBackground ibg;
 
     private void Awake()
     {
@@ -31,6 +32,8 @@ public class RespawnManager : MonoBehaviour
     private void Start()
     {
         lp = FindObjectOfType<LapManager>();
+        ibg = FindObjectOfType<InitialBackground>();
+        _playerController = FindObjectOfType<PlayerController2>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -39,26 +42,32 @@ public class RespawnManager : MonoBehaviour
         if (other.CompareTag("Deathzone"))
         {
             Debug.Log("deberia hacer el respawnplayer");
-            RespawnPlayer();
+            ibg.FadeInBG();
+            StartCoroutine(RespawnPlayer());
         }
     }
 
-    private void RespawnPlayer()
+    private IEnumerator RespawnPlayer()
     {
-        _playerController.enabled=false;
+        _playerController.CanMoveSetter(false);
+        _playerController.StopVelocity();
+        yield return new WaitForSeconds(0.5f);
+        _playerController.enabled = false;
         this.transform.position = lastPosSaved.position;
         transform.LookAt(lastLookAtSaved);
         _sphereRigidbody.velocity = Vector3.zero;
         _sphereRigidbody.constraints = RigidbodyConstraints.FreezeAll;
         StartCoroutine(RespawnCoroutine());
         Debug.Log("deberia ir a la posicion");
-
     }
 
     private IEnumerator RespawnCoroutine()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
+        ibg.FadeOutBG();
         _playerController.enabled=true;
+        _playerController.CanMoveSetter(true);
+        _playerController._forwardSpeed = 0;
         _sphereRigidbody.constraints = RigidbodyConstraints.None;
         _sphereRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
     }
