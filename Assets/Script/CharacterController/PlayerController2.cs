@@ -78,13 +78,13 @@ public class PlayerController2 : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) && _isGrounded)
         {
             _isFlying = true;
-            _animator.SetBool("Flying", _isFlying);
+            _animator.SetBool("IsFlying", _isFlying);
 
         }
         else if (Input.GetKeyUp(KeyCode.W) && _isGrounded)
         {
             _isFlying = false;
-            _animator.SetBool("Flying", _isFlying);
+            _animator.SetBool("IsFlying", _isFlying);
         }
         else if (Input.GetKey(KeyCode.S) || Input.GetKeyUp(KeyCode.W))
         {
