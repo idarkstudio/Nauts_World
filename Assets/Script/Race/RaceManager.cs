@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
@@ -19,10 +20,14 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI countdownText;
     [SerializeField] private float countdownTime = 5f;
 
+    [SerializeField] private GameObject parentTotalTimeText;
+    [SerializeField] private TextMeshProUGUI totalTimeText;
+    [SerializeField] private GameObject parentLapTimeText;
     [SerializeField] private TextMeshProUGUI lapTimeText;
     [SerializeField] private float lapTime = 0f;
     [SerializeField] private float lapTimeMinutes = 0f;
     [SerializeField] private List<TimeSpan> lapTimersRecord = new List<TimeSpan>();
+    private TimeSpan lapTimeTotalTimer;
 
     [SerializeField] private TextMeshProUGUI lapNumberText;
     [SerializeField] private int numberOfLaps = 3;
@@ -40,7 +45,8 @@ public class RaceManager : MonoBehaviour
     [Header("Ending Timers")] [SerializeField]
     private GameObject endPanel;
 
-    [SerializeField] private List<TextMeshProUGUI> timersText = new List<TextMeshProUGUI>();
+    [SerializeField] private List<TextMeshProUGUI> timersEndText = new List<TextMeshProUGUI>();
+    [SerializeField] private TextMeshProUGUI timerTotalEndText;
     [SerializeField] private List<GameObject> bestTimerText = new List<GameObject>();
 
     [Header("Bg Black")]
@@ -63,7 +69,7 @@ public class RaceManager : MonoBehaviour
         if (IsRaceInProgress())
         {
             lapTime += Time.deltaTime;
-            lapTimeText.text = lapTimeMinutes.ToString() + ":" + lapTime.ToString("00.00");
+            totalTimeText.text = lapTimeMinutes.ToString() + ":" + lapTime.ToString("00.00");
 
             if (lapTime >= 60)
             {
@@ -108,6 +114,8 @@ public class RaceManager : MonoBehaviour
         }
 
         SetterRaceInProgess(true);
+        countdownText.text = "";
+        parentTotalTimeText.SetActive(true);
         EnablePlayerInputs();
     }
 
@@ -147,9 +155,9 @@ public class RaceManager : MonoBehaviour
 
     public void PlayerDoneLap()
     {
-        //lapTimersRecord.Add((lapTimeMinutes * 60) + lapTime);
         lapTimersRecord.Add((TimeSpan.FromSeconds(lapTime + (lapTimeMinutes * 60))));
         currentLap++;
+        StartCoroutine(BestLapChecker());
         if (currentLap > numberOfLaps)
         {
             foreach (var player in _playersInGame)
@@ -166,13 +174,29 @@ public class RaceManager : MonoBehaviour
 
         lapNumberText.text = currentLap + "/" + numberOfLaps;
 
-        lapTime = 0f;
-        lapTimeMinutes = 0f;
-
         if (currentLap==numberOfLaps)
         {
             StartCoroutine(Coroutine_TurnOnFinishLine());
         }
+    }
+
+    private IEnumerator BestLapChecker()
+    {
+        if (lapTimersRecord.Count == 1)
+        {
+            lapTimeText.color = Color.green;
+        }
+        else
+        {
+            if (lapTimersRecord[lapTimersRecord.Count-1] < lapTimersRecord.OrderBy(x => x.TotalSeconds).First())
+                lapTimeText.color = Color.green;
+            else
+                lapTimeText.color = Color.red;
+        }
+        lapTimeText.text = lapTimersRecord[lapTimersRecord.Count - 1].ToString(@"mm\:ss\:fff");
+        parentLapTimeText.SetActive(true);
+        yield return new WaitForSeconds(3);
+        parentLapTimeText.SetActive(false);
     }
 
     private void EndTheRace()
@@ -187,11 +211,13 @@ public class RaceManager : MonoBehaviour
             {
                 index = i;
                 value = (lapTimersRecord[i].Seconds + (lapTimersRecord[i].Minutes * 60));
-            }
 
-            timersText[i].text = lapTimersRecord[i].ToString(@"mm\:ss\:fff");
+            }
+            lapTimeTotalTimer.Add(lapTimersRecord[i]);
+            timersEndText[i].text = lapTimersRecord[i].ToString(@"mm\:ss\:ff");
         }
 
+        timerTotalEndText.text = lapTimeTotalTimer.ToString(@"mm\:ss\:fff");
         bestTimerText[index].SetActive(true);
     }
 
