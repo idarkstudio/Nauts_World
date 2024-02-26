@@ -1603,7 +1603,7 @@ MonoBehaviour:
   _curentSpeed: 2
   _topSpeed: 140
   _accelerationSpeed: 5
-  _maxFloatHeight: 10
+  _maxFloatHeight: 5
   _forwardSpeed: 120
   _forwardAcceleration: 0
   _turnAmount: 0
@@ -1611,7 +1611,7 @@ MonoBehaviour:
   _jumpForce: 200
   _deceleratiionSpeed: 20
   _crashSpeedPercentage: 0.203
-  _maxAirborneTime: 1
+  _maxAirborneTime: 0.75
   _groundLayerMask:
     serializedVersion: 2
     m_Bits: 128
@@ -1621,8 +1621,11 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 3093da730750d1749bdeb315081a880d, type: 2}
   modelChar: {fileID: 3187444344915722668}
   _isGrounded: 0
-  _descentSpeed: 10
+  _descentSpeed: 20
   _airborneTime: 0
+  _initialJumpForce: 30
+  _maxDescendForce: 5
+  _multiplierDescendForce: 2.5
   extraSpeedUpPad: 40
   extraSpeedDownPad: 20
   landingParticles: {fileID: 6582932964985368267}

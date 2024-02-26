@@ -40,7 +40,10 @@ public class PlayerController2 : MonoBehaviour
     private float _forwardAmount;
     public float _descentSpeed = 2f;
     public float _airborneTime;
-    private float _initialJumpForce = 10f;
+    [SerializeField] private float _initialJumpForce = 10f;
+    [SerializeField] private float _maxDescendForce;
+    [SerializeField] private float _multiplierDescendForce;
+    private float currentDescendForce = 0;
 
     [Header("Speed Pads")]
     [SerializeField] private float extraSpeedUpPad;
@@ -116,10 +119,10 @@ public class PlayerController2 : MonoBehaviour
         }
 
 
-        if (_isGrounded && Input.GetKeyDown(KeyCode.Space))
+        /*if (_isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
-        }
+        }*/
 
         if (_isGrounded == false)
         {
@@ -216,6 +219,7 @@ public class PlayerController2 : MonoBehaviour
             {
                 landingParticles.Play();
                 _justLanded = false;
+                currentDescendForce = 0;
             }
             
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation, 0.1f);
@@ -231,10 +235,10 @@ public class PlayerController2 : MonoBehaviour
 
     }
 
-    private void Jump()
+    /*private void Jump()
     {
         _sphereRigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
-    }
+    }*/
 
     private void Descend()
     {
@@ -246,7 +250,9 @@ public class PlayerController2 : MonoBehaviour
         }
 
         // Aplica la fuerza de la gravedad para que el personaje comience a descender
-        _sphereRigidbody.AddForce(Vector3.down * 3f * _sphereRigidbody.mass * Physics.gravity.magnitude);
+
+        currentDescendForce += Time.deltaTime;
+        _sphereRigidbody.AddForce(Vector3.down * _multiplierDescendForce * Mathf.Clamp(currentDescendForce, 0, _maxDescendForce) * _sphereRigidbody.mass * Physics.gravity.magnitude);
     }
 
     private void OnTriggerEnter(Collider other)
