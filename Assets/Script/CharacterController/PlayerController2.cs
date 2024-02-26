@@ -259,14 +259,11 @@ public class PlayerController2 : MonoBehaviour
     {
         if (other.gameObject.layer == 11)
         {
-            _topSpeed += extraSpeedUpPad;
-            _forwardSpeed += extraSpeedUpPad;
-            _animator.SetBool("IsSuperFlying", true);
+            GainExtraSpeed();
         }
         else if (other.gameObject.layer == 12)
         {
-            _topSpeed -= extraSpeedDownPad;
-            _forwardSpeed -= extraSpeedDownPad;
+            DecreaseMaxSpeed();
         }
     }
 
@@ -282,8 +279,7 @@ public class PlayerController2 : MonoBehaviour
     {
         if (other.gameObject.layer == 11 || other.gameObject.layer == 12)
         {
-            _topSpeed = _baseTopSpeed;
-            _animator.SetBool("IsSuperFlying", false);
+            ReturnNormalSpeed();
             return;
         }
 
@@ -292,6 +288,25 @@ public class PlayerController2 : MonoBehaviour
             _curentSpeed *= _crashSpeedPercentage;
             return;
         }
+    }
+
+    public void GainExtraSpeed()
+    {
+        _topSpeed += extraSpeedUpPad;
+        _forwardSpeed += extraSpeedUpPad;
+        _animator.SetBool("IsSuperFlying", true);
+    }
+
+    public void DecreaseMaxSpeed()
+    {
+        _topSpeed -= extraSpeedDownPad;
+        _forwardSpeed -= extraSpeedDownPad;
+    }
+
+    public void ReturnNormalSpeed()
+    {
+        _topSpeed = _baseTopSpeed;
+        _animator.SetBool("IsSuperFlying", false);
     }
 
 }
