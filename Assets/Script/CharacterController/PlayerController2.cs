@@ -53,6 +53,9 @@ public class PlayerController2 : MonoBehaviour
     [SerializeField] private ParticleSystem landingParticles;
     [SerializeField] private ParticleSystem dustParticles;
 
+    [Header("ItemsInfo")]
+    [SerializeField] private float timerDebuffItems;
+
     private void Awake()
     {
         modelChar.GetComponent<Renderer>().material = mats[so.numberMat];
@@ -307,6 +310,21 @@ public class PlayerController2 : MonoBehaviour
     {
         _topSpeed = _baseTopSpeed;
         _animator.SetBool("IsSuperFlying", false);
+    }
+
+    public void PlayerGrabItem(ItemsSO so)
+    {
+        if (so.id == 0)
+        {
+            GainExtraSpeed();
+            StartCoroutine(WaitForBuffToStop());
+        }
+    }
+
+    IEnumerator WaitForBuffToStop()
+    {
+        yield return new WaitForSecondsRealtime(timerDebuffItems);
+        ReturnNormalSpeed();
     }
 
 }

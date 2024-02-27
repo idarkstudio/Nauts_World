@@ -1630,6 +1630,7 @@ MonoBehaviour:
   extraSpeedDownPad: 20
   landingParticles: {fileID: 6582932964985368267}
   dustParticles: {fileID: 3001219639474923881}
+  timerDebuffItems: 3
 --- !u!54 &1154063438868945032
 Rigidbody:
   m_ObjectHideFlags: 0
