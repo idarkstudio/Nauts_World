@@ -55,6 +55,7 @@ public class PlayerController2 : MonoBehaviour
 
     [Header("ItemsInfo")]
     [SerializeField] private float timerDebuffItems;
+    private ItemsSO currentItem = null;
 
     private void Awake()
     {
@@ -126,6 +127,11 @@ public class PlayerController2 : MonoBehaviour
         {
             Jump();
         }*/
+        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            PlayerUseItem();
+        }
 
         if (_isGrounded == false)
         {
@@ -314,11 +320,22 @@ public class PlayerController2 : MonoBehaviour
 
     public void PlayerGrabItem(ItemsSO so)
     {
-        if (so.id == 0)
+        currentItem = so;
+    }
+
+    private void PlayerUseItem()
+    {
+        if (currentItem == null)
+            return;
+
+        if (currentItem.id == 0)
         {
             GainExtraSpeed();
             StartCoroutine(WaitForBuffToStop());
         }
+
+
+        currentItem = null;
     }
 
     IEnumerator WaitForBuffToStop()
