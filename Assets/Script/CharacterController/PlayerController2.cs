@@ -54,14 +54,17 @@ public class PlayerController2 : MonoBehaviour
     [SerializeField] private ParticleSystem dustParticles;
 
     [Header("ItemsInfo")]
+    private ItemUI itemsUI;
     [SerializeField] private float timerDebuffItems;
     private ItemsSO currentItem = null;
+    [SerializeField] private GameObject wingsPowerObject;
 
     private void Awake()
     {
         modelChar.GetComponent<Renderer>().material = mats[so.numberMat];
         _curentSpeed = 0f;
         _baseTopSpeed = _topSpeed;
+        itemsUI = FindObjectOfType<ItemUI>();
     }
 
     void Start()
@@ -321,6 +324,11 @@ public class PlayerController2 : MonoBehaviour
     public void PlayerGrabItem(ItemsSO so)
     {
         currentItem = so;
+
+        if (currentItem.id == 0)
+        {
+            wingsPowerObject.SetActive(true);
+        }      
     }
 
     private void PlayerUseItem()
@@ -336,11 +344,13 @@ public class PlayerController2 : MonoBehaviour
 
 
         currentItem = null;
+        itemsUI.PlayerUsedItem();
     }
 
     IEnumerator WaitForBuffToStop()
     {
         yield return new WaitForSecondsRealtime(timerDebuffItems);
+        wingsPowerObject.SetActive(false);
         ReturnNormalSpeed();
     }
 

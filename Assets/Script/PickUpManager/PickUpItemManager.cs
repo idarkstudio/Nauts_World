@@ -10,6 +10,8 @@ public class PickUpItemManager : MonoBehaviour
 
     [SerializeField] private PlayerController2 player;
 
+    [SerializeField] private ItemUI uiPart;
+
 
     private void Start()
     {
@@ -26,6 +28,7 @@ public class PickUpItemManager : MonoBehaviour
     {
         StartCoroutine(RespawnItem(go));
         player.PlayerGrabItem(so);
+        uiPart.SetImageUI(so);
     }
 
     IEnumerator RespawnItem(GameObject itemToRespawn)

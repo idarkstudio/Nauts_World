@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 074cfce12555ab547b0d6d10b4d497af, type: 3}
   m_Name: SpeedWings
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: c9ac6c2f78be7c244892c9fdec72cb2f, type: 3}
   id: 0
   itemInWorld: {fileID: 0}
