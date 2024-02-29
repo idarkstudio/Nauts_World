@@ -1624,8 +1624,8 @@ MonoBehaviour:
   _descentSpeed: 20
   _airborneTime: 0
   _initialJumpForce: 30
-  _maxDescendForce: 5
-  _multiplierDescendForce: 2.5
+  _maxDescendForce: 65
+  _multiplierDescendForce: 25
   extraSpeedUpPad: 40
   extraSpeedDownPad: 20
   landingParticles: {fileID: 6582932964985368267}
