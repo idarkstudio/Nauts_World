@@ -277,6 +277,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4148055429402956429}
+  - component: {fileID: 5457416136299058370}
   m_Layer: 5
   m_Name: ParentLine
   m_TagString: Untagged
@@ -307,6 +308,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 318}
   m_SizeDelta: {x: 842.5853, y: 70.2451}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5457416136299058370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6253400173425646653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c75cfa428f65e35479b3ef11bb641ad6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 5094428781441794149}
+  totalTimeText: {fileID: 1921947776517970388}
+  bestTimeText: {fileID: 1385064871239214629}
 --- !u!1 &7539693723649031125
 GameObject:
   m_ObjectHideFlags: 0
