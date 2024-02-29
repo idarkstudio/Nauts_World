@@ -270,7 +270,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45.3
+  m_fontSize: 50
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1264,6 +1264,7 @@ GameObject:
   - component: {fileID: 833766919}
   - component: {fileID: 833766921}
   - component: {fileID: 833766922}
+  - component: {fileID: 833766923}
   m_Layer: 5
   m_Name: PanelNauts
   m_TagString: Untagged
@@ -1352,6 +1353,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &833766923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833766918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b452aa8963dfd9d4eb2375a064dcfc39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _luckyButton: {fileID: 2000087499}
 --- !u!1 &838555177
 GameObject:
   m_ObjectHideFlags: 0
@@ -1707,7 +1721,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.2
+  m_fontSize: 50
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3098,7 +3112,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 11.25
+  m_fontSize: 14.25
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3234,7 +3248,7 @@ GameObject:
   - component: {fileID: 1260646018}
   - component: {fileID: 1260646019}
   m_Layer: 5
-  m_Name: a
+  m_Name: Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3716,7 +3730,7 @@ GameObject:
   - component: {fileID: 1329385691}
   - component: {fileID: 1329385692}
   m_Layer: 5
-  m_Name: a
+  m_Name: Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4303,7 +4317,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.06965675, y: 0}
   m_AnchorMax: {x: 0.8973433, y: 1}
-  m_AnchoredPosition: {x: -1.1914864, y: 0}
+  m_AnchoredPosition: {x: -1.1914825, y: 0}
   m_SizeDelta: {x: 0.08359909, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1495969143
@@ -4983,7 +4997,7 @@ GameObject:
   - component: {fileID: 1655725377}
   - component: {fileID: 1655725379}
   m_Layer: 5
-  m_Name: Character1
+  m_Name: BaseCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6615,7 +6629,7 @@ GameObject:
   - component: {fileID: 2000087497}
   - component: {fileID: 2000087499}
   m_Layer: 5
-  m_Name: Character1 (1)
+  m_Name: LuckyCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6718,7 +6732,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 2000087497}
   m_OnClick:
     m_PersistentCalls:
@@ -6821,7 +6835,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.95
+  m_fontSize: 47.75
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7716,7 +7730,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 7.2
+  m_fontSize: 8.9
   m_fontSizeBase: 2
   m_fontWeight: 400
   m_enableAutoSizing: 1
