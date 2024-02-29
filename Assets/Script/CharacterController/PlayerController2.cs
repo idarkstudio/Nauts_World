@@ -330,11 +330,6 @@ public class PlayerController2 : MonoBehaviour
     {
         currentItem = so;
         playerHasItem = true;
-
-        if (currentItem.id == 0)
-        {
-            wingsPowerObject.SetActive(true);
-        }      
     }
 
     private void PlayerUseItem()
@@ -343,9 +338,9 @@ public class PlayerController2 : MonoBehaviour
             return;
 
 
-
         if (currentItem.id == 0)
         {
+            wingsPowerObject.SetActive(true);
             GainExtraSpeed();
             StartCoroutine(WaitForBuffToStop());
         }
