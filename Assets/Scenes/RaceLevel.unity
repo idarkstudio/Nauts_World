@@ -2958,6 +2958,7 @@ GameObject:
   - component: {fileID: 172561362}
   - component: {fileID: 172561361}
   - component: {fileID: 172561364}
+  - component: {fileID: 172561365}
   m_Layer: 0
   m_Name: Virtual Camera - PPGeneral
   m_TagString: Untagged
@@ -3138,12 +3139,25 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 172561359}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1503f1c11efcb44e8c80a7f8ce78719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: f6a4f606e013e9841a706f3d8cbc168c, type: 2}
+--- !u!114 &172561365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172561359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b368ed971c1d1f44a1c28d4b168e6e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animeSpeed: {fileID: 172561364}
 --- !u!1 &184220708
 GameObject:
   m_ObjectHideFlags: 0
