@@ -32,6 +32,8 @@ public class PlayerController2 : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private List<Material> mats = new List<Material>();
     [SerializeField] private GameObject modelChar;
+    [SerializeField] private GameObject speedTrailL;
+    [SerializeField] private GameObject speedTrailR;
 
     public bool _isGrounded;
     private bool _isDescending;
@@ -111,12 +113,16 @@ public class PlayerController2 : MonoBehaviour
         {
             _isFlying = true;
             _animator.SetBool("IsFlying", _isFlying);
+            speedTrailL.SetActive(true);
+            speedTrailR.SetActive(true);
 
         }
         else if (_forwardAmount == 0 || Input.GetKeyUp(KeyCode.W) && _isGrounded)
         {
             _isFlying = false;
             _animator.SetBool("IsFlying", _isFlying);
+            speedTrailL.SetActive(false);
+            speedTrailR.SetActive(false);
         }
         else if (Input.GetKey(KeyCode.S) || Input.GetKeyUp(KeyCode.W))
         {
