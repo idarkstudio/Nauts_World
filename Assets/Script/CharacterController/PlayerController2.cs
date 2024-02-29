@@ -86,6 +86,14 @@ public class PlayerController2 : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            PlayerUseItem();
+        }
+    }
+
     private void FixedUpdate()
     {
         if (!canMove)
@@ -141,11 +149,6 @@ public class PlayerController2 : MonoBehaviour
         {
             Jump();
         }*/
-        
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            PlayerUseItem();
-        }
 
         if (_isGrounded == false)
         {
