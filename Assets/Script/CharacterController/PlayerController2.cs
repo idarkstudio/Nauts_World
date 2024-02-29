@@ -74,9 +74,19 @@ public class PlayerController2 : MonoBehaviour
         _sphereRigidbody.transform.parent = null;
 
     }
+    
 
+    public void CanMoveSetter(bool value)
+    {
+        canMove = value;
+        if (value == true)
+        {
+            _animator.ResetTrigger("PlayerDied");
 
-    void Update()
+        }
+    }
+
+    private void FixedUpdate()
     {
         if (!canMove)
             return;
@@ -115,7 +125,7 @@ public class PlayerController2 : MonoBehaviour
             
             /* if (Input.GetKey(KeyCode.S) || Input.GetKeyUp(KeyCode.W))
              {
-                 DriveDeceleration();               
+                 DriveDeceleration();
              }
             */
 
@@ -145,23 +155,9 @@ public class PlayerController2 : MonoBehaviour
 
         TurnHandler();
         GroundCheckAndNormalHandler();
-    }
 
-    public void CanMoveSetter(bool value)
-    {
-        canMove = value;
-        if (value == true)
-        {
-            _animator.ResetTrigger("PlayerDied");
-
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        if (!canMove)
-            return;
-
+        
+        
         _sphereRigidbody.AddForce(transform.forward * _curentSpeed, ForceMode.Acceleration);
         //_animator.SetTrigger("IsFlying");
     }
