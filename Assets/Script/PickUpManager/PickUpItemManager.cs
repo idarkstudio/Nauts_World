@@ -26,9 +26,14 @@ public class PickUpItemManager : MonoBehaviour
 
     public void PlayerCollectedItem(GameObject go, ItemsSO so)
     {
+
         StartCoroutine(RespawnItem(go));
-        player.PlayerGrabItem(so);
-        uiPart.SetImageUI(so);
+
+        if (player.PlayerHasItem() != true)
+        {
+            player.PlayerGrabItem(so);
+            uiPart.SetImageUI(so);
+        }
     }
 
     IEnumerator RespawnItem(GameObject itemToRespawn)

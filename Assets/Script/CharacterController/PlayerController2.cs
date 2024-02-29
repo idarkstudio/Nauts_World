@@ -57,6 +57,7 @@ public class PlayerController2 : MonoBehaviour
     private ItemUI itemsUI;
     [SerializeField] private float timerDebuffItems;
     private ItemsSO currentItem = null;
+    private bool playerHasItem = false;
     [SerializeField] private GameObject wingsPowerObject;
 
     private void Awake()
@@ -321,9 +322,15 @@ public class PlayerController2 : MonoBehaviour
         _animator.SetBool("IsSuperFlying", false);
     }
 
+    public bool PlayerHasItem()
+    {
+        return playerHasItem;
+    }
+
     public void PlayerGrabItem(ItemsSO so)
     {
         currentItem = so;
+        playerHasItem = true;
 
         if (currentItem.id == 0)
         {
@@ -336,6 +343,8 @@ public class PlayerController2 : MonoBehaviour
         if (currentItem == null)
             return;
 
+
+
         if (currentItem.id == 0)
         {
             GainExtraSpeed();
@@ -343,6 +352,7 @@ public class PlayerController2 : MonoBehaviour
         }
 
 
+        playerHasItem = false;
         currentItem = null;
         itemsUI.PlayerUsedItem();
     }
