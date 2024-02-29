@@ -342,6 +342,7 @@ public class PlayerController2 : MonoBehaviour
         {
             wingsPowerObject.SetActive(true);
             GainExtraSpeed();
+            EventManager.Trigger(EventNames._PlayerSpeedUp);
             StartCoroutine(WaitForBuffToStop());
         }
 
@@ -355,6 +356,7 @@ public class PlayerController2 : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(timerDebuffItems);
         wingsPowerObject.SetActive(false);
+        EventManager.Trigger(EventNames._SpeedBackToNormal);
         ReturnNormalSpeed();
     }
 
