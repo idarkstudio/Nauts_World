@@ -17,6 +17,7 @@ public class MessageManager : MonoBehaviour
     private void Awake()
     {
         EventManager.Subscribe("ReceiveMessage", ReceiveMessage);
+        _messagePrefab = Resources.Load<GameObject>("MessagePrefab");
     }
 
     private void Start()
