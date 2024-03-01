@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -7,6 +8,7 @@ using TMPro;
 public class MessageManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] _messagePool;
+    [SerializeField] private TextMeshProUGUI _chatBox;
     [SerializeField] private Transform _parent;
     [SerializeField] private ScrollRect _scrollView;
 
@@ -30,6 +32,15 @@ public class MessageManager : MonoBehaviour
     private void Start()
     {
         _ws=GetComponent<WebSocketChatClient>();
+
+        if (_ws != null)
+        {
+            _chatBox.text += "<br>" + "Got WebSocket!";
+        }
+        else
+        {
+            _chatBox.text += "<br>" + "ERROR! Failed to get WebSocket.";
+        }
     }
 
     private void Update()
@@ -45,22 +56,26 @@ public class MessageManager : MonoBehaviour
         if (_inputField.text.Length<= 0) return;
         
         _ws.SendMessageToServer(_inputField.text);
+        _chatBox.text += "<br>" + "SENT";
         _inputField.text = "";
     }
 
-    private void ReceiveMessage(params object[] parameters)
+    public void ReceiveMessage(params object[] parameters)
     {
-        if (_actualIndexPool>=_messagePool.Length)
+        /*if (_actualIndexPool>=_messagePool.Length)
         {
             _actualIndexPool = 0;
         }
         
-        _messagePool[_actualIndexPool].transform.parent = null;
-        _messagePool[_actualIndexPool].transform.parent = _parent;
+        _messagePool[_actualIndexPool].transform.SetParent(null);
+        _messagePool[_actualIndexPool].transform.SetParent(_parent, false);
         _messagePool[_actualIndexPool].SetActive(true);
         
         var messageText = _messagePool[_actualIndexPool].GetComponent<TextMeshProUGUI>();
-        messageText.text = parameters[0].ToString();
+        messageText.text = parameters[0].ToString();*/
+
+        _chatBox.text += "<br>" + "RECIEVE";
+        _chatBox.text += "<br>" + parameters[0].ToString();
         
         StartCoroutine(MessageCoroutine());
         
@@ -70,6 +85,6 @@ public class MessageManager : MonoBehaviour
     private IEnumerator MessageCoroutine()
     {
         yield return null;
-        _scrollView.normalizedPosition = new Vector2(0, 0);
+        _scrollView.normalizedPosition = new Vector2(1, 1);
     }
 }

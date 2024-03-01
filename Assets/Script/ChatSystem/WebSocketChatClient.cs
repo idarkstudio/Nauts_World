@@ -14,7 +14,7 @@ public class WebSocketChatClient : MonoBehaviour
     private void Start()
     {
         _messageManager = GetComponent<MessageManager>();
-        StartCoroutine(CheckNewMessage());
+        //StartCoroutine(CheckNewMessage());
         
         // Connect to the server
         //ws = new WebSocket("ws://localhost:8080/");
@@ -35,6 +35,19 @@ public class WebSocketChatClient : MonoBehaviour
         };
 
         ws.Connect();
+    }
+
+    private void Update()
+    {
+        if (_message == "")
+        {
+            return;
+        }
+        
+        Debug.Log("EVENTO?");
+        _messageManager.ReceiveMessage(_message);
+        //EventManager.Trigger("ReceiveMessage", _message);
+        _message = "";
     }
 
     private void OnDestroy()
