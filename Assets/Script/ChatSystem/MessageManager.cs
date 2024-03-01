@@ -6,7 +6,7 @@ using TMPro;
 
 public class MessageManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _messagePrefab;
+    [SerializeField] private GameObject[] _messagePool;
     [SerializeField] private Transform _parent;
     [SerializeField] private ScrollRect _scrollView;
 
@@ -14,10 +14,17 @@ public class MessageManager : MonoBehaviour
 
     private WebSocketChatClient _ws;
 
+    private int _actualIndexPool;
+
     private void Awake()
     {
         EventManager.Subscribe("ReceiveMessage", ReceiveMessage);
-        _messagePrefab = Resources.Load<GameObject>("MessagePrefab");
+
+        // foreach (var message in _messagePool)
+        // {
+        //     message.SetActive(false);
+        //     message.transform.parent = null;
+        // }
     }
 
     private void Start()
@@ -43,9 +50,21 @@ public class MessageManager : MonoBehaviour
 
     private void ReceiveMessage(params object[] parameters)
     {
-        var messageText = Instantiate(_messagePrefab, _parent).GetComponent<TextMeshProUGUI>();
+        if (_actualIndexPool>=_messagePool.Length)
+        {
+            _actualIndexPool = 0;
+        }
+        
+        _messagePool[_actualIndexPool].transform.parent = null;
+        _messagePool[_actualIndexPool].transform.parent = _parent;
+        _messagePool[_actualIndexPool].SetActive(true);
+        
+        var messageText = _messagePool[_actualIndexPool].GetComponent<TextMeshProUGUI>();
         messageText.text = parameters[0].ToString();
+        
         StartCoroutine(MessageCoroutine());
+        
+        _actualIndexPool++;
     }
     
     private IEnumerator MessageCoroutine()
