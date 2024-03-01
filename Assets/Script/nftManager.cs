@@ -27,7 +27,6 @@ public class nftManager : MonoBehaviour
         Debug.Log(json);
         if (json != null)
         {
-            Debug.LogError("Paso null");
             List<NftDelails> nftList = JsonConvert.DeserializeObject<List<NftDelails>>(json);
 
             if (nftList == null)
