@@ -8,6 +8,7 @@ public class InitialBackground : MonoBehaviour
     [SerializeField] private CanvasGroup bg;
     [SerializeField] private float timerIn;
     [SerializeField] private float timerOut;
+    [SerializeField] private float timerOutInitial;
 
 
     public void FadeInBG()
@@ -17,5 +18,10 @@ public class InitialBackground : MonoBehaviour
     public void FadeOutBG()
     {
         LeanTween.alphaCanvas(bg, 0, timerOut);
+    }
+    
+    public void InitialFadeOutBG()
+    {
+        LeanTween.alphaCanvas(bg, 0, timerOutInitial);
     }
 }

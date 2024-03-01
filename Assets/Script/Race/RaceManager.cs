@@ -106,12 +106,16 @@ public class RaceManager : MonoBehaviour
 
     IEnumerator CountdownAndStartRace()
     {
-        ibg.FadeOutBG();
+        
 
         float timer = countdownTime;
 
         while (timer > 0f)
         {
+            if (timer == 3)
+                ibg.InitialFadeOutBG();
+
+
             countdownText.text = timer.ToString("0");
             yield return new WaitForSeconds(1f);
             timer--;
