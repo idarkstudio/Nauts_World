@@ -26,6 +26,34 @@ var WebGLFunctions = {
     }catch (e){
       console.warn("Failed to dispatch CreateAcountEvent");
     }
+  },
+  SetRaceTime: function (time){
+    try {
+      window.dispatchReactUnityEvent("SetRaceTime",time)
+    }catch (e){
+      console.warn("Failed to dispatch CreateAcountEvent");
+    }
+  },
+  SetLapTime: function (time){
+    try {
+      window.dispatchReactUnityEvent("SetLapTime",time)
+    }catch (e){
+      console.warn("Failed to dispatch CreateAcountEvent");
+    }
+  },
+  GetScore: function (){
+    try {
+      window.dispatchReactUnityEvent("GetScore")
+    }catch (e){
+      console.warn("Failed to dispatch CreateAcountEvent");
+    }
+  },
+  GetTotalScore: function (){
+    try {
+      window.dispatchReactUnityEvent("GetTotalScore")
+    }catch (e){
+      console.warn("Failed to dispatch CreateAcountEvent");
+    }
   }
 };
   
