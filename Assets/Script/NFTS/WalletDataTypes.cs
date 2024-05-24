@@ -20,7 +20,7 @@ public class NftDelails
         sb.AppendLine($"descripcion: {this.description}");
         sb.AppendLine($"imagen: {this.image}");
         sb.AppendLine($"collection :{this.collection}");
-        sb.AppendLine($"Es dueño :{this.isOwner}");
+        sb.AppendLine($"Es dueÃ±o :{this.isOwner}");
         return sb.ToString();
     }
 }
