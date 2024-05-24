@@ -54,6 +54,20 @@ var WebGLFunctions = {
     }catch (e){
       console.warn("Failed to dispatch CreateAcountEvent");
     }
+  },
+  GetTenRace: function (){
+    try {
+      window.dispatchReactUnityEvent("GetTenRace")
+    }catch (e){
+      console.warn("Failed to dispatch CreateAcountEvent");
+    }
+  },
+  GetTenLap: function (){
+    try {
+      window.dispatchReactUnityEvent("GetTenLap")
+    }catch (e){
+      console.warn("Failed to dispatch CreateAcountEvent");
+    }
   }
 };
   

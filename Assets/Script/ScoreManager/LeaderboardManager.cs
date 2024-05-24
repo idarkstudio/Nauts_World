@@ -8,7 +8,9 @@ using Newtonsoft.Json;
 public class LeaderboardManager : MonoBehaviour
 {
     public static LeaderboardManager Instance;
-    
+
+    public Score[] tenLap;
+    public Score[] tenRace;
     public Score[] scores;
     public Score userScore;
 
@@ -24,6 +26,34 @@ public class LeaderboardManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
+
+    public void CallbackTenLap(string jsonScore)
+    {
+        try
+        {
+            tenLap = JsonConvert.DeserializeObject <Score[] > (jsonScore);
+            EventManager.Trigger("TenLapCallBack", tenLap);
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError("Error deserializing the score: " + ex.Message);
+        }
+
+    }
+    public void CallbackTenRace(string jsonScore)
+    {
+        try
+        {
+            tenRace = JsonConvert.DeserializeObject <Score[] > (jsonScore);
+            EventManager.Trigger("TenRaceCallBack", tenRace);
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError("Error deserializing the score: " + ex.Message);
+        }
+
+    }
+
 
     public void CallbackScore(string jsonScore)
     {

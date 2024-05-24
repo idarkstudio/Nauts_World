@@ -24,6 +24,13 @@ public static class ReacFunctionsInternal
     public static extern void GetScore();
     [DllImport("__Internal")]
     public static extern void GetTotalScore();
+    [DllImport("__Internal")]
+    public static extern void GetTenRace();
+    [DllImport("__Internal")]
+    public static extern void GetTenLap();
+
+
+
 }
 
 public static class ReacFunctions
@@ -78,6 +85,18 @@ public static class ReacFunctions
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
         ReacFunctionsInternal.GetTotalScore();
+#endif
+    }
+    public static void GetTenRace()
+    {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        ReacFunctionsInternal.GetTenRace();
+#endif
+    }
+    public static void GetTenLap()
+    {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        ReacFunctionsInternal.GetTenLap();
 #endif
     }
 }
