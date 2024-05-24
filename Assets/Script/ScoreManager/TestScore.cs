@@ -11,6 +11,8 @@ public class TestScore : MonoBehaviour
     {
         EventManager.Subscribe("PlayerScoreCallBack", CB_MyScore);
         EventManager.Subscribe("TotalScoreCallBack", CB_TotalScore);
+        EventManager.Subscribe("TenLapCallBack", CB_TenLapScore);
+        EventManager.Subscribe("TenRaceCallBack", CB_TenRaceScore);
     }
 
     void Update()
@@ -36,6 +38,16 @@ public class TestScore : MonoBehaviour
         {
             ReacFunctions.GetTotalScore();
         }
+        
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            ReacFunctions.GetTenLap();
+        }
+        
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            ReacFunctions.GetTenRace();
+        }
     }
 
     private void CB_TotalScore(params object[] parameters)
@@ -55,6 +67,44 @@ public class TestScore : MonoBehaviour
             Debug.Log("-----------------------------------");
         }
     }
+    
+    private void CB_TenRaceScore(params object[] parameters)
+    {
+        Debug.Log("Ten Race Score");
+        
+        var scores = parameters.OfType<Score>();
+
+        if (!scores.Any()) return;
+        
+        foreach (var score in scores)
+        {
+            Debug.Log(score.UserName);
+            Debug.Log(score.Principal);
+            Debug.Log(score.BestLapTime);
+            Debug.Log(score.BestRaceTime);
+            Debug.Log("-----------------------------------");
+        }
+    }
+
+    
+    private void CB_TenLapScore(params object[] parameters)
+    {
+        Debug.Log("Ten Lap Score");
+        
+        var scores = parameters.OfType<Score>();
+
+        if (!scores.Any()) return;
+        
+        foreach (var score in scores)
+        {
+            Debug.Log(score.UserName);
+            Debug.Log(score.Principal);
+            Debug.Log(score.BestLapTime);
+            Debug.Log(score.BestRaceTime);
+            Debug.Log("-----------------------------------");
+        }
+    }
+
 
     private void CB_MyScore(params object[] parameters)
     {
