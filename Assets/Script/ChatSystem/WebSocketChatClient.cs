@@ -18,7 +18,7 @@ public class WebSocketChatClient : MonoBehaviour
         
         // Connect to the server
         //ws = new WebSocket("ws://localhost:8080/");
-        ws = new WebSocket("ws://ec2-3-133-144-236.us-east-2.compute.amazonaws.com:8080");
+        ws = new WebSocket("ws://ec2-34-228-39-169.compute-1.amazonaws.com:8080");
 
         ws.OnMessage += (sender, e) =>
         {
