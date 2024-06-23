@@ -2357,6 +2357,7 @@ GameObject:
   - component: {fileID: 105469534}
   - component: {fileID: 105469533}
   - component: {fileID: 105469532}
+  - component: {fileID: 105469535}
   m_Layer: 5
   m_Name: PanelCreateNaut
   m_TagString: Untagged
@@ -2443,6 +2444,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 105469530}
   m_CullTransparentMesh: 1
+--- !u!225 &105469535
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105469530}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &111495061
 GameObject:
   m_ObjectHideFlags: 0
@@ -5355,7 +5368,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 233701683}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1828183094}
+        m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
+        m_MethodName: ChangeMenu
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2067976796}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &233701683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7689,7 +7714,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1828183094}
+        m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
+        m_MethodName: ChangeMenu
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1251607440}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &343791531
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8296,25 +8333,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1305634957}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1828183094}
+        m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
+        m_MethodName: ChangeMenu
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 833766918}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 105469535}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -8946,6 +8971,7 @@ GameObject:
   - component: {fileID: 388267030}
   - component: {fileID: 388267029}
   - component: {fileID: 388267028}
+  - component: {fileID: 388267031}
   m_Layer: 5
   m_Name: PanelCloneCollection
   m_TagString: Untagged
@@ -9036,6 +9062,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 388267026}
   m_CullTransparentMesh: 1
+--- !u!225 &388267031
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388267026}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &395571451
 GameObject:
   m_ObjectHideFlags: 0
@@ -11906,6 +11944,7 @@ GameObject:
   - component: {fileID: 543853944}
   - component: {fileID: 543853943}
   - component: {fileID: 543853942}
+  - component: {fileID: 543853945}
   m_Layer: 5
   m_Name: PanelCloneSector
   m_TagString: Untagged
@@ -12001,6 +12040,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 543853940}
   m_CullTransparentMesh: 1
+--- !u!225 &543853945
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543853940}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &548401944
 GameObject:
   m_ObjectHideFlags: 0
@@ -13859,7 +13910,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &628842993
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18821,6 +18872,7 @@ GameObject:
   - component: {fileID: 833766921}
   - component: {fileID: 833766922}
   - component: {fileID: 833766923}
+  - component: {fileID: 833766924}
   m_Layer: 5
   m_Name: PanelCollection
   m_TagString: Untagged
@@ -18918,6 +18970,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _luckyButton: {fileID: 0}
+--- !u!225 &833766924
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833766918}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &844418252
 GameObject:
   m_ObjectHideFlags: 0
@@ -24721,7 +24785,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1828183094}
+        m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
+        m_MethodName: ChangeMenu
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 388267031}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1123816270
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -27811,6 +27887,7 @@ GameObject:
   - component: {fileID: 1251607439}
   - component: {fileID: 1251607438}
   - component: {fileID: 1251607437}
+  - component: {fileID: 1251607440}
   m_Layer: 5
   m_Name: PanelInventoryMerge
   m_TagString: Untagged
@@ -27907,6 +27984,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1251607435}
   m_CullTransparentMesh: 1
+--- !u!225 &1251607440
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251607435}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1257263815
 GameObject:
   m_ObjectHideFlags: 0
@@ -34790,7 +34879,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1593328513
 RectTransform:
   m_ObjectHideFlags: 0
@@ -39850,6 +39939,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 63151e138b2b96942a051edfdf6b691b, type: 3}
   - {fileID: 21300000, guid: 2b6dd9595de686443b29cec6d6a11313, type: 3}
   _characterSelected: {fileID: 2119775119}
+  menus:
+  - {fileID: 1305634961}
+  - {fileID: 833766924}
+  - {fileID: 388267031}
+  - {fileID: 2067976796}
+  - {fileID: 543853945}
+  - {fileID: 1251607440}
+  - {fileID: 105469535}
 --- !u!1 &1831499542
 GameObject:
   m_ObjectHideFlags: 0
@@ -43972,25 +44069,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1305634957}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1828183094}
+        m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
+        m_MethodName: ChangeMenu
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 833766918}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 833766924}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -47231,6 +47316,7 @@ GameObject:
   - component: {fileID: 2067976795}
   - component: {fileID: 2067976794}
   - component: {fileID: 2067976793}
+  - component: {fileID: 2067976796}
   m_Layer: 5
   m_Name: PanelRelicCollection
   m_TagString: Untagged
@@ -47320,6 +47406,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2067976791}
   m_CullTransparentMesh: 1
+--- !u!225 &2067976796
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067976791}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &2071746557
 GameObject:
   m_ObjectHideFlags: 0
