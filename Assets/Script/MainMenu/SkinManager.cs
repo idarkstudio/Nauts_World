@@ -8,7 +8,10 @@ public class SkinManager : MonoBehaviour
    
    private void Awake()
    {
-      UnlockNFT();
+      /*
+        UnlockNFT();
+      */
+
    }
 
    private void UnlockNFT()

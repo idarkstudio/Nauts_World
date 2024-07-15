@@ -10,8 +10,15 @@ public class SceneLoadingManager : MonoBehaviour
     [SerializeField] private string _actualScene = "Connect";
     private void Awake()
     {
-        DontDestroyOnLoad(this);
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         instance = this;
+        DontDestroyOnLoad(gameObject);
+
     }
 
     public void ChangeScene(string sceneName)
@@ -21,8 +28,12 @@ public class SceneLoadingManager : MonoBehaviour
 
     private IEnumerator ChangeSceneCoroutine(string sceneName)
     {
+        
         var loadingAsyncScreen = SceneManager.LoadSceneAsync(_loadingSceneName);
         yield return new WaitUntil(()=>loadingAsyncScreen.isDone);
+        
+
+
 
         // Debug.Log(2);
         // var unloadSceneAsync = SceneManager.UnloadSceneAsync(_actualScene);
