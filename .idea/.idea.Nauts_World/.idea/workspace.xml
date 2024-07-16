@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="518db3e5-365b-49f3-a0e6-762e1727d508" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Nauts_World/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nauts_World/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScoreManager/TestScore.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/ScoreManager/TestScore.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ReacFunctions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ReacFunctions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Connect.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Connect.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +25,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3fcd0d8f83994bfca44d062bd372559a3e000/8e/ccd06736/MessageEventArgs.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/ChatSystem/MessageManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/Map/EnvironmentRotation.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/NFTWebManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/ScoreManager/LeaderboardManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/ScoreManager/TestScore.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -113,6 +115,7 @@
       <workItem from="1708697503278" duration="2562000" />
       <workItem from="1709303461886" duration="9161000" />
       <workItem from="1716517859787" duration="4815000" />
+      <workItem from="1721135029809" duration="3107000" />
     </task>
     <servers />
   </component>

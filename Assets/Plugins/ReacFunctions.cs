@@ -27,7 +27,11 @@ public static class ReacFunctionsInternal
     [DllImport("__Internal")]
     public static extern void GetTenRace();
     [DllImport("__Internal")]
-    public static extern void GetTenLap();
+    public static extern void GetTenLap(); 
+    [DllImport("__Internal")]
+    public static extern void GetUserNfts();    
+    [DllImport("__Internal")]
+    public static extern void GetUserStakes();
 
 
 
@@ -35,14 +39,12 @@ public static class ReacFunctionsInternal
 
 public static class ReacFunctions
 {
-
     public static void CreateAcount()
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
         ReacFunctionsInternal.CreateAcount();
 #endif
     }
-
 
     public static void GetNFT()
     {
@@ -62,6 +64,21 @@ public static class ReacFunctions
         ReacFunctionsInternal.SetUserName(json);
 #endif
     }
+
+    public static void GetUserNfts()
+    {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        ReacFunctionsInternal.GetUserNfts();
+#endif
+    }    
+    
+    public static void GetUserStakes()
+    {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        ReacFunctionsInternal.GetUserStakes();
+#endif
+    }
+    
     //leaderboard
     public static void SetRaceTime(float time)
     {
@@ -99,4 +116,6 @@ public static class ReacFunctions
         ReacFunctionsInternal.GetTenLap();
 #endif
     }
+    
+    
 }

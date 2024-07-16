@@ -68,6 +68,20 @@ var WebGLFunctions = {
     }catch (e){
       console.warn("Failed to dispatch CreateAcountEvent");
     }
+  },
+  GetUserNfts: function (){
+    try {
+      window.dispatchReactUnityEvent("GetUserNfts")
+    }catch (e){
+      console.warn("Failed to dispatch CreateAcountEvent");
+    }
+  },
+  GetUserStakes: function (){
+    try {
+      window.dispatchReactUnityEvent("GetUserStakes")
+    }catch (e){
+      console.warn("Failed to dispatch CreateAcountEvent");
+    }
   }
 };
   
