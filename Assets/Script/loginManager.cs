@@ -32,7 +32,7 @@ public class LoginManager : MonoBehaviour
                 this.logeoExitoso = true;
                 this.principal = result.Principal;
 
-                nftManager.PedirNFTS();
+                //nftManager.PedirNFTS();
                 SceneLoadingManager.instance.ChangeScene("MainMenu");
             }
             else

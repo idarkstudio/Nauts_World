@@ -19,8 +19,8 @@ public class TestScore : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            var lapTime = Random.Range(0f, 20f);
-            ReacFunctions.SetLapTime(lapTime);
+            ReacFunctions.GetUserNfts();
+            ReacFunctions.GetUserStakes();
         }
 
         if (Input.GetKeyDown(KeyCode.S))

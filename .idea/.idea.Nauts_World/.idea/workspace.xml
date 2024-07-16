@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="518db3e5-365b-49f3-a0e6-762e1727d508" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Nauts_World/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nauts_World/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ReacFunctions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ReacFunctions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Connect.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Connect.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/NFTWebManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/NFTWebManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/ScoreManager/TestScore.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/ScoreManager/TestScore.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +116,7 @@
       <workItem from="1708697503278" duration="2562000" />
       <workItem from="1709303461886" duration="9161000" />
       <workItem from="1716517859787" duration="4815000" />
-      <workItem from="1721135029809" duration="3107000" />
+      <workItem from="1721135029809" duration="5219000" />
     </task>
     <servers />
   </component>
