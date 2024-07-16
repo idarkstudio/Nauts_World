@@ -32,7 +32,7 @@ public class LeaderboardManager : MonoBehaviour
         try
         {
             tenLap = JsonConvert.DeserializeObject <Score[] > (jsonScore);
-            EventManager.Trigger("TenLapCallBack", tenLap);
+            EventManager.Trigger("TenLapCallBack", tenLap, 0);
         }
         catch (System.Exception ex)
         {
@@ -45,7 +45,7 @@ public class LeaderboardManager : MonoBehaviour
         try
         {
             tenRace = JsonConvert.DeserializeObject <Score[] > (jsonScore);
-            EventManager.Trigger("TenRaceCallBack", tenRace);
+            EventManager.Trigger("TenRaceCallBack", tenRace, 0);
         }
         catch (System.Exception ex)
         {

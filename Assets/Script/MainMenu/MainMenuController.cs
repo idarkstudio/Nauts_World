@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -14,6 +15,11 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private Image _characterSelected;
 
     [SerializeField] private List<CanvasGroup> menus = new List<CanvasGroup>();
+
+    private void Awake()
+    {
+        EventManager.ResetEventDictionary();
+    }
 
     private void Start()
     {
