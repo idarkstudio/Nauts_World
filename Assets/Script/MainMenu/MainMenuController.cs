@@ -19,6 +19,8 @@ public class MainMenuController : MonoBehaviour
     {
         ReacFunctions.GetTenRace();
         ReacFunctions.GetTenLap();
+
+        ReacFunctions.GetUserNfts();
     }
 
     public void ChangeLevel(string levelName)
