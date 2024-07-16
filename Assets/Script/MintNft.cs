@@ -6,7 +6,13 @@ public class MintNft : MonoBehaviour
 {
     public void OpenWebPage()
     {
-        string url = "https://yumi.io/market/d26yv-eqaaa-aaaah-abz4q-cai";// o https://yumi.io
+        string url = "https://mxan6-xyaaa-aaaam-ab64q-cai.icp0.io/marketplace";// o https://yumi.io
+        Application.OpenURL(url);
+    }
+
+    public void WalletPage()
+    {
+        string url = "https://mxan6-xyaaa-aaaam-ab64q-cai.icp0.io/wallet";// o https://yumi.io
         Application.OpenURL(url);
     }
 }

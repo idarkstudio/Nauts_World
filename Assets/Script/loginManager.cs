@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class LoginManager : MonoBehaviour
 {
+    public static LoginManager Instance;
+    
     public string principal;
     public bool logeoExitoso = false;
     [SerializeField] Button Boton;
@@ -17,6 +19,13 @@ public class LoginManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance!= null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
         DontDestroyOnLoad(this);
         Boton.onClick.AddListener(ProbarLogin);
     }
