@@ -230,6 +230,9 @@ public class RaceManager : MonoBehaviour
 
         timerTotalEndText.text = lapTimeTotalTimer.ToString(@"mm\:ss\:ff");
         bestTimerText[index].SetActive(true);
+        
+        ReacFunctions.SetRaceTime((float)lapTimeTotalTimer.Seconds + lapTimeTotalTimer.Minutes * 60);
+        ReacFunctions.SetLapTime((float)lapTimersRecord[index].Seconds + lapTimersRecord[index].Minutes * 60);
     }
 
     private IEnumerator Coroutine_TurnOnFinishLine()
