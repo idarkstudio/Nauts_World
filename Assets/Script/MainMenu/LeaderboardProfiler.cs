@@ -14,13 +14,13 @@ public class LeaderboardProfiler : MonoBehaviour
     {
         //nautsPhoto.sprite = 
         nameNauts.text = playerToSet.UserName;
-        time.text = playerToSet.BestLapTime.ToString();
+        time.text = playerToSet.BestLapTime.ToString("F2") + "s";
     }
     
     public void SetterProfileFromRace(Score playerToSet)
     {
         //nautsPhoto.sprite = 
         nameNauts.text = playerToSet.UserName;
-        time.text = playerToSet.BestRaceTime.ToString();
+        time.text = playerToSet.BestRaceTime.ToString("F2") + "s";
     }
 }

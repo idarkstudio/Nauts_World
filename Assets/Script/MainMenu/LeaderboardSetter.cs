@@ -36,6 +36,7 @@ public class LeaderboardSetter : MonoBehaviour
 
         for (int i = 0; i < data.Length; i++)
         {
+            profiles[i].gameObject.SetActive(true);
             profiles[i].SetterProfileFromLap(data[i]);
         }
 
