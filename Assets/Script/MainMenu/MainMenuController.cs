@@ -15,6 +15,12 @@ public class MainMenuController : MonoBehaviour
 
     [SerializeField] private List<CanvasGroup> menus = new List<CanvasGroup>();
 
+    private void Start()
+    {
+        ReacFunctions.GetTenRace();
+        ReacFunctions.GetTenLap();
+    }
+
     public void ChangeLevel(string levelName)
     {
         SceneLoadingManager.instance.ChangeScene(levelName);
