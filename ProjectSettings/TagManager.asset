@@ -3,12 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - ImagenPrincipal
-  - Deathzone
-  - Ground
-  - SkyboxCamera
-  - FxTemporaire
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -16,17 +11,17 @@ TagManager:
   - 
   - Water
   - UI
-  - Player
-  - Ground
-  - DeathZone
-  - PostProcessing
-  - ProgressChecker
-  - SpeedUpPad
-  - SpeedDownPad
-  - Wall
-  - PostProcessingTrack
-  - PickUpBox
-  - Particles
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
