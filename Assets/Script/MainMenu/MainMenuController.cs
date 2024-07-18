@@ -16,6 +16,10 @@ public class MainMenuController : MonoBehaviour
 
     [SerializeField] private List<CanvasGroup> menus = new List<CanvasGroup>();
 
+    [SerializeField] private CanvasGroup chatWindow;
+    [SerializeField] private Button chatParentButton;
+    private bool isChatOut = false;
+
     private void Awake()
     {
         EventManager.ResetEventDictionary();
@@ -55,5 +59,27 @@ public class MainMenuController : MonoBehaviour
         menuToOpen.blocksRaycasts = true;
     }
 
+    public void ChatAnimationPopIn()
+    {
+        if (!isChatOut)
+        {
+            chatWindow.gameObject.SetActive(true);
+            chatParentButton.interactable = false;
+            LeanTween.alphaCanvas(chatWindow, 1, 0.75f).setOnComplete(() => chatParentButton.interactable = true);
+            isChatOut = true;
+        }
+        else
+        {
+            chatParentButton.interactable = false;
+            LeanTween.alphaCanvas(chatWindow, 0, 0.75f).setOnComplete(()=>ExtraAnimationChat());
+            isChatOut = false;
+        }
+    }
+
+    private void ExtraAnimationChat()
+    {
+        chatWindow.gameObject.SetActive(false);
+        chatParentButton.interactable = true;
+    }
 
 }
