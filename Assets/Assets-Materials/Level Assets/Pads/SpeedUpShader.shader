@@ -540,7 +540,7 @@ Shader "SpeedUpShader"
 
 				WorldViewDirection = SafeNormalize( WorldViewDirection );
 
-				float2 texCoord2 = IN.ase_texcoord8.xy * float2( 6,26 ) + float2( 0,0 );
+				float2 texCoord2 = IN.ase_texcoord8.xy * float2( 6,1.99 ) + float2( 0,0 );
 				float2 panner4 = ( 1.0 * _Time.y * float2( 0,-2 ) + texCoord2);
 				float4 tex2DNode1 = tex2D( _TextureSample0, panner4 );
 				float2 texCoord6 = IN.ase_texcoord8.xy * float2( 1,1 ) + float2( 0,0 );
@@ -1078,7 +1078,7 @@ Shader "SpeedUpShader"
 					#endif
 				#endif
 
-				float2 texCoord2 = IN.ase_texcoord3.xy * float2( 6,26 ) + float2( 0,0 );
+				float2 texCoord2 = IN.ase_texcoord3.xy * float2( 6,1.99 ) + float2( 0,0 );
 				float2 panner4 = ( 1.0 * _Time.y * float2( 0,-2 ) + texCoord2);
 				float4 tex2DNode1 = tex2D( _TextureSample0, panner4 );
 				float2 texCoord6 = IN.ase_texcoord3.xy * float2( 1,1 ) + float2( 0,0 );
@@ -1385,7 +1385,7 @@ Shader "SpeedUpShader"
 					#endif
 				#endif
 
-				float2 texCoord2 = IN.ase_texcoord3.xy * float2( 6,26 ) + float2( 0,0 );
+				float2 texCoord2 = IN.ase_texcoord3.xy * float2( 6,1.99 ) + float2( 0,0 );
 				float2 panner4 = ( 1.0 * _Time.y * float2( 0,-2 ) + texCoord2);
 				float4 tex2DNode1 = tex2D( _TextureSample0, panner4 );
 				float2 texCoord6 = IN.ase_texcoord3.xy * float2( 1,1 ) + float2( 0,0 );
@@ -1689,7 +1689,7 @@ Shader "SpeedUpShader"
 					#endif
 				#endif
 
-				float2 texCoord2 = IN.ase_texcoord4.xy * float2( 6,26 ) + float2( 0,0 );
+				float2 texCoord2 = IN.ase_texcoord4.xy * float2( 6,1.99 ) + float2( 0,0 );
 				float2 panner4 = ( 1.0 * _Time.y * float2( 0,-2 ) + texCoord2);
 				float4 tex2DNode1 = tex2D( _TextureSample0, panner4 );
 				float2 texCoord6 = IN.ase_texcoord4.xy * float2( 1,1 ) + float2( 0,0 );
@@ -1971,7 +1971,7 @@ Shader "SpeedUpShader"
 					#endif
 				#endif
 
-				float2 texCoord2 = IN.ase_texcoord2.xy * float2( 6,26 ) + float2( 0,0 );
+				float2 texCoord2 = IN.ase_texcoord2.xy * float2( 6,1.99 ) + float2( 0,0 );
 				float2 panner4 = ( 1.0 * _Time.y * float2( 0,-2 ) + texCoord2);
 				float4 tex2DNode1 = tex2D( _TextureSample0, panner4 );
 				float2 texCoord6 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( 0,0 );
@@ -2284,7 +2284,7 @@ Shader "SpeedUpShader"
 					#endif
 				#endif
 
-				float2 texCoord2 = IN.ase_texcoord5.xy * float2( 6,26 ) + float2( 0,0 );
+				float2 texCoord2 = IN.ase_texcoord5.xy * float2( 6,1.99 ) + float2( 0,0 );
 				float2 panner4 = ( 1.0 * _Time.y * float2( 0,-2 ) + texCoord2);
 				float4 tex2DNode1 = tex2D( _TextureSample0, panner4 );
 				float2 texCoord6 = IN.ase_texcoord5.xy * float2( 1,1 ) + float2( 0,0 );
@@ -2568,7 +2568,7 @@ Shader "SpeedUpShader"
 			{
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
 
-				float2 texCoord2 = IN.ase_texcoord.xy * float2( 6,26 ) + float2( 0,0 );
+				float2 texCoord2 = IN.ase_texcoord.xy * float2( 6,1.99 ) + float2( 0,0 );
 				float2 panner4 = ( 1.0 * _Time.y * float2( 0,-2 ) + texCoord2);
 				float4 tex2DNode1 = tex2D( _TextureSample0, panner4 );
 				float2 texCoord6 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
@@ -2825,7 +2825,7 @@ Shader "SpeedUpShader"
 			{
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
 
-				float2 texCoord2 = IN.ase_texcoord.xy * float2( 6,26 ) + float2( 0,0 );
+				float2 texCoord2 = IN.ase_texcoord.xy * float2( 6,1.99 ) + float2( 0,0 );
 				float2 panner4 = ( 1.0 * _Time.y * float2( 0,-2 ) + texCoord2);
 				float4 tex2DNode1 = tex2D( _TextureSample0, panner4 );
 				float2 texCoord6 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
@@ -2866,7 +2866,7 @@ Shader "SpeedUpShader"
 }
 /*ASEBEGIN
 Version=19200
-Node;AmplifyShaderEditor.Vector2Node;3;-1853.703,-388.8016;Inherit;False;Constant;_Vector0;Vector 0;1;0;Create;True;0;0;0;False;0;False;6,26;0,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
+Node;AmplifyShaderEditor.Vector2Node;3;-1853.703,-388.8016;Inherit;False;Constant;_Vector0;Vector 0;1;0;Create;True;0;0;0;False;0;False;6,1.99;0,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
 Node;AmplifyShaderEditor.TextureCoordinatesNode;2;-1602.478,-347.6201;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.Vector2Node;5;-914.1242,287.5176;Inherit;False;Constant;_Vector1;Vector 1;1;0;Create;True;0;0;0;False;0;False;0,-2;0,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
 Node;AmplifyShaderEditor.RangedFloatNode;12;-1613.489,325.2513;Inherit;False;Constant;_Float1;Float 1;1;0;Create;True;0;0;0;False;0;False;0.8;0;0;0;0;1;FLOAT;0
@@ -2922,4 +2922,4 @@ WireConnection;33;0;16;0
 WireConnection;36;0;1;0
 WireConnection;36;1;37;0
 ASEEND*/
-//CHKSM=CDD4676C5A701C8D6FD861CC848AC048F36723A1
+//CHKSM=0C9C1E559D58A79FA7698E0AC1080E314657799B
