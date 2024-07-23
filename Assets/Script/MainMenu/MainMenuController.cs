@@ -16,6 +16,7 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private Image _characterSelected;
 
     [SerializeField] private List<CanvasGroup> menus = new List<CanvasGroup>();
+    [SerializeField] private List<CanvasGroup> menusInsideMain = new List<CanvasGroup>();
 
     [SerializeField] private CanvasGroup chatWindow;
     [SerializeField] private Button chatParentButton;
@@ -98,9 +99,25 @@ public class MainMenuController : MonoBehaviour
             menus[i].blocksRaycasts = false;
         }
 
-        LeanTween.alphaCanvas(menuToOpen, 1, 2);
-        menuToOpen.interactable = true;
-        menuToOpen.blocksRaycasts = true;
+        LeanTween.alphaCanvas(menuToOpen, 1, 2).setOnComplete(() => {
+            menuToOpen.interactable = true;
+            menuToOpen.blocksRaycasts = true;
+        });
+    }
+
+    public void ChangeInsideMainMenu(CanvasGroup menuInsideToOpen)
+    {
+        for (int i = 0; i < menusInsideMain.Count; i++)
+        {
+            menusInsideMain[i].alpha = 0;
+            menusInsideMain[i].interactable = false;
+            menusInsideMain[i].blocksRaycasts = false;
+        }
+
+        LeanTween.alphaCanvas(menuInsideToOpen, 1, 2).setOnComplete(()=> {
+            menuInsideToOpen.interactable = true;
+            menuInsideToOpen.blocksRaycasts = true;
+        });
     }
 
     public void ChatAnimationPopIn()
