@@ -126,13 +126,21 @@ public class MainMenuController : MonoBehaviour
         {
             chatWindow.gameObject.SetActive(true);
             chatParentButton.interactable = false;
-            LeanTween.alphaCanvas(chatWindow, 1, 0.75f).setOnComplete(() => chatParentButton.interactable = true);
+            LeanTween.alphaCanvas(chatWindow, 1, 0.75f).setOnComplete(() => {
+                chatParentButton.interactable = true;
+                chatWindow.interactable = true;
+                chatWindow.blocksRaycasts = true;
+            });
             isChatOut = true;
         }
         else
         {
             chatParentButton.interactable = false;
-            LeanTween.alphaCanvas(chatWindow, 0, 0.75f).setOnComplete(()=>ExtraAnimationChat());
+            LeanTween.alphaCanvas(chatWindow, 0, 0.75f).setOnComplete(()=> {
+                ExtraAnimationChat();
+                chatWindow.interactable = false;
+                chatWindow.blocksRaycasts = false;
+                });
             isChatOut = false;
         }
     }
