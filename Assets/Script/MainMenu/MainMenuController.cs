@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Cinemachine;
 
 
 public class MainMenuController : MonoBehaviour
@@ -22,10 +23,14 @@ public class MainMenuController : MonoBehaviour
 
     [Header("Intro Cinematic")]
     [SerializeField] private List<Animator> doors = new List<Animator>();
-
     [SerializeField] private Transform cameraTrans;
     [SerializeField] private Transform cameraFinalPos;
     [SerializeField] private float timerCinematic;
+
+    [SerializeField] private CinemachineVirtualCamera currentCamera;
+    [SerializeField] private List<CinemachineVirtualCamera> listOfCameras = new List<CinemachineVirtualCamera>();
+    [SerializeField] private CinemachineVirtualCamera raceCamera;
+    [SerializeField] private CinemachineVirtualCamera collectionCamera;
 
     private void Awake()
     {
@@ -61,6 +66,17 @@ public class MainMenuController : MonoBehaviour
         animToEnable.enabled = true;
     }
 
+    public void ChangeCamera(CinemachineVirtualCamera cameraToEnable)
+    {
+        for (int i = 0; i < listOfCameras.Count; i++)
+        {
+            listOfCameras[i].gameObject.SetActive(false);
+        }
+
+        cameraToEnable.gameObject.SetActive(true);
+        currentCamera = cameraToEnable;
+    }
+
     public void ChangeLevel(string levelName)
     {
         SceneLoadingManager.instance.ChangeScene(levelName);
@@ -82,7 +98,7 @@ public class MainMenuController : MonoBehaviour
             menus[i].blocksRaycasts = false;
         }
 
-        menuToOpen.alpha = 1;
+        LeanTween.alphaCanvas(menuToOpen, 1, 2);
         menuToOpen.interactable = true;
         menuToOpen.blocksRaycasts = true;
     }
