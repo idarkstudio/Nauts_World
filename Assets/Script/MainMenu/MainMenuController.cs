@@ -20,6 +20,13 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private Button chatParentButton;
     private bool isChatOut = false;
 
+    [Header("Intro Cinematic")]
+    [SerializeField] private List<Animator> doors = new List<Animator>();
+
+    [SerializeField] private Transform cameraTrans;
+    [SerializeField] private Transform cameraFinalPos;
+    [SerializeField] private float timerCinematic;
+
     private void Awake()
     {
         EventManager.ResetEventDictionary();
@@ -31,6 +38,27 @@ public class MainMenuController : MonoBehaviour
         ReacFunctions.GetTenLap();
 
         ReacFunctions.GetUserNfts();
+
+        StartCinematicIntro();
+    }
+
+    private void StartCinematicIntro()
+    {
+        LeanTween.move(cameraTrans.gameObject, cameraFinalPos, timerCinematic)
+            .setEaseInOutCubic()
+            .setDelay(1.5f);
+        StartCoroutine(WaitingDoors(0, doors[0]));
+        StartCoroutine(WaitingDoors(0.05f, doors[1]));
+        StartCoroutine(WaitingDoors(0.1f, doors[2]));
+        StartCoroutine(WaitingDoors(0.15f, doors[3]));
+        StartCoroutine(WaitingDoors(0.2f, doors[4]));
+
+    }
+
+    private IEnumerator WaitingDoors(float seconds, Animator animToEnable)
+    {
+        yield return new WaitForSeconds(seconds);
+        animToEnable.enabled = true;
     }
 
     public void ChangeLevel(string levelName)
