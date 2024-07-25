@@ -52,12 +52,12 @@ public class MainMenuController : MonoBehaviour
     {
         LeanTween.move(cameraTrans.gameObject, cameraFinalPos, timerCinematic)
             .setEaseInOutCubic()
-            .setDelay(1.5f);
+            .setDelay(0.5f);
         StartCoroutine(WaitingDoors(0, doors[0]));
-        StartCoroutine(WaitingDoors(0.05f, doors[1]));
-        StartCoroutine(WaitingDoors(0.1f, doors[2]));
-        StartCoroutine(WaitingDoors(0.15f, doors[3]));
-        StartCoroutine(WaitingDoors(0.2f, doors[4]));
+        StartCoroutine(WaitingDoors(0.3f, doors[1]));
+        StartCoroutine(WaitingDoors(0.6f, doors[2]));
+        StartCoroutine(WaitingDoors(0.9f, doors[3]));
+        StartCoroutine(WaitingDoors(1.1f, doors[4]));
 
     }
 
