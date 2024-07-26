@@ -40,7 +40,6 @@ public class PlanetsOrbitateAroundMainMenu : MonoBehaviour
     {
         for (int i = 0; i < planets.Count; i++)
         {
-            Debug.Log(planets[i].gameObject.name);
             planets[i].gameObject.transform.Rotate(_rotationValue * Time.deltaTime);
         }
     }
@@ -48,5 +47,21 @@ public class PlanetsOrbitateAroundMainMenu : MonoBehaviour
     void DoMovement()
     {
         planetsParent.transform.Rotate(_movementValue * Time.deltaTime);
+    }
+
+    public void EnableCollidersPlanets()
+    {
+        for (int i = 0; i < planets.Count; i++)
+        {
+            planets[i].EnableCollider();
+        }
+    }
+    
+    public void DisableCollidersPlanets()
+    {
+        for (int i = 0; i < planets.Count; i++)
+        {
+            planets[i].DisableCollider();
+        }
     }
 }
