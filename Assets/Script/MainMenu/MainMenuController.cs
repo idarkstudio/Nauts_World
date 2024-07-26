@@ -33,6 +33,8 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera raceCamera;
     [SerializeField] private CinemachineVirtualCamera collectionCamera;
 
+    [SerializeField] private List<GameObject> lightsPlayers = new List<GameObject>();
+
     private void Awake()
     {
         EventManager.ResetEventDictionary();
@@ -46,6 +48,10 @@ public class MainMenuController : MonoBehaviour
         ReacFunctions.GetUserNfts();
 
         StartCinematicIntro();
+        LeanTween.delayedCall(2,()=> {
+            ChangeMenu(menus[0]);
+            ChangeLightInsideMainMenu(lightsPlayers[0]);
+        });
     }
 
     private void StartCinematicIntro()
@@ -99,7 +105,7 @@ public class MainMenuController : MonoBehaviour
             menus[i].blocksRaycasts = false;
         }
 
-        LeanTween.alphaCanvas(menuToOpen, 1, 2).setOnComplete(() => {
+        LeanTween.alphaCanvas(menuToOpen, 1, 2.5f).setOnComplete(() => {
             menuToOpen.interactable = true;
             menuToOpen.blocksRaycasts = true;
         });
@@ -112,12 +118,23 @@ public class MainMenuController : MonoBehaviour
             menusInsideMain[i].alpha = 0;
             menusInsideMain[i].interactable = false;
             menusInsideMain[i].blocksRaycasts = false;
-        }
+        }     
 
-        LeanTween.alphaCanvas(menuInsideToOpen, 1, 2).setOnComplete(()=> {
+        LeanTween.alphaCanvas(menuInsideToOpen, 1, 2.5f).setOnComplete(()=> {
             menuInsideToOpen.interactable = true;
             menuInsideToOpen.blocksRaycasts = true;
+
         });
+    }
+
+    public void ChangeLightInsideMainMenu(GameObject lightToEnable)
+    {
+        for (int i = 0; i < lightsPlayers.Count; i++)
+        {
+            lightsPlayers[i].SetActive(false);
+        }
+
+        lightToEnable.SetActive(true);
     }
 
     public void ChatAnimationPopIn()
