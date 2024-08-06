@@ -43,8 +43,9 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private GameObject _finishLine;
 
 
-    [Header("Ending Timers")] [SerializeField]
-    private GameObject endPanel;
+    [Header("Ending Timers")] 
+    [SerializeField] private GameObject endPanel;
+    [SerializeField] private GameObject normalPanel;
 
     [SerializeField] private List<TextMeshProUGUI> timersEndText = new List<TextMeshProUGUI>();
     [SerializeField] private TextMeshProUGUI timerTotalEndText;
@@ -211,6 +212,7 @@ public class RaceManager : MonoBehaviour
 
     private void EndTheRace()
     {
+        normalPanel.SetActive(false);
         endPanel.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         float value = float.PositiveInfinity;
