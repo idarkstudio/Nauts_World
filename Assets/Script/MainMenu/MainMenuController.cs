@@ -120,7 +120,7 @@ public class MainMenuController : MonoBehaviour
             menusInsideMain[i].blocksRaycasts = false;
         }     
 
-        LeanTween.alphaCanvas(menuInsideToOpen, 1, 2.5f).setOnComplete(()=> {
+        LeanTween.alphaCanvas(menuInsideToOpen, 1, 1.5f).setOnComplete(()=> {
             menuInsideToOpen.interactable = true;
             menuInsideToOpen.blocksRaycasts = true;
 
