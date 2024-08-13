@@ -6,6 +6,8 @@ TagManager:
   tags:
   - ImagenPrincipal
   - FxTemporaire
+  - Ground
+  - Deathzone
   layers:
   - Default
   - TransparentFX
@@ -13,18 +15,18 @@ TagManager:
   - 
   - Water
   - UI
+  - Player
+  - Ground
+  - DeathZone
+  - PostProcessing
+  - ProgressChecker
+  - SpeedUpPad
+  - SpeedDownPad
+  - Wall
+  - PostProcessingTrack
+  - PickUpBox
+  - Particles
   - PlanetsMainMenu
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
   - 
   - 
   - 
