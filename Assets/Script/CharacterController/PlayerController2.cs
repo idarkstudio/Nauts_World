@@ -32,8 +32,8 @@ public class PlayerController2 : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private List<Material> mats = new List<Material>();
     [SerializeField] private GameObject modelChar;
-    [SerializeField] private GameObject speedTrailL;
-    [SerializeField] private GameObject speedTrailR;
+    [SerializeField] private ParticleSystem speedTrailL;
+    [SerializeField] private ParticleSystem speedTrailR;
 
     public bool _isGrounded;
     private bool _isDescending;
@@ -51,7 +51,7 @@ public class PlayerController2 : MonoBehaviour
     [SerializeField] private float extraSpeedUpPad;
     [SerializeField] private float extraSpeedDownPad;
 
-    [Header("View")] 
+    [Header("View")]
     [SerializeField] private ParticleSystem landingParticles;
     [SerializeField] private ParticleSystem dustParticles;
 
@@ -68,6 +68,8 @@ public class PlayerController2 : MonoBehaviour
         _curentSpeed = 0f;
         _baseTopSpeed = _topSpeed;
         itemsUI = FindObjectOfType<ItemUI>();
+        speedTrailL.Stop();
+        speedTrailR.Stop();
     }
 
     void Start()
@@ -76,7 +78,7 @@ public class PlayerController2 : MonoBehaviour
         _sphereRigidbody.transform.parent = null;
 
     }
-    
+
 
     public void CanMoveSetter(bool value)
     {
@@ -113,16 +115,16 @@ public class PlayerController2 : MonoBehaviour
         {
             _isFlying = true;
             _animator.SetBool("IsFlying", _isFlying);
-            speedTrailL.SetActive(true);
-            speedTrailR.SetActive(true);
+            speedTrailL.Play();
+            speedTrailR.Play();
 
         }
         else if (_forwardAmount == 0 || Input.GetKeyUp(KeyCode.W) && _isGrounded)
         {
             _isFlying = false;
             _animator.SetBool("IsFlying", _isFlying);
-            speedTrailL.SetActive(false);
-            speedTrailR.SetActive(false);
+            speedTrailL.Stop();
+            speedTrailR.Stop();
         }
         else if (Input.GetKey(KeyCode.S) || Input.GetKeyUp(KeyCode.W))
         {
@@ -133,10 +135,10 @@ public class PlayerController2 : MonoBehaviour
         {
 
             Drive();
-            
-            if(_isGrounded)
+
+            if (_isGrounded)
                 dustParticles.Play();
-            
+
             /* if (Input.GetKey(KeyCode.S) || Input.GetKeyUp(KeyCode.W))
              {
                  DriveDeceleration();
@@ -165,8 +167,8 @@ public class PlayerController2 : MonoBehaviour
         TurnHandler();
         GroundCheckAndNormalHandler();
 
-        
-        
+
+
         _sphereRigidbody.AddForce(transform.forward * _curentSpeed, ForceMode.Acceleration);
         //_animator.SetTrigger("IsFlying");
     }
@@ -212,9 +214,9 @@ public class PlayerController2 : MonoBehaviour
         {
             if (!_isGrounded)
                 _justLanded = true;
-            
+
             _isGrounded = true;
-            
+
             _airborneTime = 0f; // Reinicia el tiempo en el aire
         }
         else
@@ -238,8 +240,17 @@ public class PlayerController2 : MonoBehaviour
                 landingParticles.Play();
                 _justLanded = false;
                 currentDescendForce = 0;
+                if (_forwardAmount == 0)
+                {
+                    _curentSpeed = 0;
+                    _forwardSpeed = 0;
+                    _isFlying = false;
+                    _animator.SetBool("IsFlying", _isFlying);
+                    speedTrailL.Stop();
+                    speedTrailR.Stop();
+                }
             }
-            
+
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation, 0.1f);
         }
     }
@@ -311,8 +322,11 @@ public class PlayerController2 : MonoBehaviour
     public void GainExtraSpeed()
     {
         _topSpeed += extraSpeedUpPad;
-        _forwardSpeed += extraSpeedUpPad;
-        _animator.SetBool("IsSuperFlying", true);
+        if (_forwardAmount != 0)
+        {
+            _forwardSpeed += extraSpeedUpPad;
+            _animator.SetBool("IsSuperFlying", true);
+        }
     }
 
     public void DecreaseMaxSpeed()
