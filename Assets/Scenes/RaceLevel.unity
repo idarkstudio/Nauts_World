@@ -47359,7 +47359,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.20500001, y: 0.656329}
-  m_AnchoredPosition: {x: -2.569954, y: -1.5630035}
+  m_AnchoredPosition: {x: -2.5699615, y: -1.5629883}
   m_SizeDelta: {x: -5.1364136, y: -3.126999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &910857369
@@ -48475,7 +48475,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.049180426}
   m_AnchorMax: {x: 0.28852084, y: 0.18657717}
-  m_AnchoredPosition: {x: -4.000122, y: 4.500061}
+  m_AnchoredPosition: {x: -4.000122, y: 4.5}
   m_SizeDelta: {x: -5.16803, y: -11.776001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &946163960
@@ -57031,7 +57031,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1207851085}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 8de8e18888b4cc84d9802574b7523b6e, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -61741,7 +61741,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 102.9
+  m_fontSize: 217.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -87772,7 +87772,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.20500001, y: 0.060434002}
   m_AnchorMax: {x: 1, y: 0.3866712}
-  m_AnchoredPosition: {x: -4.746811, y: 1.3997955}
+  m_AnchoredPosition: {x: -4.746811, y: 1.3998108}
   m_SizeDelta: {x: -17.966599, y: -6.919998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1912592410

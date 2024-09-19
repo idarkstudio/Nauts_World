@@ -20,7 +20,7 @@ public class PlayerController2 : MonoBehaviour
     [SerializeField] private float _turnAmount;
     [SerializeField] private float _turnSpeed;
     [SerializeField] private float _jumpForce;
-    [SerializeField] private float _deceleratiionSpeed = 20;
+    [SerializeField] private float _deceleratiionSpeed = 10;
     [Range(0, 1)] [SerializeField] private float _crashSpeedPercentage;
     [SerializeField] private float _maxAirborneTime;
     private bool canMove = false;
@@ -119,8 +119,8 @@ public class PlayerController2 : MonoBehaviour
             speedTrailR.Play();
 
         }
-        else if (_forwardAmount == 0 || Input.GetKeyUp(KeyCode.W) && _isGrounded)
-        {
+        else if (_forwardAmount == 0 || Input.GetKeyUp(KeyCode.W) && _isGrounded  )
+        {           
             _isFlying = false;
             _animator.SetBool("IsFlying", _isFlying);
             speedTrailL.Stop();
@@ -192,8 +192,17 @@ public class PlayerController2 : MonoBehaviour
 
     private void TurnHandler()
     {
-        float newRotation = _turnAmount * _turnSpeed * Time.deltaTime;
-        if (_curentSpeed > 0.1f) transform.Rotate(0, newRotation, 0, Space.World);
+        float speedFactor = Mathf.Clamp01(_curentSpeed / _topSpeed);
+        float turnFactor = Mathf.Lerp(0.5f, 0.3f, speedFactor); // sensibilidad de giro en funcion a veloci del pj     
+        float speedMultiplier = Mathf.Lerp(1f, 1.5f, speedFactor);
+        float newRotation = _turnAmount * (_turnSpeed * speedMultiplier) * turnFactor * Time.deltaTime; // angulo de giro 
+
+        if (_curentSpeed > 0.1f)
+        {
+            Quaternion targetRotation = Quaternion.Euler(0, newRotation, 0);
+            float rotationSmoothing = Mathf.Lerp(0.1f, 0.3f, speedFactor);
+            transform.rotation = Quaternion.Slerp(transform.rotation, transform.rotation * targetRotation, rotationSmoothing); //suavidad de giro
+        }
 
     }
 
