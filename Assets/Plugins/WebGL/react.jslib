@@ -82,7 +82,16 @@ var WebGLFunctions = {
     }catch (e){
       console.warn("Failed to dispatch CreateAcountEvent");
     }
+  },
+  ReturnToMainMenu: function (MainMenu){
+    try {
+      window.dispatchReactUnityEvent("ReturnToMainMenu", mainmenu)
+    }catch (e){
+      console.warn("Failed to dispatch CreateAcountEvent");
+    }
   }
+
+
 };
   
 mergeInto(LibraryManager.library, WebGLFunctions);

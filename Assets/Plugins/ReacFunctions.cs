@@ -32,6 +32,8 @@ public static class ReacFunctionsInternal
     public static extern void GetUserNfts();    
     [DllImport("__Internal")]
     public static extern void GetUserStakes();
+    [DllImport("__Internal")]
+    public static extern void ReturnToMainMenu(string mainmenu );
 
 
 
@@ -116,6 +118,13 @@ public static class ReacFunctions
         ReacFunctionsInternal.GetTenLap();
 #endif
     }
-    
-    
+
+
+    public static void ReturnToMainMenu(string mainmenu)
+    {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        ReacFunctionsInternal.ReturnToMainMenu(mainmenu);
+#endif
+    }
+
 }
