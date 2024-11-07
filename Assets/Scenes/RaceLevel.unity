@@ -11408,7 +11408,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 352.70526, y: -238.24416}
+  m_AnchoredPosition: {x: 352.70526, y: -238.3248}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &221461973
@@ -47359,7 +47359,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.20500001, y: 0.656329}
-  m_AnchoredPosition: {x: -2.5699615, y: -1.5629883}
+  m_AnchoredPosition: {x: -2.569954, y: -1.5629883}
   m_SizeDelta: {x: -5.1364136, y: -3.126999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &910857369
@@ -48498,7 +48498,7 @@ MonoBehaviour:
         - m_Target: {fileID: 430399634}
           m_TargetAssemblyTypeName: PausedMenu, Assembly-CSharp
           m_MethodName: ExitGame
-          m_Mode: 5
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -48554,7 +48554,7 @@ MonoBehaviour:
       - m_Target: {fileID: 430399634}
         m_TargetAssemblyTypeName: PausedMenu, Assembly-CSharp
         m_MethodName: ExitGame
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -56619,7 +56619,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1205748187
 RectTransform:
   m_ObjectHideFlags: 0
@@ -61741,7 +61741,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 217.1
+  m_fontSize: 102.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -68927,7 +68927,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 352.70526, y: -144.12207}
+  m_AnchoredPosition: {x: 352.70526, y: -144.1624}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1483888213
@@ -92662,7 +92662,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 352.70526, y: -332.36624}
+  m_AnchoredPosition: {x: 352.70526, y: -332.48718}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2075859648 stripped

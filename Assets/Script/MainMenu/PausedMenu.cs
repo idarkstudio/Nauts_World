@@ -10,6 +10,7 @@ public class PausedMenu : MonoBehaviour
     //public CameraController _cameraContoller;
     public delegate void PauseEventHandler(bool isPaused);
     public static event PauseEventHandler OnPauseChanged;
+    string mainmenu = "mainmenu" ;
 
     void Start()
     {
@@ -62,11 +63,12 @@ public class PausedMenu : MonoBehaviour
     }
 
 
-    public void ExitGame(string scene)
+    public void ExitGame()//string scene)
     {
         if (OnPauseChanged != null)
             OnPauseChanged(false);
-        SceneManager.LoadScene(scene);
+        //SceneManager.LoadScene(scene);
+        ReacFunctions.ReturnToMainMenu(mainmenu);
 
     }
 
