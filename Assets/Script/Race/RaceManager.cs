@@ -54,6 +54,11 @@ public class RaceManager : MonoBehaviour
     [Header("Bg Black")]
     [SerializeField] private InitialBackground ibg;
 
+
+
+    public int TotalRaceTimeMs { get; private set; }
+    public int BestLapTimeMs { get; private set; }
+
     private void Awake()
     {
     }
@@ -139,7 +144,7 @@ public class RaceManager : MonoBehaviour
         }
     }
 
-    bool IsRaceInProgress()
+    public bool IsRaceInProgress()
     {
         return raceCurrentlyInProgress;
     }
@@ -242,4 +247,18 @@ public class RaceManager : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         _finishLine.SetActive(true);
     }
+
+
+
+
+    public (int totalRaceTimeMs, int bestLapTimeMs) SendRaceTimes(List<TimeSpan> lapTimersRecord, TimeSpan lapTimeTotalTimer)
+    {
+        TimeSpan bestLapTime = lapTimersRecord.OrderBy(x => x.TotalMilliseconds).First();
+        int bestLapTimeMs = (int)bestLapTime.TotalMilliseconds;
+        int totalRaceTimeMs = (int)lapTimeTotalTimer.TotalMilliseconds;
+
+        return (totalRaceTimeMs, bestLapTimeMs);
+    }
+
+
 }
