@@ -129,7 +129,7 @@ public static class ReacFunctions
 #endif
     }
 
-    public static void SendRaceData(string jsonData)
+    public static void SetBestTimes(string jsonData)
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
         ReacFunctionsInternal.SendRaceDataToReact(jsonData);

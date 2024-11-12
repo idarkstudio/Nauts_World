@@ -90,9 +90,9 @@ var WebGLFunctions = {
       console.warn("Failed to dispatch CreateAcountEvent");
     }
   },
-  SendRaceData: function (jsonData) {
+  SetBestTimes: function (jsonData) {
     try {
-      window.dispatchReactUnityEvent("SendRaceData", UTF8ToString(jsonData) );
+      window.dispatchReactUnityEvent("SetBestTimes", UTF8ToString(jsonData) );
     } catch (e) {
       console.warn("Failed to dispatch event");
     }

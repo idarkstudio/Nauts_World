@@ -37,7 +37,7 @@ public class RaceDataManager : MonoBehaviour
             };
 
             string jsonData = JsonConvert.SerializeObject(raceData);
-            ReacFunctions.SendRaceData(jsonData);
+            ReacFunctions.SetBestTimes(jsonData);
         }
         else
         {
