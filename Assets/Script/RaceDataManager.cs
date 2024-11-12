@@ -10,6 +10,9 @@ public class RaceDataManager : MonoBehaviour
     [SerializeField]
     private RaceManager raceManager;
 
+    public UserNameData UserNameData;
+
+
     private string principal;
     private int totalRaceTimeMs;
     private int bestLapTimeMs;
@@ -18,7 +21,13 @@ public class RaceDataManager : MonoBehaviour
     private const string urlSetBestTimes = "";
 
 
+   
 
+    public void GetUser(string userPrincipal)
+    {
+        var gettingprincipal = JsonConvert.DeserializeObject<UserNameData>(userPrincipal);
+        principal = gettingprincipal.principal;
+    }
 
 
     public void ReturnToMainMenu()
@@ -29,6 +38,7 @@ public class RaceDataManager : MonoBehaviour
             totalRaceTimeMs = raceManager.TotalRaceTimeMs;
             bestLapTimeMs = raceManager.BestLapTimeMs;
 
+
             var raceData = new Dictionary<string, object>
             {
                 { "principal", principal },
@@ -36,8 +46,16 @@ public class RaceDataManager : MonoBehaviour
                 { "bestLapTime", bestLapTimeMs }
             };
 
-            string jsonData = JsonConvert.SerializeObject(raceData);
-            ReacFunctions.SetBestTimes(jsonData);
+            if (principal != null)
+            {
+                string jsonData = JsonConvert.SerializeObject(raceData);
+                ReacFunctions.SetBestTimes(jsonData);
+            }
+            else
+            {
+                ReacFunctions.ReturnToMainMenu(mainMenu);
+            }
+
         }
         else
         {
