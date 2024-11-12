@@ -10,9 +10,6 @@ public class RaceDataManager : MonoBehaviour
     [SerializeField]
     private RaceManager raceManager;
 
-    public UserNameData UserNameData;
-
-
     private string principal;
     private int totalRaceTimeMs;
     private int bestLapTimeMs;
@@ -25,8 +22,9 @@ public class RaceDataManager : MonoBehaviour
 
     public void GetUser(string userPrincipal)
     {
-        var gettingprincipal = JsonConvert.DeserializeObject<UserNameData>(userPrincipal);
+        var gettingprincipal = JsonConvert.DeserializeObject<User>(userPrincipal);
         principal = gettingprincipal.principal;
+
     }
 
 
