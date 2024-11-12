@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using Newtonsoft.Json;
+
 
 public class RaceDataManager : MonoBehaviour
 {
@@ -23,6 +25,7 @@ public class RaceDataManager : MonoBehaviour
     {
         if (!raceManager.IsRaceInProgress())//booleano de si termino a carrera
         {
+            // princial =  obtener el player porq si no volvera vacio?
             totalRaceTimeMs = raceManager.TotalRaceTimeMs;
             bestLapTimeMs = raceManager.BestLapTimeMs;
 
@@ -33,7 +36,8 @@ public class RaceDataManager : MonoBehaviour
                 { "bestLapTime", bestLapTimeMs }
             };
 
-            StartCoroutine(SendRequest(urlSetBestTimes, raceData));
+            string jsonData = JsonConvert.SerializeObject(raceData);
+            ReacFunctions.SendRaceData(jsonData);
         }
         else
         {
@@ -42,10 +46,10 @@ public class RaceDataManager : MonoBehaviour
         }
     }
 
-
+    /*
     private IEnumerator SendRequest(string url, Dictionary<string, object> jsonData)
     {
-        string jsonString = JsonUtility.ToJson(jsonData);// JsonUtility.ToJson(new SerializableData(jsonData));
+        string jsonString = JsonConvert.SerializeObject(jsonData);
         UnityWebRequest request = new(url, jsonString);
 
         yield return request.SendWebRequest();
@@ -59,5 +63,5 @@ public class RaceDataManager : MonoBehaviour
             Debug.LogError("Error al enviar los datos: " + request.error);
         }
     }
-   
+   */
 }

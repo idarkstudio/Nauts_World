@@ -34,6 +34,8 @@ public static class ReacFunctionsInternal
     public static extern void GetUserStakes();
     [DllImport("__Internal")]
     public static extern void ReturnToMainMenu(string mainmenu );
+    [DllImport("__Internal")]
+    public static extern void SendRaceDataToReact(string jsonData);
 
 
 
@@ -124,6 +126,13 @@ public static class ReacFunctions
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
         ReacFunctionsInternal.ReturnToMainMenu(mainmenu);
+#endif
+    }
+
+    public static void SendRaceData(string jsonData)
+    {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        ReacFunctionsInternal.SendRaceDataToReact(jsonData);
 #endif
     }
 

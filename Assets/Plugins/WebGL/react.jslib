@@ -89,8 +89,13 @@ var WebGLFunctions = {
     }catch (e){
       console.warn("Failed to dispatch CreateAcountEvent");
     }
-  }
-
+  },
+  SendRaceData: function (jsonData) {
+    try {
+      window.dispatchReactUnityEvent("SendRaceData", UTF8ToString(jsonData) );
+    } catch (e) {
+      console.warn("Failed to dispatch event");
+    }
 
 };
   
