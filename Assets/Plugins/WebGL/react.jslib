@@ -83,7 +83,7 @@ var WebGLFunctions = {
       console.warn("Failed to dispatch CreateAcountEvent");
     }
   },
-  ReturnToMainMenu: function (MainMenu){
+  ReturnToMainMenu: function (mainmenu){
     try {
       window.dispatchReactUnityEvent("ReturnToMainMenu", mainmenu)
     }catch (e){
