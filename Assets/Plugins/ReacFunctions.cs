@@ -35,7 +35,7 @@ public static class ReacFunctionsInternal
     [DllImport("__Internal")]
     public static extern void ReturnToMainMenu(string mainmenu );
     [DllImport("__Internal")]
-    public static extern void SendRaceDataToReact(string jsonData);
+    public static extern void SetBestTimes(string jsonData);
 
 
 
@@ -132,7 +132,7 @@ public static class ReacFunctions
     public static void SetBestTimes(string jsonData)
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
-        ReacFunctionsInternal.SendRaceDataToReact(jsonData);
+        ReacFunctionsInternal.SetBestTimes(jsonData);
 #endif
     }
 

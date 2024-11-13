@@ -92,11 +92,11 @@ var WebGLFunctions = {
   },
   SetBestTimes: function (jsonData) {
     try {
-      window.dispatchReactUnityEvent("SetBestTimes", UTF8ToString(jsonData) );
+      window.dispatchReactUnityEvent("SetBestTimes", UTF8ToString(jsonData));
     } catch (e) {
       console.warn("Failed to dispatch event");
     }
-
+  }
 };
   
-mergeInto(LibraryManager.library, WebGLFunctions);
+mergeInto(LibraryManager.library, WebGLFunctions)

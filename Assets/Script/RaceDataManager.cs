@@ -20,10 +20,10 @@ public class RaceDataManager : MonoBehaviour
 
    
 
-    public void GetUser(string userPrincipal)
+    public void GetPrincipal(string json)
     {
-        var gettingprincipal = JsonConvert.DeserializeObject<User>(userPrincipal);
-        principal = gettingprincipal.principal;
+        var result = JsonConvert.DeserializeObject<ResultUser>(json);
+        principal = result.Principal;
 
     }
 
