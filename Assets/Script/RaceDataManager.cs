@@ -20,7 +20,7 @@ public class RaceDataManager : MonoBehaviour
 
    
 
-    public void GetPrincipal(string json)
+    public void GetUser(string json)
     {
         var result = JsonConvert.DeserializeObject<ResultUser>(json);
         principal = result.Principal;
@@ -36,6 +36,7 @@ public class RaceDataManager : MonoBehaviour
             totalRaceTimeMs = raceManager.TotalRaceTimeMs;
             bestLapTimeMs = raceManager.BestLapTimeMs;
 
+            Debug.Log("entro a realizar la racedata");
 
             var raceData = new Dictionary<string, object>
             {
@@ -44,20 +45,27 @@ public class RaceDataManager : MonoBehaviour
                 { "bestLapTime", bestLapTimeMs }
             };
 
+            Debug.Log("MI RACE DATA ES: " + raceData);
+
             if (principal != null)
             {
                 string jsonData = JsonConvert.SerializeObject(raceData);
                 ReacFunctions.SetBestTimes(jsonData);
+                Debug.Log("Serealizo el json y llamo a SetBestTimes");
             }
             else
             {
                 ReacFunctions.ReturnToMainMenu(mainMenu);
+                Debug.Log("Salgo y no hago nada");
+
             }
 
         }
         else
         {
             ReacFunctions.ReturnToMainMenu(mainMenu);
+            Debug.Log("Salgo y no hago nada");
+
 
         }
     }
