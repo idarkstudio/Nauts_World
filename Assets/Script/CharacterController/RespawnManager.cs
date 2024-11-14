@@ -47,6 +47,12 @@ public class RespawnManager : MonoBehaviour
         }
     }
 
+    public void ForceRespawnPlayer()
+    {
+        ibg.FadeInBG();
+        StartCoroutine(RespawnPlayer());
+    }
+
     private IEnumerator RespawnPlayer()
     {
         _playerController.CanMoveSetter(false);
@@ -68,7 +74,6 @@ public class RespawnManager : MonoBehaviour
         _playerController.enabled=true;
         _playerController.CanMoveSetter(true);
         _playerController._forwardSpeed = 0;
-        _sphereRigidbody.constraints = RigidbodyConstraints.None;
         _sphereRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
     }
 

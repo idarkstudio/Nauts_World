@@ -31,4 +31,9 @@ public class LapManager : MonoBehaviour
     {
         respawn.SaveLastPost(positionToSpawn, RotationToLook);
     }
+    
+    public void ForceRespawnPlayer()
+    {
+        respawn.ForceRespawnPlayer();
+    }
 }
