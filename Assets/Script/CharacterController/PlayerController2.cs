@@ -240,7 +240,6 @@ public class PlayerController2 : MonoBehaviour
             }
         }
 
-        Debug.Log(_isGrounded + " booleano ");
 
         if (_isGrounded)
         {

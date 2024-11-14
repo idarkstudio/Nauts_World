@@ -104,6 +104,9 @@
         },
         {
             "m_Id": "48bba1f3c2ab4360900857608d89856a"
+        },
+        {
+            "m_Id": "a94687d36f324d3c8560ed1fb39b53ed"
         }
     ],
     "m_GroupDatas": [],
@@ -272,7 +275,7 @@
             },
             "m_InputSlot": {
                 "m_Node": {
-                    "m_Id": "8ceb082d141e4fc6983c0a663a6ce74b"
+                    "m_Id": "a94687d36f324d3c8560ed1fb39b53ed"
                 },
                 "m_SlotId": 0
             }
@@ -308,15 +311,15 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "ceb1fdb3dc5c490d87ef26f3a767eb47"
+                    "m_Id": "a94687d36f324d3c8560ed1fb39b53ed"
                 },
-                "m_SlotId": 3
+                "m_SlotId": 1
             },
             "m_InputSlot": {
                 "m_Node": {
                     "m_Id": "8ceb082d141e4fc6983c0a663a6ce74b"
                 },
-                "m_SlotId": 1
+                "m_SlotId": 0
             }
         },
         {
@@ -456,10 +459,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1548.0,
-            "y": -687.9999389648438,
+            "x": -1553.0001220703125,
+            "y": -687.9998779296875,
             "width": 208.0,
-            "height": 434.9999694824219
+            "height": 434.9998779296875
         }
     },
     "m_Slots": [
@@ -687,6 +690,30 @@
     "m_SlotType": 0,
     "m_Hidden": false,
     "m_ShaderOutputName": "B",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
+    "m_ObjectId": "2212b53174ae4b72a57f974cb39b781d",
+    "m_Id": 1,
+    "m_DisplayName": "Out",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
     "m_StageCapability": 3,
     "m_Value": {
         "x": 0.0,
@@ -1366,9 +1393,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1547.0001220703125,
-            "y": -230.99998474121095,
-            "width": 208.0,
+            "x": -1548.9998779296875,
+            "y": -233.0000457763672,
+            "width": 208.0001220703125,
             "height": 337.0000305175781
         }
     },
@@ -2233,6 +2260,44 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.SaturateNode",
+    "m_ObjectId": "a94687d36f324d3c8560ed1fb39b53ed",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Saturate",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -969.5626220703125,
+            "y": -347.5626220703125,
+            "width": 208.0,
+            "height": 278.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "fb4761330ea3494eb7a487958e87a959"
+        },
+        {
+            "m_Id": "2212b53174ae4b72a57f974cb39b781d"
+        }
+    ],
+    "synonyms": [
+        "clamp"
+    ],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector2MaterialSlot",
     "m_ObjectId": "aafa12d955e54d86a702816876f832e9",
     "m_Id": 3,
@@ -3035,6 +3100,30 @@
         "g": 0.5,
         "b": 0.5,
         "a": 1.0
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
+    "m_ObjectId": "fb4761330ea3494eb7a487958e87a959",
+    "m_Id": 0,
+    "m_DisplayName": "In",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "In",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
     }
 }
 
